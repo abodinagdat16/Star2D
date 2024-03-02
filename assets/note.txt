@@ -1,0 +1,11 @@
+- compile the template and extract it's dex and add it to the source assets "java/game.jar" as jar file.
+- the template need only this libs :
+disklrucache-4.11.0.jar
+exifinterface-1.0.0.jar
+gif-decoder-4.11.0.jar
+glide.aar
+gson-2.8.0.jar
+libgdx.jar
+libgdx ai.jar
+zip4j.jar
+any questions....feel free to contact me.
