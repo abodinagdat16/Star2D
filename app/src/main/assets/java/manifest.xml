@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Decompiled with BotX Patcher -->
+<manifest
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:versionCode="%1$s"
+   android:versionName="%2$s"
+   package="%3$s"
+   platformBuildVersionCode="34"
+   platformBuildVersionName="14" >
+   <uses-sdk
+      android:minSdkVersion="21"
+      android:targetSdkVersion="33" >
+   </uses-sdk>
+   <uses-permission
+      android:name="android.permission.ACCESS_MEDIA_LOCATION" >
+   </uses-permission>
+   <uses-permission
+      android:name="android.permission.READ_EXTERNAL_STORAGE" >
+   </uses-permission>
+   <uses-permission
+      android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+   </uses-permission>
+   <application
+      android:theme="@7F100009"
+      android:label="%4$s"
+      android:icon="@7F070095"
+      android:allowBackup="true"
+      android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+      android:requestLegacyExternalStorage="true" >
+      <activity
+         android:name="com.star4droid.Game.MainActivity"
+         android:screenOrientation="%5$s"
+         android:exported="true" >
+         <intent-filter>
+            <action
+               android:name="android.intent.action.MAIN" >
+            </action>
+            <category
+               android:name="android.intent.category.LAUNCHER" >
+            </category>
+         </intent-filter>
+      </activity>
+      <activity
+         android:theme="@7F10000B"
+         android:name="com.star4droid.star2d.PortraitPlayer"
+         android:exported="true"
+         android:screenOrientation="%5$s"
+         android:configChanges="0x00000DA0"
+         android:hardwareAccelerated="true"
+         android:supportsPictureInPicture="true" >
+      </activity>
+      <activity
+         android:theme="@7F10000B"
+         android:name="com.star4droid.star2d.LandscapePlayer"
+         android:exported="true"
+         android:screenOrientation="%5$s"
+         android:configChanges="0x00000DA0"
+         android:hardwareAccelerated="true"
+         android:supportsPictureInPicture="true" >
+      </activity>
+   </application>
+</manifest>

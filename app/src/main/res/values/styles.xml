@@ -1,0 +1,24 @@
+<resources>
+<style name="AppTheme.FullScreen" parent="AppTheme">
+<item name="android:windowFullscreen">true</item>
+<item name="android:windowContentOverlay">@null</item>
+</style>
+<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+<style name="images_style">
+	<item name="android:scaleType">fitCenter</item>
+	<item name="android:tint">?attr/colorOnBackground</item>
+	<item name="android:background">@drawable/imgs_style</item>
+	<item name="android:layout_width">35dp</item>
+	<item name="android:layout_height">35dp</item>
+	<item name="android:padding">4dp</item>
+	<item name="android:layout_marginRight">3dp</item>
+</style>
+    <style name="ShapeAppearanceOverlay.Nav" parent="">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSizeTopRight">10%</item>
+    <item name="cornerSizeBottomRight">10%</item>
+    <item name="cornerSizeBottomLeft">10%</item>
+    <item name="cornerSizeTopLeft">10%</item>
+</style>
+</resources>

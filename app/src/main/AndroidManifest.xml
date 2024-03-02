@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.star4droid.star2d.evo"
+    android:versionCode="5"
+	android:versionName="0.0.5Beta">
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="false"
+		android:requestLegacyExternalStorage="true"
+		android:usesCleartextTraffic="true"
+		android:name="com.star4droid.star2d.star2dApp"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.star4droid.star2d.MainActivity"
+			android:theme="@style/AppTheme.FullScreen"
+			android:screenOrientation="landscape"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		
+		<activity
+		android:name="com.star4droid.star2d.ProjectsActivity"
+		android:theme="@style/AppTheme.FullScreen"
+		android:screenOrientation="landscape"
+		android:exported="true"></activity>
+		<activity
+		android:name="com.star4droid.star2d.EditorActivity"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="landscape"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true">
+		</activity>
+		<activity
+		android:name="com.star4droid.star2d.PortraitPlayer"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="portrait"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true">
+		</activity>
+		<activity
+			android:name="com.star4droid.star2d.Activities.CodeEditorActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait"
+			android:theme="@style/AppTheme"
+			android:windowSoftInputMode="adjustResize|stateVisible"
+			android:exported="true"/>
+		<activity
+		android:name="com.star4droid.star2d.LandscapePlayer"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="landscape"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true">
+		</activity>
+		<activity
+		android:name="com.star4droid.star2d.Activities.FilesManagerActivity"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="landscape"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true">
+		</activity>
+		<activity
+		android:name="com.star4droid.star2d.Activities.SettingsActivity"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="landscape"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true"/>
+		<activity
+		android:name="com.star4droid.star2d.Activities.AnimationActivity"
+		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+		android:hardwareAccelerated="true"
+		android:supportsPictureInPicture="true"
+		android:screenOrientation="landscape"
+		android:theme="@style/AppTheme.FullScreen"
+		android:exported="true">
+		</activity>
+		<service
+		android:enabled="true"
+		android:exported="true"
+		android:name="com.star4droid.star2d.Activities.IndexingService"
+		android:foregroundServiceType="dataSync"
+		android:stopWithTask="false"
+		android:permission="android.permission.FOREGROUND_SERVICE"
+		/>
+		<provider
+		android:name="androidx.core.content.FileProvider"
+		android:authorities="com.star4droid.star2d.evo.fileprovider"
+		android:exported="false"
+		android:grantUriPermissions="true">
+		<meta-data
+		android:name="android.support.FILE_PROVIDER_PATHS"
+		android:resource="@xml/file_paths" />
+		</provider>
+    </application>
+</manifest>

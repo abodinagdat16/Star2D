@@ -1,0 +1,10 @@
+{
+"float":",Max,Progress,x,y,z,rotation,density,restitution,width,radius,height,friction,tileX,tileY,ColliderX,ColliderY,Collider Width,Collider Radius,Collider Height,Gravity Scale,",
+"image":",image,Pad Image,Button Image,Button Background,",
+"boolean":",lock,Active,Visible,Bullet,Fixed Rotation,isSensor,",
+"spinner":"type",
+"string":",name,Text",
+"static":",TYPE,",
+"color":",Text Color,Progress Color,Background Color,",
+"body":",Collision,Script,parent"
+}

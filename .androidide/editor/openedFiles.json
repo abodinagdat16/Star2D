@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 53,
+          "index": 1164,
+          "line": 49
+        },
+        "start": {
+          "column": 53,
+          "index": 1164,
+          "line": 49
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Activities/CodeEditorActivity.java",
+      "selection": {
+        "end": {
+          "column": 10,
+          "index": 6766,
+          "line": 201
+        },
+        "start": {
+          "column": 10,
+          "index": 6766,
+          "line": 201
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/build.gradle"
+}

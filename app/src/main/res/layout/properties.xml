@@ -1,0 +1,62 @@
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:gravity="center_vertical"
+android:orientation="horizontal">
+<LinearLayout
+android:id="@+id/propertiesLinear"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+<LinearLayout
+	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:padding="2dp"
+	android:orientation="horizontal"
+	android:id="@+id/backLin"
+	android:visibility="gone"
+	android:gravity="center_vertical"
+	android:background="@color/button_background"
+	>
+	<ImageView
+		android:layout_height="30dp"
+		android:layout_width="30dp"
+		android:id="@+id/back"
+		android:src="@drawable/back_arrow"
+		android:scaleX="-1"
+		android:layout_marginRight="4dp"
+		app:tint="?attr/colorOnBackground"
+		/>
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:textSize="8sp"
+		android:text="@string/sections_list"
+		android:maxLines="1"
+		android:textStyle="bold"
+		android:textColor="@color/text_color"
+		android:gravity="center"
+		/>
+</LinearLayout>
+<androidx.core.widget.NestedScrollView
+android:id="@+id/propertiesScroll"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/button_background"
+>
+<androidx.viewpager2.widget.ViewPager2
+android:id="@+id/viewPager"
+android:layout_width="match_parent"
+android:layout_height="match_parent" />
+</androidx.core.widget.NestedScrollView>
+</LinearLayout>
+<ImageView
+android:id="@+id/properties_swip_image"
+style="@style/images_style"
+android:src="@drawable/properties"
+android:layout_marginLeft="5dp"
+ />
+</LinearLayout>
