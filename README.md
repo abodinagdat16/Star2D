@@ -14,6 +14,8 @@
 - [x] Auto-code-completion
 - [x] Visual Scripting (Node System)
 - [x] Physics engine (Box2d)
+- [x] Apk export
+- [ ] sprite sheet cutter
 - [ ] TileMap editor
-## Known Issues 🙂❤️
-• Images not loading sometimes in world_desginer because of glide library... fix it by removing it from jar(s) files and add it to build.gradle
+## Known Issues 
+• Idk 😶
