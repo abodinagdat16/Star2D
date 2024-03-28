@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.evo.R;
@@ -43,6 +44,7 @@ public class BoxBody extends ImageView implements EditorItem {
 		update();
 		
 		if (!this.propertySet.getString("image").equals("")) {
+            Toast.makeText(getContext(),"yes",2000).show();
 			String img = this.editor.getProject().getImagesPath() + this.propertySet.getString("image").replace(Utils.seperator,"/");
 			if (FileUtil.isExistFile(img)) {
 				repeat.x = this.propertySet.getInt("tileX");
@@ -50,6 +52,7 @@ public class BoxBody extends ImageView implements EditorItem {
 				Utils.setImageFromFile(this, img, repeat, null, null);
 			}
 		}
+        
 	}
 	
 	public BoxBody setDefault() {

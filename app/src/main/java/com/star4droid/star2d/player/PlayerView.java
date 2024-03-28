@@ -158,6 +158,7 @@ public class PlayerView extends FrameLayout {
 			String optimizedDir = context.getDir("odex", Context.MODE_PRIVATE).getAbsolutePath();
 			
 			dalvik.system.DexClassLoader dcl = new dalvik.system.DexClassLoader(project.getDex(scene), optimizedDir, null, context.getClass().getClassLoader() );
+            
 			Class<?> playerClass = dcl.loadClass("com.star4droid.Game."+scene.toLowerCase());
 			java.lang.reflect.Constructor<?> constructor = playerClass.getConstructor(Context.class,String.class,String.class);
 			return ((PlayerView)(constructor.newInstance(context,path,scene)));
