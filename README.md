@@ -4,8 +4,7 @@
 ----
 # Star2D
  star2d is a game engine developed for android. 
- ## Note 🔵
- please read [note.txt](https://github.com/abodinagdat16/Star2D/blob/master/assets/note.txt)
+
  </div>
  
 ## Features
@@ -14,6 +13,19 @@
 - [x] Auto-code-completion
 - [x] Visual Scripting (Node System)
 - [x] Physics engine (Box2d)
+- [x] Apk export
+- [ ] sprite sheet cutter
 - [ ] TileMap editor
-## Known Issues 🙂❤️
-• Images not loading sometimes in world_desginer because of glide library... fix it by removing it from jar(s) files and add it to build.gradle
+
+<div align="center">
+    <img src="assets/screen1.jpg" width="100%" alt="Screenshot 1" />
+    <img src="assets/screen2.jpg" width="50%" alt="Screenshot 2" />
+    <img src="assets/screen3.jpg" width="50%" alt="Screenshot 3" />
+  <img src="assets/screen4.jpg" width="100%" alt="Screenshot 4" />
+</div>
+
+> [!NOTE]
+> Please read [note.txt](https://github.com/abodinagdat16/Star2D/blob/master/assets/note.txt)
+
+> [!CAUTION]
+> We added some bugs to the engine 🚒
