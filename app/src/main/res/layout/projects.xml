@@ -1,90 +1,90 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/navigation"
-        app:drawerLayoutCornerSize="0dp"
-        app:menu="@menu/main_drawer_menu"
-        app:itemShapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Nav"
-        app:headerLayout="@layout/projects_navigation_header_layout"
-        app:itemHorizontalPadding="5dp"
-        app:itemVerticalPadding="2dp"
-        app:itemShapeInsetStart="4dp"
-        app:itemShapeInsetEnd="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-    />
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="0dp"
-        android:padding="18dp"
-        android:id="@+id/projectsLinear"
-        android:gravity="end"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-    >
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
-			<Button
-			android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/main"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<com.google.android.material.navigation.NavigationView
+		android:id="@+id/navigation"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		app:drawerLayoutCornerSize="0dp"
+		app:headerLayout="@layout/projects_navigation_header_layout"
+		app:itemHorizontalPadding="12dp"
+		style="@style/Widget.App.NavigationView"
+		app:itemShapeInsetEnd="0dp"
+		app:itemShapeInsetStart="0dp"
+		app:itemVerticalPadding="2dp"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:menu="@menu/main_drawer_menu" />
+
+	<LinearLayout
+		android:id="@+id/projectsLinear"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:gravity="end"
+		android:orientation="vertical"
+		android:padding="18dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/navigation">
+
+		<LinearLayout
 			android:layout_width="wrap_content"
-			android:text="@string/settings"
-			android:id="@+id/settings"
-			android:clickable="true"
-			app:cornerRadius="5dp"
-			android:layout_marginStart="5dp"
-			android:layout_marginEnd="5dp"
-			android:textColor="@color/text_color"
-			/>
-            <Button
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/restore"
-                android:id="@+id/restore"
-                android:clickable="true"
-                app:cornerRadius="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-				android:textColor="@color/text_color"
-            />
-            <Button
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/new_project"
-                android:id="@+id/addProject"
-                android:clickable="true"
-                app:cornerRadius="5dp"
-				android:textColor="@color/text_color"
-            />
+			android:layout_height="wrap_content"
+			android:gravity="right"
+			android:orientation="horizontal">
 
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-        >
-            <ListView
-                android:id="@+id/listview1"
-                android:scrollbars="none"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:dividerHeight="0dp"
-                android:layout_weight="1"
-                android:divider="@null"
-                android:choiceMode="none" />
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/settings"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:layout_marginStart="5dp"
+				android:layout_marginEnd="5dp"
+				android:clickable="true"
+				android:text="@string/settings"
+				android:textColor="@color/text_color" />
 
-        </LinearLayout>
-    </LinearLayout>
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/restore"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="5dp"
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:layout_marginEnd="5dp"
+				android:clickable="true"
+				android:text="@string/restore"
+				android:textColor="@color/text_color" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/addProject"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				style="@style/Widget.Material3.Button.OutlinedButton"
+				android:clickable="true"
+				android:text="@string/new_project"
+				android:textColor="@color/text_color" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_margin="10dp"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<ListView
+				android:id="@+id/listview1"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:choiceMode="none"
+				android:divider="@null"
+				android:dividerHeight="0dp"
+				android:scrollbars="none" />
+
+		</LinearLayout>
+	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
