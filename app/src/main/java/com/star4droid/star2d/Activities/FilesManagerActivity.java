@@ -12,25 +12,31 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigationrail.NavigationRailView;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.UriUtils;
 import com.star4droid.star2d.Utils;
@@ -57,23 +63,9 @@ public class FilesManagerActivity extends AppCompatActivity {
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
     private String path = "";
     private String types_x = "";
-    private FrameLayout linear7;
     private ImageView add;
-    private LinearLayout linear1;
-    private LinearLayout linear2;
-    private LinearLayout linear5;
-    private ImageView select_files;
-    private LinearLayout linear3;
-    private ImageView select_images;
-    private LinearLayout linear4;
-    private ImageView select_anims;
-    private LinearLayout linear8;
-    private ImageView select_sounds;
-    private LinearLayout filesLin;
-    private LinearLayout empty;
-    private ListView listview1;
-    private TextView textview1;
-    private TextView textview2;
+    private NavigationRailView menuFile;
+    private ListView filesLin;
     private AlertDialog.Builder dll;
     private MediaPlayer mp;
 
@@ -147,23 +139,12 @@ public class FilesManagerActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        linear7 = findViewById(R.id.linear7);
+
         add = findViewById(R.id.add);
-        linear1 = findViewById(R.id.linear1);
-        linear2 = findViewById(R.id.linear2);
-        linear5 = findViewById(R.id.linear5);
-        select_files = findViewById(R.id.select_files);
-        linear3 = findViewById(R.id.linear3);
-        select_images = findViewById(R.id.select_images);
-        linear4 = findViewById(R.id.linear4);
-        select_anims = findViewById(R.id.select_anims);
-        linear8 = findViewById(R.id.linear8);
-        select_sounds = findViewById(R.id.select_sounds);
         filesLin = findViewById(R.id.filesLin);
-        empty = findViewById(R.id.empty);
-        listview1 = findViewById(R.id.listview1);
-        textview1 = findViewById(R.id.textview1);
-        textview2 = findViewById(R.id.textview2);
+        menuFile = findViewById(R.id.menu_file);
+
+
         fp_imgs.setType("image/*");
         fp_imgs.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         fp_files.setType("*/*");
@@ -172,122 +153,95 @@ public class FilesManagerActivity extends AppCompatActivity {
         fp_sounds.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
         dll = new AlertDialog.Builder(this);
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                if (types_x.contains("anims") || types_x.contains("images")) {
-                    final AlertDialog cd = new AlertDialog.Builder(FilesManagerActivity.this).create();
-                    LayoutInflater cdLI = getLayoutInflater();
-                    View cdCV = cdLI.inflate(R.layout.create_dialog, null);
-                    cd.setView(cdCV);
-                    final TextView title = (TextView)
-                            cdCV.findViewById(R.id.title);
-                    final EditText name = (EditText)
-                            cdCV.findViewById(R.id.name);
-                    final Button add = (Button)
-                            cdCV.findViewById(R.id.add);
-                    final TextView imp = (TextView)
-                            cdCV.findViewById(R.id.imp);
-                    cd.show();
-                    title.setText(types_x.contains("images") ? "Add Folder" : "Add Animation");
-                    name.setText("");
-                    name.setHint(types_x.contains("images") ? "Folder Name..." : "Animation Name...");
-                    imp.setVisibility(View.VISIBLE);
-                    if (types_x.contains("images")) {
-                        imp.setText("import images");
-                    }
-                    add.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View _view) {
-                            if (types_x.contains("anims")) {
-                                FileUtil.writeFile(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()), "");
-                            } else {
-                                FileUtil.makeDir(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()));
-                            }
-                            _refresh();
-                            cd.dismiss();
-                        }
-                    });
-                    imp.setOnClickListener(_view1 -> {
-                        if (types_x.contains("images")) {
-                            if (Build.VERSION.SDK_INT >= 30)
-                                pickMedia.launch(new PickVisualMediaRequest.Builder()
-                                        .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                                        .build());
 
-                            else startActivityForResult(fp_imgs, REQ_CD_FP_IMGS);
+        menuFile.setOnItemSelectedListener(menuItem -> {
+
+            if (menuItem.getItemId() == R.id.select_files) {
+                types_x = "files";
+                _refresh();
+            }
+
+            if (menuItem.getItemId() == R.id.select_images) {
+                types_x = "images";
+                interalPath.clear();
+                _refresh();
+            }
+
+            if (menuItem.getItemId() == R.id.select_anims) {
+                types_x = "anims";
+                _refresh();
+            }
+
+            if (menuItem.getItemId() == R.id.select_sounds) {
+                types_x = "sounds";
+                _refresh();
+            }
+
+            return true;
+        });
+
+        add.setOnClickListener(_view -> {
+            if (types_x.contains("anims") || types_x.contains("images")) {
+                final AlertDialog cd = new AlertDialog.Builder(FilesManagerActivity.this).create();
+                LayoutInflater cdLI = getLayoutInflater();
+                View cdCV = cdLI.inflate(R.layout.create_dialog, null);
+                cd.setView(cdCV);
+                final TextView title = cdCV.findViewById(R.id.title);
+                final EditText name = cdCV.findViewById(R.id.name);
+                final Button add = cdCV.findViewById(R.id.add);
+                final TextView imp = cdCV.findViewById(R.id.imp);
+                cd.show();
+                title.setText(types_x.contains("images") ? "Add Folder" : "Add Animation");
+                name.setText("");
+                name.setHint(types_x.contains("images") ? "Folder Name..." : "Animation Name...");
+                imp.setVisibility(View.VISIBLE);
+                if (types_x.contains("images")) {
+                    imp.setText("import images");
+                }
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View _view) {
+                        if (types_x.contains("anims")) {
+                            FileUtil.writeFile(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()), "");
                         } else {
-                            if (Build.VERSION.SDK_INT >= 30)
-                                files_picker.launch(new String[]{"*/*"});
-                            else startActivityForResult(fp_files, REQ_CD_FP_FILES);
+                            FileUtil.makeDir(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()));
                         }
+                        _refresh();
                         cd.dismiss();
-                    });
-                } else {
-                    if (types_x.contains("files")) {
-                        if (Build.VERSION.SDK_INT >= 30) files_picker.launch(new String[]{"*/*"});
-                        else startActivityForResult(fp_files, REQ_CD_FP_FILES);
+                    }
+                });
+                imp.setOnClickListener(_view1 -> {
+                    if (types_x.contains("images")) {
+                        if (Build.VERSION.SDK_INT >= 30)
+                            pickMedia.launch(new PickVisualMediaRequest.Builder()
+                                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                                    .build());
+
+                        else startActivityForResult(fp_imgs, REQ_CD_FP_IMGS);
                     } else {
-                        if (types_x.contains("sounds")) {
-                            if (Build.VERSION.SDK_INT >= 30)
-                                sounds_picker.launch(new String[]{"audio/*"});
-                            else startActivityForResult(fp_sounds, REQ_CD_FP_SOUNDS);
-                        }
+                        if (Build.VERSION.SDK_INT >= 30)
+                            files_picker.launch(new String[]{"*/*"});
+                        else startActivityForResult(fp_files, REQ_CD_FP_FILES);
+                    }
+                    cd.dismiss();
+                });
+            } else {
+                if (types_x.contains("files")) {
+                    if (Build.VERSION.SDK_INT >= 30) files_picker.launch(new String[]{"*/*"});
+                    else startActivityForResult(fp_files, REQ_CD_FP_FILES);
+                } else {
+                    if (types_x.contains("sounds")) {
+                        if (Build.VERSION.SDK_INT >= 30)
+                            sounds_picker.launch(new String[]{"audio/*"});
+                        else startActivityForResult(fp_sounds, REQ_CD_FP_SOUNDS);
                     }
                 }
             }
         });
 
-        select_files.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                types_x = "files";
-                _refresh();
-            }
-        });
-
-        select_images.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                types_x = "images";
-                interalPath.clear();
-                _refresh();
-            }
-        });
-
-        select_anims.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                types_x = "anims";
-                _refresh();
-            }
-        });
-
-        select_sounds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-                types_x = "sounds";
-                _refresh();
-            }
-        });
     }
 
     private void initializeLogic() {
-        linear2.setBackground(new GradientDrawable() {
-            public GradientDrawable getIns(int a, int b, int c, int d) {
-                this.setCornerRadius(a);
-                this.setStroke(b, c);
-                this.setColor(d);
-                return this;
-            }
-        }.getIns(25, 1, 0xFFFFB300, 0xFF3C3C3C));
-        add.setBackground(new GradientDrawable() {
-            public GradientDrawable getIns(int a, int b) {
-                this.setCornerRadius(a);
-                this.setColor(b);
-                return this;
-            }
-        }.getIns(25, 0xFF0078FE));
         path = getIntent().getStringExtra("path");
     }
 
@@ -376,11 +330,11 @@ public class FilesManagerActivity extends AppCompatActivity {
 
     public void _refresh() {
         if (lm.size() == 0) {
-            listview1.setAdapter(new Listview1Adapter(lm));
+            filesLin.setAdapter(new Listview1Adapter(lm));
         }
         lm.clear();
         ArrayList<String> arr = new ArrayList<>();
-        if (types_x.equals("")) types_x = "images";
+        if (types_x.equals("")) types_x = "files";
         String p = "";
         if (types_x.equals("images")) {
             for (String s : interalPath) p = p + "/" + s;
@@ -409,35 +363,7 @@ public class FilesManagerActivity extends AppCompatActivity {
         } else {
             filesLin.setVisibility(View.VISIBLE);
         }
-        if (types_x.contains("images")) {
-            android.graphics.drawable.GradientDrawable id = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xFFFF9C08, 0xFFEF544F});
-            id.setCornerRadii(new float[]{(float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0)}); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
-            select_images.setBackground(id);
-        } else {
-            select_images.setBackgroundColor(Color.TRANSPARENT);
-        }
-        if (types_x.contains("anims")) {
-            android.graphics.drawable.GradientDrawable id = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xFFFF9C08, 0xFFEF544F});
-            id.setCornerRadii(new float[]{(float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0), (float) (0)}); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
-            select_anims.setBackground(id);
-        } else {
-            select_anims.setBackgroundColor(Color.TRANSPARENT);
-        }
-        if (types_x.contains("files")) {
-            android.graphics.drawable.GradientDrawable id = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xFFFF9C08, 0xFFEF544F});
-            id.setCornerRadii(new float[]{(float) (25), (float) (25), (float) (25), (float) (25), (float) (0), (float) (0), (float) (0), (float) (0)}); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
-            select_files.setBackground(id);
-        } else {
-            select_files.setBackgroundColor(Color.TRANSPARENT);
-        }
-        if (types_x.contains("sounds")) {
-            android.graphics.drawable.GradientDrawable id = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT, new int[]{0xFFFF9C08, 0xFFEF544F});
-            id.setCornerRadii(new float[]{(float) (0), (float) (0), (float) (0), (float) (0), (float) (25), (float) (25), (float) (25), (float) (25)}); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
-            select_sounds.setBackground(id);
-        } else {
-            select_sounds.setBackgroundColor(Color.TRANSPARENT);
-        }
-        ((BaseAdapter) listview1.getAdapter()).notifyDataSetChanged();
+        ((BaseAdapter) filesLin.getAdapter()).notifyDataSetChanged();
     }
 
 
@@ -538,7 +464,6 @@ public class FilesManagerActivity extends AppCompatActivity {
             final LinearLayout delLin = _view.findViewById(R.id.delLin);
             final LinearLayout renameLin = _view.findViewById(R.id.backupLin);
             final LinearLayout export = _view.findViewById(R.id.export);
-            final ImageView imageview2 = _view.findViewById(R.id.imageview2);
             final ImageView imageview3 = _view.findViewById(R.id.imageview3);
             final ImageView imageview4 = _view.findViewById(R.id.imageview4);
 
@@ -549,14 +474,20 @@ public class FilesManagerActivity extends AppCompatActivity {
                     this.setColor(d);
                     return this;
                 }
-            }.getIns(15, 0, 0xFFFFB300, 0xFF222222));
+            }.getIns(360, 0, 0xFFFFB300, 0xFF323232));
+
+            Animation fadeInAnimation = AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in);
+            linear1.startAnimation(fadeInAnimation);
+
             if (types_x.contains("anim")) {
                 export.setVisibility(View.VISIBLE);
                 imageview4.setImageResource(R.drawable.backup);
             } else {
                 export.setVisibility(View.GONE);
             }
+
             renameLin.setVisibility(_data.get(_position).get("file").toString().equals("...") ? View.GONE : View.VISIBLE);
+
             delLin.setBackground(new GradientDrawable() {
                 public GradientDrawable getIns(int a, int b, int c, int d) {
                     this.setCornerRadius(a);
@@ -564,7 +495,8 @@ public class FilesManagerActivity extends AppCompatActivity {
                     this.setColor(d);
                     return this;
                 }
-            }.getIns(15, 0, 0xFFFFB300, 0xFF515151));
+            }.getIns(360, 0, 0xFFFFB300, 0xFF515151));
+
             renameLin.setBackground(new GradientDrawable() {
                 public GradientDrawable getIns(int a, int b, int c, int d) {
                     this.setCornerRadius(a);
@@ -572,7 +504,8 @@ public class FilesManagerActivity extends AppCompatActivity {
                     this.setColor(d);
                     return this;
                 }
-            }.getIns(15, 0, 0xFFFFB300, 0xFF515151));
+            }.getIns(360, 0, 0xFFFFB300, 0xFF515151));
+
             export.setBackground(new GradientDrawable() {
                 public GradientDrawable getIns(int a, int b, int c, int d) {
                     this.setCornerRadius(a);
@@ -580,7 +513,8 @@ public class FilesManagerActivity extends AppCompatActivity {
                     this.setColor(d);
                     return this;
                 }
-            }.getIns(15, 0, 0xFFFFB300, 0xFF515151));
+            }.getIns(360, 0, 0xFFFFB300, 0xFF515151));
+
             delLin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View _view) {
@@ -610,12 +544,9 @@ public class FilesManagerActivity extends AppCompatActivity {
                     View cdCV = cdLI.inflate(R.layout.create_dialog, null);
                     cd.setView(cdCV);
                     final TextView nameT = name;
-                    final TextView title = (TextView)
-                            cdCV.findViewById(R.id.title);
-                    final EditText name = (EditText)
-                            cdCV.findViewById(R.id.name);
-                    final Button add = (Button)
-                            cdCV.findViewById(R.id.add);
+                    final TextView title = cdCV.findViewById(R.id.title);
+                    final EditText name = cdCV.findViewById(R.id.name);
+                    final Button add = cdCV.findViewById(R.id.add);
 
                     cd.show();
                     add.setText("Rename");

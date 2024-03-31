@@ -98,6 +98,7 @@ public class ProjectsListAdapter extends BaseAdapter {
 		textView.setTextColor(Utils.getColorAttr(textView.getContext(),com.google.android.material.R.attr.colorOnBackground));
 		textView.setText(Uri.parse(arrayList.get(position)).getLastPathSegment());
 		ImageView delete = view.findViewById(R.id.delete);
+
 		view.findViewById(R.id.export).setOnClickListener(ex->{
 			/*
 			if(!FileUtil.isExistFile(FileUtil.getPackageDataDir(context)+"/apk/template.apk")){
@@ -189,6 +190,7 @@ public class ProjectsListAdapter extends BaseAdapter {
 		});
 		return view;
 	}
+
 	
 	public void backup(final int position,final View view){
 		final AlertDialog dialog = new AlertDialog.Builder(view.getContext()).create();
