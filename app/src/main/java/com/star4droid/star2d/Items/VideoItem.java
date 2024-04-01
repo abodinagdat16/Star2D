@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.evo.R;
 import com.star4droid.star2d.Utils;
 
-public class VideoItem extends TextView implements EditorItem {
+public class VideoItem extends AppCompatTextView implements EditorItem {
 	Editor editor;
 	PropertySet<String, Object> propertySet;
 	float sx = 0.0f;

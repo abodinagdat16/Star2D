@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.evo.R;
 import com.star4droid.star2d.Utils;
 
-public class TextItem extends TextView implements EditorItem {
+public class TextItem extends AppCompatTextView implements EditorItem {
 	Editor editor;
 	PropertySet<String, Object> propertySet;
 	float sx = 0.0f;
@@ -23,7 +24,7 @@ public class TextItem extends TextView implements EditorItem {
 	
 	public TextItem(Context context) {
 		super(context);
-		TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(this,1,100000,1,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+		this.setAutoSizeTextTypeUniformWithConfiguration(1,100000,1,AppCompatTextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 		setLayoutParams(new LayoutParams(50, 50));
 		setTextColor(Color.WHITE);
 		setOnClickListener(new OnClickListener() {

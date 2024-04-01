@@ -62,7 +62,7 @@ public class LandscapePlayer extends AppCompatActivity {
 		,scene = getIntent().getStringExtra("scene");
 		player = PlayerView.getFromDex(path,scene,this);
 		//TODO: improve it
-        player.Pause();
+      //  player.Pause();
 		if(player!=null){
 			spriteSheetsLoader = new SpriteSheetsLoader(this,new Project(path)){
 				@Override

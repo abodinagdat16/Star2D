@@ -5,6 +5,7 @@ import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -16,7 +17,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import android.widget.ImageView;
 import com.star4droid.star2d.Utils;
 
-public class BoxItem extends ImageView implements PlayerItem {
+public class BoxItem extends AppCompatImageView implements PlayerItem {
 	Body body;
 	PropertySet<String,Object> propertySet;
 	PlayerView player;

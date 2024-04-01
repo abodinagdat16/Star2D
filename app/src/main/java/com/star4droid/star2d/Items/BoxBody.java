@@ -10,12 +10,13 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.evo.R;
 import com.star4droid.star2d.Utils;
 
-public class BoxBody extends ImageView implements EditorItem {
+public class BoxBody extends AppCompatImageView implements EditorItem {
 	Editor editor;
 	PropertySet<String, Object> propertySet;
 	float sx = 0.0f;
@@ -44,7 +45,6 @@ public class BoxBody extends ImageView implements EditorItem {
 		update();
 		
 		if (!this.propertySet.getString("image").equals("")) {
-            Toast.makeText(getContext(),"yes",2000).show();
 			String img = this.editor.getProject().getImagesPath() + this.propertySet.getString("image").replace(Utils.seperator,"/");
 			if (FileUtil.isExistFile(img)) {
 				repeat.x = this.propertySet.getInt("tileX");

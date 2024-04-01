@@ -307,6 +307,8 @@ public class VisualScriptingView extends LinearLayout {
                 String c=info.substring(0,info.indexOf("•")+1);
                 split[0]=split[0].replace(c,"");
                 split[0]=split[0].replace("\n\n","\n");
+                split[0]=split[0].replace("\n","");
+               // ((ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("clipboard", split[0]));
                 c=c.replace("-color:","");
                 c=c.replace("•","");
                 color[0]=Color.parseColor(c);
@@ -1850,7 +1852,7 @@ public class VisualScriptingView extends LinearLayout {
 		}
 		
 		@Override
-		public View getView( int _position, View _v, ViewGroup _container) {
+		public View getView(final int _position, View _v, ViewGroup _container) {
 			LayoutInflater _inflater = getLayoutInflater();
 			View _view = _v;
 			if (_view == null) {

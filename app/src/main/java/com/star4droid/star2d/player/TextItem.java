@@ -4,19 +4,20 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.TextViewCompat;
 import com.star4droid.star2d.ElementDefs.ElementEvent;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.badlogic.gdx.physics.box2d.Body;
 import android.widget.TextView;
 
-public class TextItem extends TextView implements PlayerItem {
+public class TextItem extends AppCompatTextView implements PlayerItem{
 	PropertySet<String,Object> propertySet;
 	PlayerView playerView;
 	public ElementEvent elementEvent;
 	public TextItem(Context context,PropertySet<String,Object> ps,PlayerView pv,ElementEvent event){
 		super(context);
-		TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(this,1,100000,1,TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+		setAutoSizeTextTypeUniformWithConfiguration(1,100000,1,AppCompatTextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 		propertySet = ps;
 		playerView = pv;
 		elementEvent = event;

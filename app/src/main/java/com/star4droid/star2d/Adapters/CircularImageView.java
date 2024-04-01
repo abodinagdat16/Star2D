@@ -11,10 +11,11 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.content.Context;
+import androidx.appcompat.widget.AppCompatImageView;
 import com.star4droid.star2d.evo.R;
 
-public class CircularImageView extends ImageView {
-	
+public class CircularImageView extends AppCompatImageView {
+
 	public CircularImageView(Context context,AttributeSet attributeSet){
 		super(context,attributeSet);
 	}
