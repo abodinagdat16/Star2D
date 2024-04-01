@@ -161,7 +161,7 @@ public class CodeEditorActivity extends AppCompatActivity {
 	
 	@Override
 	public void onBackPressed() {
-		//super.onBackPressed();
+		super.onBackPressed();
 		if(Build.VERSION.SDK_INT<31) back();
 	}
 	private void back(){
