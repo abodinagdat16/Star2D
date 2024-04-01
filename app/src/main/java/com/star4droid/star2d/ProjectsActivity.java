@@ -1,125 +1,122 @@
 package com.star4droid.star2d;
 
+import static android.os.Build.VERSION.SDK_INT;
+
 import android.Manifest;
-import android.content.ClipData;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import androidx.activity.result.ActivityResultCallback;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.ColorUtils;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
-import com.google.android.material.color.MaterialColors;
-import com.google.android.material.elevation.SurfaceColors;
+
 import com.google.android.material.navigation.NavigationView;
 import com.star4droid.star2d.Activities.SettingsActivity;
 import com.star4droid.star2d.Adapters.ExportDialog;
 import com.star4droid.star2d.Helpers.EngineSettings;
 import com.star4droid.star2d.Helpers.FileUtil;
-import com.star4droid.star2d.Utils;
 import com.star4droid.star2d.evo.R;
+
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProjectsActivity extends AppCompatActivity {
-	boolean goToSettings=false;
-    @Override
-    public void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-		Utils.setLanguage(this);
-        setContentView(R.layout.projects);
-		initVars();
-		checkPerms();
-		if(checkPerms(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_MEDIA_LOCATION))
-			init();
-		findViewById(R.id.settings).setOnClickListener(v->{
-			goToSettings=true;
-			Intent intent=new Intent();
-			intent.setClass(this,SettingsActivity.class);
-			startActivity(intent);
-		});
-		projectsPath = FileUtil.getPackageDataDir(this)+"/projects/";
-		FileUtil.listDir(projectsPath,projectsList);
-		listView1.setAdapter(new ProjectsListAdapter(this,projectsList));
-		filePicker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(),new ActivityResultCallback<List<Uri>>(){
-			@Override
-			public void onActivityResult(List<Uri> uriList) {
-				String err="";
-				for(Uri uri:uriList){
-					try {
-						if(uri!=null) restoreProject(getContentResolver().openInputStream(uri));
-						else err = err+"file : "+FileUtil.convertUriToFilePath(ProjectsActivity.this,uri)+" , Null Uri \n";
-						} catch(Exception ex){
-						err = err+"file : "+FileUtil.convertUriToFilePath(ProjectsActivity.this,uri)+" , error : "+ex.toString()+"\n";
-					}
-				}
-				if(!err.equals("")) Utils.showMessage(ProjectsActivity.this,err);
-			}
-		});
-        View decorView = getWindow().getDecorView();
-
-        if (Build.VERSION.SDK_INT < 30) {
-            int uiOptions =
-                    View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-            decorView.setSystemUiVisibility(uiOptions);
-        } else {
-            WindowInsetsControllerCompat windowInsetsController =
-                    new WindowInsetsControllerCompat(getWindow(), decorView);
-            windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
-            windowInsetsController.setSystemBarsBehavior(
-                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-        }
-        
-        navigation.getLayoutParams().width = Utils.getScreenWidth(this) / 5;
-        navigation.setNavigationItemSelectedListener(
-                menuItem -> {
-                menuItem.setChecked(true);
-                   Menu menu = navigation.getMenu();
-        for (int i = 0; i < menu.size(); i++) {
-            MenuItem item = menu.getItem(i);
-            if (item != menuItem && item.isChecked()) {
-                item.setChecked(false);
-            }
-        }
-        
-                    
-                    return true;
-                });
-                }
-	ListView listView1;
+    boolean goToSettings = false;
+    ListView listView1;
     View addProject, restore;
-    ActivityResultLauncher filePicker;
+    ActivityResultLauncher<String[]> filePicker;
     String projectsPath;
     int FILE_PICKER_CODE = 1117;
     NavigationView navigation;
     ArrayList<String> projectsList = new ArrayList<>();
-    Intent fp =
-            new Intent(Intent.ACTION_GET_CONTENT) {
-                {
-                    setType("*/*");
-                    putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+    Intent fp = new Intent(Intent.ACTION_GET_CONTENT) {
+        {
+            setType("*/*");
+            putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        }
+    };
+    String settings = "";
+
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        Utils.setLanguage(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setContentView(R.layout.projects);
+
+        initVars();
+
+        if (checkPerms(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_MEDIA_LOCATION))
+            init();
+
+        findViewById(R.id.settings).setOnClickListener(v -> {
+            goToSettings = true;
+            Intent intent = new Intent();
+            intent.setClass(this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        projectsPath = FileUtil.getPackageDataDir(this) + "/projects/";
+
+        FileUtil.listDir(projectsPath, projectsList);
+
+        listView1.setAdapter(new ProjectsListAdapter(this, projectsList));
+
+        filePicker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), uriList -> {
+            String err = "";
+            for (Uri uri : uriList) {
+                try {
+                    if (uri != null) restoreProject(getContentResolver().openInputStream(uri));
+                    else
+                        err = err + "file : " + FileUtil.convertUriToFilePath(ProjectsActivity.this, uri) + " , Null Uri \n";
+                } catch (Exception ex) {
+                    err = err + "file : " + FileUtil.convertUriToFilePath(ProjectsActivity.this, uri) + " , error : " + ex + "\n";
                 }
-            };
+            }
+            if (!err.equals("")) Utils.showMessage(ProjectsActivity.this, err);
+        });
+
+        navigation.getLayoutParams().width = Utils.getScreenWidth(this) / 5;
+
+        navigation.setNavigationItemSelectedListener(menuItem -> {
+            menuItem.setChecked(true);
+            Menu menu = navigation.getMenu();
+            for (int i = 0; i < menu.size(); i++) {
+                MenuItem item = menu.getItem(i);
+                if (item != menuItem && item.isChecked()) {
+                    item.setChecked(false);
+                }
+            }
+
+
+            return true;
+        });
+    }
 
     public void initVars() {
         listView1 = findViewById(R.id.listview1);
@@ -129,24 +126,22 @@ public class ProjectsActivity extends AppCompatActivity {
     }
 
     public void init() {
+        try {
+            Utils.extractAssetFile(this, "cp.jar", FileUtil.getPackageDataDir(this) + "/bin/cp.jar");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
 
         restore.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        if (Build.VERSION.SDK_INT < 30)
-                            startActivityForResult(fp, FILE_PICKER_CODE);
-                        else filePicker.launch(new String[] {"*/*"});
-                    }
+                arg0 -> {
+                    if (SDK_INT < 30)
+                        startActivityForResult(fp, FILE_PICKER_CODE);
+                    else filePicker.launch(new String[]{"*/*"});
                 });
 
         addProject.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        createProject();
-                    }
-                });
+                arg0 -> createProject());
     }
 
     public void createProject() {
@@ -158,13 +153,10 @@ public class ProjectsActivity extends AppCompatActivity {
         dialog_cv
                 .findViewById(R.id.add)
                 .setOnClickListener(
-                        new View.OnClickListener() {
-                            @Override
-                            public void onClick(View arg0) {
-                                FileUtil.makeDir(projectsPath + name.getText().toString());
-                                refreshList();
-                                alertDialog.dismiss();
-                            }
+                        arg0 -> {
+                            FileUtil.makeDir(projectsPath + name.getText().toString());
+                            refreshList();
+                            alertDialog.dismiss();
                         });
         alertDialog.show();
     }
@@ -176,36 +168,47 @@ public class ProjectsActivity extends AppCompatActivity {
             listView1.setAdapter(new ProjectsListAdapter(this, projectsList));
         else ((ProjectsListAdapter) listView1.getAdapter()).notifyDataSetChanged();
     }
-    
-    public boolean checkPerms(final String... perms) {
-        for (String i : perms) {
-            if (ContextCompat.checkSelfPermission(this, i) == PackageManager.PERMISSION_DENIED) {
-                final AlertDialog dialog = new AlertDialog.Builder(this).create();
-                dialog.setTitle("Warning !");
-                dialog.setMessage("Give the the necessary permissions...");
-                dialog.setButton(
-                        AlertDialog.BUTTON_POSITIVE,
-                        "Ok",
-                        new DialogInterface.OnClickListener() {
 
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
+    public boolean checkPerms(final String... perms) {
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                try {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                    intent.addCategory("android.intent.category.DEFAULT");
+                    intent.setData(Uri.parse(String.format("package:%s", getApplicationContext().getPackageName())));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    startActivity(intent);
+                }
+            }
+
+        } else {
+            for (String i : perms) {
+                if (ContextCompat.checkSelfPermission(this, i) == PackageManager.PERMISSION_DENIED) {
+                    final AlertDialog dialog = new AlertDialog.Builder(this).create();
+                    dialog.setTitle("Warning !");
+                    dialog.setMessage("Give the the necessary permissions...");
+                    dialog.setButton(
+                            AlertDialog.BUTTON_POSITIVE,
+                            "Ok",
+                            (arg0, arg1) -> {
                                 ActivityCompat.requestPermissions(
                                         ProjectsActivity.this, perms, 1000);
                                 dialog.dismiss();
-                            }
-                        });
-                dialog.setCancelable(false);
-                dialog.show();
-                return false;
+                            });
+                    dialog.setCancelable(false);
+                    dialog.show();
+                    return false;
+                }
             }
         }
         return true;
     }
 
     @Override
-    public void onRequestPermissionsResult(
-            int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1000) {
             init();
@@ -215,9 +218,9 @@ public class ProjectsActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int code, int result, Intent data) {
         super.onActivityResult(code, result, data);
-            if (result == RESULT_OK) {
-                ArrayList<String> _filePath =
-                        Utils.getArrayList(code, result, data, ProjectsActivity.this);
+        if (result == RESULT_OK) {
+            ArrayList<String> _filePath =
+                    Utils.getArrayList(code, result, data, ProjectsActivity.this);
                 /*if (data != null) {
                     if (data.getClipData() != null) {
                         for (int _index = 0; _index < data.getClipData().getItemCount(); _index++) {
@@ -232,14 +235,14 @@ public class ProjectsActivity extends AppCompatActivity {
                                         getApplicationContext(), data.getData()));
                     }
                 }*/
-                // onFilePicked....
-				if(code==ExportDialog.RECIEVE_ICON){
-					//Utils.showMessage(this,_filePath.get(0));
-					Utils.setImageFromFile(ExportDialog.icon,_filePath.get(0));
-					ExportDialog.imgPath = _filePath.get(0);
-					return;
-				}
-				if(code==FILE_PICKER_CODE){
+            // onFilePicked....
+            if (code == ExportDialog.RECIEVE_ICON) {
+                //Utils.showMessage(this,_filePath.get(0));
+                Utils.setImageFromFile(ExportDialog.icon, _filePath.get(0));
+                ExportDialog.imgPath = _filePath.get(0);
+                return;
+            }
+            if (code == FILE_PICKER_CODE) {
                 String err = "";
                 for (String f : _filePath)
                     try {
@@ -247,13 +250,14 @@ public class ProjectsActivity extends AppCompatActivity {
                                 getContentResolver()
                                         .openInputStream(Uri.fromFile(new java.io.File(f))));
                     } catch (Exception e) {
-                        err = err + "\n File : " + f + " - error : \n" + e.toString();
+                        err = err + "\n File : " + f + " - error : \n" + e;
                     }
                 if (!err.equals("")) Utils.showMessage(ProjectsActivity.this, err);
-				}
             }
+        }
     }
-public void restoreProject(InputStream inputStream) throws Exception {
+
+    public void restoreProject(InputStream inputStream) {
         final AlertDialog dialog = new AlertDialog.Builder(ProjectsActivity.this).create();
         dialog.setView(new ProgressBar(ProjectsActivity.this));
         dialog.setCancelable(false);
@@ -261,59 +265,56 @@ public void restoreProject(InputStream inputStream) throws Exception {
         new Thread() {
             @Override
             public void run() {
-                final StringBuilder err = new StringBuilder("");
+                final StringBuilder err = new StringBuilder();
                 final String restoreP =
                         FileUtil.getPackageDataDir(ProjectsActivity.this) + "/projects/";
                 try {
                     Utils.unzipf(inputStream, restoreP, "");
                 } catch (Exception ex) {
-                    err.append(ex.toString());
+                    err.append(ex);
                 }
 
                 new Handler(Looper.getMainLooper())
                         .post(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        dialog.dismiss();
-                                        AlertDialog dialog =
-                                                new AlertDialog.Builder(ProjectsActivity.this)
-                                                        .create();
-                                        dialog.setCancelable(true);
-                                        TextView text = new TextView(ProjectsActivity.this);
-                                        text.setPadding(8, 8, 8, 8);
-                                        // text.setBackgroundColor(Color.WHITE);
-                                        text.setTextColor(Color.BLACK);
-                                        text.setText(
-                                                err.toString().equals("")
-                                                        ? ("restored...")
-                                                        : err.toString());
-                                        dialog.setView(text);
-                                        dialog.show();
-                                        refreshList();
-                                    }
+                                () -> {
+                                    dialog.dismiss();
+                                    AlertDialog dialog1 =
+                                            new AlertDialog.Builder(ProjectsActivity.this)
+                                                    .create();
+                                    dialog1.setCancelable(true);
+                                    TextView text = new TextView(ProjectsActivity.this);
+                                    text.setPadding(8, 8, 8, 8);
+                                    // text.setBackgroundColor(Color.WHITE);
+                                    text.setTextColor(Color.BLACK);
+                                    text.setText(
+                                            err.toString().equals("")
+                                                    ? ("restored...")
+                                                    : err.toString());
+                                    dialog1.setView(text);
+                                    dialog1.show();
+                                    refreshList();
                                 });
             }
         }.start();
     }
-	String settings="";
+
     @Override
     protected void onPause() {
         super.onPause();
-		settings=EngineSettings.get().getString("lang","")+EngineSettings.get().getBoolean("night",false);
+        settings = EngineSettings.get().getString("lang", "") + EngineSettings.get().getBoolean("night", false);
     }
-	
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if(goToSettings){
-			String re=EngineSettings.get().getString("lang","")+EngineSettings.get().getBoolean("night",false);
-			if(!re.equals(settings)){
-				Utils.setLanguage(this);
-				recreate();
-				settings=re;
-				goToSettings=false;
-			}
-		}
-	}
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (goToSettings) {
+            String re = EngineSettings.get().getString("lang", "") + EngineSettings.get().getBoolean("night", false);
+            if (!re.equals(settings)) {
+                Utils.setLanguage(this);
+                recreate();
+                settings = re;
+                goToSettings = false;
+            }
+        }
+    }
 }

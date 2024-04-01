@@ -1,24 +1,46 @@
 <resources>
-<style name="AppTheme.FullScreen" parent="AppTheme">
-<item name="android:windowFullscreen">true</item>
-<item name="android:windowContentOverlay">@null</item>
-</style>
-<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
-<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
-<style name="images_style">
-	<item name="android:scaleType">fitCenter</item>
-	<item name="android:tint">?attr/colorOnBackground</item>
-	<item name="android:background">@drawable/imgs_style</item>
-	<item name="android:layout_width">35dp</item>
-	<item name="android:layout_height">35dp</item>
-	<item name="android:padding">4dp</item>
-	<item name="android:layout_marginRight">3dp</item>
-</style>
-    <style name="ShapeAppearanceOverlay.Nav" parent="">
-    <item name="cornerFamily">rounded</item>
-    <item name="cornerSizeTopRight">10%</item>
-    <item name="cornerSizeBottomRight">10%</item>
-    <item name="cornerSizeBottomLeft">10%</item>
-    <item name="cornerSizeTopLeft">10%</item>
-</style>
+
+    <style name="AppTheme.FullScreen" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="images_style">
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:tint">?attr/colorOnBackground</item>
+        <item name="android:background">@drawable/imgs_style</item>
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_marginRight">3dp</item>
+    </style>
+
+    <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+        <item name="itemIconTint">@color/navigation_item_color</item>
+        <item name="itemTextColor">@color/navigation_item_color</item>
+        <item name="itemShapeFillColor">@color/navigation_item_background_color</item>
+
+    </style>
+
+    <style name="Widget.App.NavigationRail" parent="Widget.Material3.NavigationRailView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+        <item name="android:paddingHorizontal">0dp</item>
+        <item name="itemIconTint">@color/navigation_item_color</item>
+        <item name="itemTextColor">@color/navigation_item_color</item>
+        <item name="itemShapeFillColor">@color/navigation_item_background_color</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.Material3.NavigationRailView.ActiveIndicator</item>
+    </style>
+
+    <style name="Widget.Material3.NavigationRailView.ActiveIndicator" parent="">
+        <item name="android:width">56dp</item>
+        <item name="android:height">56dp</item>
+        <item name="marginHorizontal">8dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.M3.Comp.NavigationRail.ActiveIndicator.Shape</item>
+        <item name="android:color">#253D77C2</item>
+    </style>
+
+
 </resources>

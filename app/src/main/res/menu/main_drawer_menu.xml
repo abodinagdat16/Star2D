@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-            <group
-                android:checkableBehavior="single">
-    <item
-        android:id="@+id/projects"
-        android:title="@string/projects"
-        android:icon="@drawable/project"
-        android:checkable="true"
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/projects"
+            android:checkable="true"
             android:checked="true"
-        />
- <item
-        android:id="@+id/tutorials"
-        android:title="@string/tutorials"
-        android:icon="@drawable/tutorials"
-        android:checkable="true" />
-     <item
-        android:id="@+id/community"
-        android:title="@string/community"
-        android:icon="@drawable/community"
-        android:checkable="true" />
-</group>
+            android:icon="@drawable/project"
+            android:title="@string/projects" />
+        <item
+            android:id="@+id/tutorials"
+            android:checkable="true"
+            android:icon="@drawable/tutorials"
+            android:title="@string/tutorials" />
+        <item
+            android:id="@+id/community"
+            android:checkable="true"
+            android:icon="@drawable/community"
+            android:title="@string/community" />
+    </group>
 </menu>

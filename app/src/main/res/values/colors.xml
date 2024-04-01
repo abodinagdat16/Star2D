@@ -71,4 +71,5 @@
 <color name="button_stroke">#00000000</color>
 <color name="unselect_color">#FF000000</color>
 <color name="section_color">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
 </resources>
