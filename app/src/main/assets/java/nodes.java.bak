@@ -438,26 +438,22 @@ startAnimation UI
 split
 --Sounds
 split
--color:#BE9333•
 createSound id sound repeat?
 <<=>>
 createSound("%1$s","%2$s");
 loopSound("%1$s",%3$s);
 %4$s
 split
--color:#BE9333•
 playSound SoundID
 <<=>>
 startSound("%1$s");
 %2$s
 split
--color:#BE9333•
 pauseSound SoundID
 <<=>>
 pauseSound("%1$s");
 %2$s
 split
--color:#BE9333•
 releaseSound SoundID
 <<=>>
 releaseSound("%1$s");

@@ -17,7 +17,7 @@
 			android:layout_height="wrap_content"
 			android:paddingTop="6dp"
 			android:paddingBottom="6dp"
-			android:background="#FFB300"
+			android:background="#202020"
 			android:gravity="center_vertical"
 			android:orientation="horizontal">
 			<ImageView

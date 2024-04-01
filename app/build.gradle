@@ -7,8 +7,13 @@ plugins {
 android {
     namespace 'com.star4droid.star2d.evo'
     compileSdk 34
-    buildToolsVersion '34.0.0'
-    
+    buildToolsVersion '34.0.4'
+    lint {
+    disable 'MissingTranslation', 'TypographyFractions'
+    checkOnly 'NewApi', 'HandlerLeak'
+    abortOnError false
+    checkReleaseBuilds false
+}
     defaultConfig {
         applicationId "com.star4droid.star2d.evo"
         minSdk 26

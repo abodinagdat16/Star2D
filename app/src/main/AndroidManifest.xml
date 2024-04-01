@@ -10,7 +10,7 @@
 	<uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
 	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 	<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34"/>
+    <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="31"/>
 
     <application
         android:allowBackup="true"
@@ -52,7 +52,7 @@
 		android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 		android:hardwareAccelerated="true"
 		android:supportsPictureInPicture="true"
-		android:screenOrientation="portrait"
+		android:screenOrientation="fullSensor"
 		android:theme="@style/AppTheme.FullScreen"
 		android:exported="true">
 		</activity>
@@ -61,7 +61,7 @@
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"
-			android:screenOrientation="portrait"
+			android:screenOrientation="fullSensor"
 			android:theme="@style/AppTheme"
 			android:windowSoftInputMode="adjustResize|stateVisible"
 			android:exported="true"/>
