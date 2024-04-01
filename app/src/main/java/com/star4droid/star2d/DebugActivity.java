@@ -67,15 +67,6 @@ public class DebugActivity extends Activity {
 		textview2.setText(getIntent().getStringExtra("error"));
 	}
 	
-	@Deprecated
-	public ArrayList<Double> getCheckedItemPositionsToArray(ListView _list) {
-		ArrayList<Double> _result = new ArrayList<Double>();
-		SparseBooleanArray _arr = _list.getCheckedItemPositions();
-		for (int _iIdx = 0; _iIdx < _arr.size(); _iIdx++) {
-			if (_arr.valueAt(_iIdx))
-			_result.add((double)_arr.keyAt(_iIdx));
-		}
-		return _result;
-	}
+	
 	
 	}
