@@ -73,7 +73,6 @@ public class DrawFrame extends FrameLayout {
 		this.paint.setStrokeCap(Paint.Cap.ROUND);
 		this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SCREEN));
 		this.paint.setStrokeWidth(4);
-		
 		this.full_paint.setAntiAlias(true);
 		this.full_paint.setDither(true);
 		this.full_paint.setColor(Color.parseColor("#606060"));

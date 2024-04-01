@@ -19,47 +19,32 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Views/DrawFrame.java",
       "selection": {
         "end": {
-          "column": 52,
-          "index": 2072,
-          "line": 78
+          "column": 31,
+          "index": 1943,
+          "line": 74
         },
         "start": {
-          "column": 52,
-          "index": 2072,
-          "line": 78
+          "column": 31,
+          "index": 1943,
+          "line": 74
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/player/CircleItem.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Adapters/CircularImageView.java",
       "selection": {
         "end": {
           "column": 0,
-          "index": 0,
-          "line": 0
+          "index": 2327,
+          "line": 72
         },
         "start": {
           "column": 0,
-          "index": 0,
-          "line": 0
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/res/layout/nodes_list_csv.xml",
-      "selection": {
-        "end": {
-          "column": 24,
-          "index": 503,
-          "line": 14
-        },
-        "start": {
-          "column": 24,
-          "index": 503,
-          "line": 14
+          "index": 2327,
+          "line": 72
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/res/layout/nodes_list_csv.xml"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Adapters/CircularImageView.java"
 }
