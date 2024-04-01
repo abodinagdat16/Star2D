@@ -49,14 +49,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/DebugActivity.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 1,
+          "index": 2001,
+          "line": 69
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 1,
+          "index": 2001,
+          "line": 69
         }
       }
     },
@@ -76,5 +76,5 @@
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/build.gradle"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/DebugActivity.java"
 }
