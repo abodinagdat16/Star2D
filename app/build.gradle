@@ -7,7 +7,7 @@ plugins {
 android {
     namespace 'com.star4droid.star2d.evo'
     compileSdk 34
-    buildToolsVersion '34.0.4'
+    buildToolsVersion '34.0.0'
     lint {
     disable 'MissingTranslation', 'TypographyFractions'
     checkOnly 'NewApi', 'HandlerLeak'
