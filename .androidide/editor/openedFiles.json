@@ -44,7 +44,37 @@
           "line": 72
         }
       }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/DebugActivity.java",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 37,
+          "index": 257,
+          "line": 12
+        },
+        "start": {
+          "column": 37,
+          "index": 257,
+          "line": 12
+        }
+      }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Adapters/CircularImageView.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/build.gradle"
 }
