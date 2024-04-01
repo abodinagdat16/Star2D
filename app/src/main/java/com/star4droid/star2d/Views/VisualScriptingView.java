@@ -1,6 +1,5 @@
 package com.star4droid.star2d.Views;
 
-import android.Manifest;
 import android.animation.*;
 import android.app.*;
 import android.app.Activity;
@@ -10,7 +9,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
@@ -27,7 +25,6 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -296,13 +293,24 @@ public class VisualScriptingView extends LinearLayout {
 			hintsL.add(xs);
 		}
 		while(nodes.contains("\n\n")) nodes = nodes.replace("\n\n","\n");
+        
 		for(final String nds:nodes.split("\nsplit\n")){
+           int[] color=new int[1];
 			String [] spT=null;
 			if(!(nds.startsWith("--"))) {
 				spT = nds.split("\n<<=>>\n");
 			} else spT = nds.split(" ");
 			final String[] sp= spT;
 			final String[] split=sp[0].split(" ");
+       if(split[0].startsWith("-color:")){
+                String info=split[0];
+                String c=info.substring(0,info.indexOf("•")+1);
+                split[0]=split[0].replace(c,"");
+                split[0]=split[0].replace("\n\n","\n");
+                c=c.replace("-color:","");
+                c=c.replace("•","");
+                color[0]=Color.parseColor(c);
+            }
 			if(!(nds.startsWith("--"))) {
 				try {
 					codesMap.put(split[0].replace("__star__if__",""),sp[1]);
@@ -374,6 +382,7 @@ public class VisualScriptingView extends LinearLayout {
 							nf.setName(split[x]);
 							nf.setValue("");
 							nf.node=nd;
+                            nd.setNodeHeaderColor(color[0]);
 							nd.add(nf);
 						}
 					}
@@ -422,6 +431,7 @@ public class VisualScriptingView extends LinearLayout {
 			Node node= new Node(getContext());
 			node.code="%1$s";
 			node.setText("First > ");
+            node.setNodeHeaderColor(Color.parseColor("#574B81"));
 			node.disableDel();
 			frame.addView(node);
 			} else {
@@ -617,7 +627,7 @@ public class VisualScriptingView extends LinearLayout {
 			container = (LinearLayout)	thisVV.findViewById(R.id.container);
 			true_text = (TextView)	thisVV.findViewById(R.id.true_text);
 			false_text = (TextView)		thisVV.findViewById(R.id.false_text);
-			android.graphics.drawable.GradientDrawable i1 = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT , new int[] {0xFFFFB300,0xFFFFB300});
+			android.graphics.drawable.GradientDrawable i1 = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT , new int[] {color,color});
 			i1.setCornerRadii(new float[] { (float)(10), (float)(10), (float)(10), (float)(10), (float)(0),(float)(0),(float)(0),(float)(0) }); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
 			title.setBackground(i1);
 			android.graphics.drawable.GradientDrawable id = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT , new int[] {0xFF3C3C3C,0xFF3C3C3C});
@@ -802,6 +812,15 @@ public class VisualScriptingView extends LinearLayout {
 			super.setY(y);
 			updatePos();
 		}
+        public void setNodeHeaderColor(int color){
+            if(color!=0){
+            this.color=color;
+            android.graphics.drawable.GradientDrawable i1 = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.RIGHT_LEFT , new int[] {color,color});
+			i1.setCornerRadii(new float[] { (float)(10), (float)(10), (float)(10), (float)(10), (float)(0),(float)(0),(float)(0),(float)(0) }); //LeftTop, //RightTop, //RightBottom, //LeftBottom,
+			title.setBackground(i1);
+                }
+        }
+        
 		/**/
 		/*
 		FileUtil.writeFile(FileUtil.getPackageDataDir(getApplicationContext()).concat("/log.txt"), "r : "+r+"\n l : "+l+"\n tx : "+tx+"\n ty : "+ty);
@@ -810,6 +829,7 @@ public class VisualScriptingView extends LinearLayout {
 			super.onDraw(cv);
 			updatePos();
 		}
+       private int color=(int)Color.parseColor("#0078fe");
 		private TextView false_text,true_text,title;
 		private LinearLayout container, parent;
 		private Circle left_circle,right_circle,true_circle,false_circle;
@@ -896,7 +916,9 @@ public class VisualScriptingView extends LinearLayout {
 			return (false_circle.getY()+(false_circle.circle.getMeasuredHeight()/2));
 		}
 		public void loadFrom(HashMap<String, Object> map){
-			
+			if(map.containsKey("color")){
+                this.setNodeHeaderColor((int)Float.parseFloat(map.get("color").toString()));
+            }
 			this.setText(map.get("title").toString());
 			try {
 				if(codesMap.containsKey(map.get("title").toString())){
@@ -943,6 +965,7 @@ public class VisualScriptingView extends LinearLayout {
 			map.put("close", (left_circle.getParent()!=null) ? "true" : "false");
 			map.put("title", title.getText().toString());
 			map.put("code", this.code);
+            map.put("color",this.color);
 			if (true_text.getVisibility() == View.VISIBLE) {
 				map.put("next", ((true_node==null)?"":true_node.getId()+""));
 			}

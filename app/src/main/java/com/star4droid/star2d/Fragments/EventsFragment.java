@@ -41,7 +41,6 @@ public class EventsFragment extends Fragment {
 	}
 	
 	public EventsFragment(Editor ed){
-		//super();
 		editor = ed;
 		push("OnCreate",R.drawable.properties,false,false);
 		push("OnStep",R.drawable.step_icon,false,false);
@@ -147,7 +146,7 @@ public class EventsFragment extends Fragment {
 		}
 		
 		@Override
-		public void onBindViewHolder(ViewHolder _holder, final int _position) {
+		public void onBindViewHolder(ViewHolder _holder,  int _position) {
 			View _view = _holder.itemView;
 			
 			final LinearLayout linear1 = _view.findViewById(R.id.linear1);
