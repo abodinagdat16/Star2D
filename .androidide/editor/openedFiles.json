@@ -76,35 +76,80 @@
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/res/values/themes.xml",
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Fragments/EventsFragment.java",
       "selection": {
         "end": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 48,
+          "index": 5063,
+          "line": 150
         },
         "start": {
-          "column": 0,
-          "index": 0,
-          "line": 0
+          "column": 3,
+          "index": 5018,
+          "line": 150
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Fragments/EventsFragment.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Fragments/JointsFragment.java",
       "selection": {
         "end": {
-          "column": 8,
-          "index": 5023,
-          "line": 150
+          "column": 48,
+          "index": 4411,
+          "line": 142
         },
         "start": {
-          "column": 8,
-          "index": 5023,
-          "line": 150
+          "column": 48,
+          "index": 4411,
+          "line": 142
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Views/VisualScriptingView.java",
+      "selection": {
+        "end": {
+          "column": 22,
+          "index": 60884,
+          "line": 1852
+        },
+        "start": {
+          "column": 22,
+          "index": 60884,
+          "line": 1852
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Fragments/SectionsListFragment.java",
+      "selection": {
+        "end": {
+          "column": 62,
+          "index": 3265,
+          "line": 106
+        },
+        "start": {
+          "column": 51,
+          "index": 3254,
+          "line": 106
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Activities/FilesManagerActivity.java",
+      "selection": {
+        "end": {
+          "column": 47,
+          "index": 16556,
+          "line": 453
+        },
+        "start": {
+          "column": 28,
+          "index": 16537,
+          "line": 453
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Fragments/EventsFragment.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Views/VisualScriptingView.java"
 }

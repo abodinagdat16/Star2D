@@ -1850,7 +1850,7 @@ public class VisualScriptingView extends LinearLayout {
 		}
 		
 		@Override
-		public View getView(final int _position, View _v, ViewGroup _container) {
+		public View getView( int _position, View _v, ViewGroup _container) {
 			LayoutInflater _inflater = getLayoutInflater();
 			View _view = _v;
 			if (_view == null) {
