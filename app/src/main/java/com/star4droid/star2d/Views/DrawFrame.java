@@ -64,10 +64,10 @@ public class DrawFrame extends FrameLayout {
 	}
 	
 	private void init(){
-		setBackgroundColor(0xFF303A52);
+		setBackgroundColor(0xFF1C1C1C);
 		this.paint.setAntiAlias(true);
 		this.paint.setDither(true);
-		this.paint.setColor(Color.YELLOW);
+		this.paint.setColor(Color.parseColor("#606060"));
 		this.paint.setStyle(Paint.Style.STROKE);
 		this.paint.setStrokeJoin(Paint.Join.ROUND);
 		this.paint.setStrokeCap(Paint.Cap.ROUND);
@@ -76,7 +76,7 @@ public class DrawFrame extends FrameLayout {
 		
 		this.full_paint.setAntiAlias(true);
 		this.full_paint.setDither(true);
-		this.full_paint.setColor(Color.RED);
+		this.full_paint.setColor(Color.parseColor("#606060"));
 		this.full_paint.setStyle(Paint.Style.FILL);
 		this.full_paint.setStrokeJoin(Paint.Join.ROUND);
 		this.full_paint.setStrokeCap(Paint.Cap.ROUND);
@@ -84,7 +84,7 @@ public class DrawFrame extends FrameLayout {
 		this.full_paint.setStrokeWidth(2);
 		
 		LinesPaint = new Paint();
-			LinesPaint.setColor(0xFF90A4AE);
+			LinesPaint.setColor(0xFF606060);
 			LinesPaint.setStrokeWidth(0.5f);
 			LinesPaint.setAlpha(75);
 			LinesPaint.setStyle(Paint.Style.STROKE);

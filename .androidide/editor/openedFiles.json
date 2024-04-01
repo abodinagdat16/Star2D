@@ -4,14 +4,14 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Views/VisualScriptingView.java",
       "selection": {
         "end": {
-          "column": 35,
-          "index": 35,
-          "line": 0
+          "column": 37,
+          "index": 9995,
+          "line": 332
         },
         "start": {
-          "column": 8,
-          "index": 8,
-          "line": 0
+          "column": 32,
+          "index": 9990,
+          "line": 332
         }
       }
     },
@@ -19,6 +19,21 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/Views/DrawFrame.java",
       "selection": {
         "end": {
+          "column": 52,
+          "index": 2072,
+          "line": 78
+        },
+        "start": {
+          "column": 52,
+          "index": 2072,
+          "line": 78
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/player/CircleItem.java",
+      "selection": {
+        "end": {
           "column": 0,
           "index": 0,
           "line": 0
@@ -31,35 +46,20 @@
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/player/PlayerView.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/res/layout/nodes_list_csv.xml",
       "selection": {
         "end": {
-          "column": 36,
-          "index": 36,
-          "line": 0
+          "column": 24,
+          "index": 503,
+          "line": 14
         },
         "start": {
-          "column": 8,
-          "index": 8,
-          "line": 0
-        }
-      }
-    },
-    {
-      "file": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/LandscapePlayer.java",
-      "selection": {
-        "end": {
-          "column": 9,
-          "index": 2155,
-          "line": 64
-        },
-        "start": {
-          "column": 9,
-          "index": 2155,
-          "line": 64
+          "column": 24,
+          "index": 503,
+          "line": 14
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/java/com/star4droid/star2d/LandscapePlayer.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/Star2D.E/app/src/main/res/layout/nodes_list_csv.xml"
 }

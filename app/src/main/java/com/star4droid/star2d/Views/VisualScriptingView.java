@@ -330,7 +330,7 @@ public class VisualScriptingView extends LinearLayout {
 			linearVV.setLayoutParams(new LinearLayout.LayoutParams((ViewGroup.LayoutParams.MATCH_PARENT), (ViewGroup.LayoutParams.WRAP_CONTENT)));
 			if (split[0].startsWith("--")) {
 				text.setText(split[0].replace("--",""));
-				lin.setBackgroundColor(0xFF0078FE);
+				lin.setBackgroundColor(0xFF202020);
 				img.setImageResource(R.drawable.right_icon);
 				linearVV.setOnClickListener(new View.OnClickListener(){
 					@Override
@@ -1345,7 +1345,7 @@ public class VisualScriptingView extends LinearLayout {
 			circle = (LinearLayout) thisVV.findViewById(R.id.circle);
 			parent = (LinearLayout) thisVV.findViewById(R.id.parent);
 			update();
-			circle.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(90, 1, 0xFFFFB300, Color.TRANSPARENT));
+			circle.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(90, 1, Color.GRAY, Color.TRANSPARENT));
 		}
 		LinearLayout parent, circle;
 		public Node node;
@@ -1355,7 +1355,7 @@ public class VisualScriptingView extends LinearLayout {
 		}
 		public void setSelect(boolean b){
 			if(b) circle.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(90, 1, 0xFFFFFFFF, Color.TRANSPARENT));
-			else circle.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(90, 1, 0xFFFFB300, 0xFFFFB300));
+			else circle.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(90, 1, Color.GRAY, Color.GRAY));
 		}
 	}
 	
