@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -12,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -24,18 +22,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigationrail.NavigationRailView;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.UriUtils;
@@ -63,8 +58,6 @@ public class FilesManagerActivity extends AppCompatActivity {
     ActivityResultLauncher<PickVisualMediaRequest> pickMedia;
     private String path = "";
     private String types_x = "";
-    private ImageView add;
-    private NavigationRailView menuFile;
     private ListView filesLin;
     private AlertDialog.Builder dll;
     private MediaPlayer mp;
@@ -76,22 +69,33 @@ public class FilesManagerActivity extends AppCompatActivity {
         setContentView(R.layout.files_manager);
         initialize();
 
-        pickMedia =
-                registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(), uriList -> {
-                    if (uriList == null) return;
-                    StringBuilder p = new StringBuilder();
-                    for (String s : interalPath) p.append(s).append("/");
-                    for (Uri uri : uriList) {
-                        String s = FileUtil.convertUriToFilePath(FilesManagerActivity.this, uri);
-                        String to = path.concat("/".concat(types_x.concat("/").concat(p.toString()))).concat(Uri.parse(s).getLastPathSegment());
-                        UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
-                        Log.d("Da", "Copying Data");
-                    }
-                    _refresh();
-                });
+        pickMedia = registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(), uriList -> {
+            if (uriList == null) return;
+            StringBuilder p = new StringBuilder();
+            for (String s : interalPath) p.append(s).append("/");
+            for (Uri uri : uriList) {
+                String s = FileUtil.convertUriToFilePath(FilesManagerActivity.this, uri);
+                String to = path.concat("/".concat(types_x.concat("/").concat(p.toString()))).concat(Uri.parse(s).getLastPathSegment());
+                UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
+                Log.d("Da", "Copying Data");
+            }
+            _refresh();
+        });
 
 
         files_picker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), uriList -> {
+            if (uriList == null) return;
+            StringBuilder p = new StringBuilder();
+            for (String s : interalPath) p.append(s).append("/");
+            for (Uri uri : uriList) {
+                String s = FileUtil.convertUriToFilePath(FilesManagerActivity.this, uri);
+                String to = path.concat("/".concat(types_x.concat("/").concat(p.toString()))).concat(Uri.parse(s).getLastPathSegment());
+                UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
+            }
+            _refresh();
+        });
+
+        sounds_picker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), uriList -> {
             if (uriList == null) return;
             String p = "";
             for (String s : interalPath) p = p + s + "/";
@@ -101,21 +105,6 @@ public class FilesManagerActivity extends AppCompatActivity {
                 UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
             }
             _refresh();
-        });
-
-        sounds_picker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), new ActivityResultCallback<List<Uri>>() {
-            @Override
-            public void onActivityResult(List<Uri> uriList) {
-                if (uriList == null) return;
-                String p = "";
-                for (String s : interalPath) p = p + s + "/";
-                for (Uri uri : uriList) {
-                    String s = FileUtil.convertUriToFilePath(FilesManagerActivity.this, uri);
-                    String to = path.concat("/".concat(types_x.concat("/").concat(p))).concat(Uri.parse(s).getLastPathSegment());
-                    UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
-                }
-                _refresh();
-            }
         });
 
         if (Build.VERSION.SDK_INT >= 23) {
@@ -140,9 +129,9 @@ public class FilesManagerActivity extends AppCompatActivity {
 
     private void initialize() {
 
-        add = findViewById(R.id.add);
+        ImageView add1 = findViewById(R.id.add);
         filesLin = findViewById(R.id.filesLin);
-        menuFile = findViewById(R.id.menu_file);
+        NavigationRailView menuFile = findViewById(R.id.menu_file);
 
 
         fp_imgs.setType("image/*");
@@ -180,7 +169,7 @@ public class FilesManagerActivity extends AppCompatActivity {
             return true;
         });
 
-        add.setOnClickListener(_view -> {
+        add1.setOnClickListener(_view -> {
             if (types_x.contains("anims") || types_x.contains("images")) {
                 final AlertDialog cd = new AlertDialog.Builder(FilesManagerActivity.this).create();
                 LayoutInflater cdLI = getLayoutInflater();
@@ -212,12 +201,11 @@ public class FilesManagerActivity extends AppCompatActivity {
                 });
                 imp.setOnClickListener(_view1 -> {
                     if (types_x.contains("images")) {
-                        if (Build.VERSION.SDK_INT >= 30)
-                            pickMedia.launch(new PickVisualMediaRequest.Builder()
-                                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                                    .build());
 
-                        else startActivityForResult(fp_imgs, REQ_CD_FP_IMGS);
+                        pickMedia.launch(new PickVisualMediaRequest.Builder()
+                                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                                .build());
+
                     } else {
                         if (Build.VERSION.SDK_INT >= 30)
                             files_picker.launch(new String[]{"*/*"});
