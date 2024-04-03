@@ -23,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -41,7 +40,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 public class FilesManagerActivity extends AppCompatActivity {
 
@@ -97,11 +95,11 @@ public class FilesManagerActivity extends AppCompatActivity {
 
         sounds_picker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), uriList -> {
             if (uriList == null) return;
-            String p = "";
-            for (String s : interalPath) p = p + s + "/";
+            StringBuilder p = new StringBuilder();
+            for (String s : interalPath) p.append(s).append("/");
             for (Uri uri : uriList) {
                 String s = FileUtil.convertUriToFilePath(FilesManagerActivity.this, uri);
-                String to = path.concat("/".concat(types_x.concat("/").concat(p))).concat(Uri.parse(s).getLastPathSegment());
+                String to = path.concat("/".concat(types_x.concat("/").concat(p.toString()))).concat(Uri.parse(s).getLastPathSegment());
                 UriUtils.copyUriToUri(FilesManagerActivity.this, uri, Uri.fromFile(new File(to)));
             }
             _refresh();
@@ -187,17 +185,14 @@ public class FilesManagerActivity extends AppCompatActivity {
                 if (types_x.contains("images")) {
                     imp.setText("import images");
                 }
-                add.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View _view) {
-                        if (types_x.contains("anims")) {
-                            FileUtil.writeFile(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()), "");
-                        } else {
-                            FileUtil.makeDir(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()));
-                        }
-                        _refresh();
-                        cd.dismiss();
+                add.setOnClickListener(_view12 -> {
+                    if (types_x.contains("anims")) {
+                        FileUtil.writeFile(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()), "");
+                    } else {
+                        FileUtil.makeDir(path.concat("/".concat(types_x.concat("/"))).concat(name.getText().toString()));
                     }
+                    _refresh();
+                    cd.dismiss();
                 });
                 imp.setOnClickListener(_view1 -> {
                     if (types_x.contains("images")) {
@@ -243,10 +238,10 @@ public class FilesManagerActivity extends AppCompatActivity {
             case REQ_CD_FP_SOUNDS:
                 if (_resultCode == AppCompatActivity.RESULT_OK) {
                     ArrayList<String> _filePath = Utils.getArrayList(_requestCode, _resultCode, _data, FilesManagerActivity.this);
-                    String p = "";
-                    for (String s : interalPath) p = p + "/" + s;
+                    StringBuilder p = new StringBuilder();
+                    for (String s : interalPath) p.append("/").append(s);
                     for (String s : _filePath) {
-                        FileUtil.copyFile(s, path.concat("/".concat(types_x.concat("/").concat(p))).concat(Uri.parse(s).getLastPathSegment()));
+                        FileUtil.copyFile(s, path.concat("/".concat(types_x.concat("/").concat(p.toString()))).concat(Uri.parse(s).getLastPathSegment()));
                     }
                     _refresh();
                 } else {
@@ -310,19 +305,19 @@ public class FilesManagerActivity extends AppCompatActivity {
         try {
             mp.pause();
             mp.release();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         finish();
     }
 
     public void _refresh() {
-        if (lm.size() == 0) {
+        if (lm.isEmpty()) {
             filesLin.setAdapter(new Listview1Adapter(lm));
         }
         lm.clear();
         ArrayList<String> arr = new ArrayList<>();
-        if (types_x.equals("")) types_x = "files";
+        if (types_x.isEmpty()) types_x = "files";
         String p = "";
         if (types_x.equals("images")) {
             for (String s : interalPath) p = p + "/" + s;
@@ -330,7 +325,7 @@ public class FilesManagerActivity extends AppCompatActivity {
         FileUtil.listDir(path.concat("/".concat(types_x.concat(p))), arr);
         FileUtil.makeDir(path + "/" + types_x + p);
         Collections.sort(arr);
-        if ((interalPath.size() > 0) && types_x.contains("images")) {
+        if ((!interalPath.isEmpty()) && types_x.contains("images")) {
             {
                 HashMap<String, Object> _item = new HashMap<>();
                 _item.put("file", "...");
