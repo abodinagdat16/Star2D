@@ -310,7 +310,7 @@ PlayerItem %2$s = %1$s.getClone();
 %3$s
 split
 -color:#4A7814•
-destroy body
+destroy body(Body)
 <<=>>
 %1$s.destroy();
 %2$s
@@ -438,22 +438,26 @@ startAnimation UI
 split
 --Sounds
 split
+-color:#BE9333•
 createSound id sound repeat?
 <<=>>
 createSound("%1$s","%2$s");
 loopSound("%1$s",%3$s);
 %4$s
 split
+-color:#BE9333•
 playSound SoundID
 <<=>>
 startSound("%1$s");
 %2$s
 split
+-color:#BE9333•
 pauseSound SoundID
 <<=>>
 pauseSound("%1$s");
 %2$s
 split
+-color:#BE9333•
 releaseSound SoundID
 <<=>>
 releaseSound("%1$s");

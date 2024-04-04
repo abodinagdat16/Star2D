@@ -104,19 +104,19 @@ setZoom((float)(%1$s));
 %2$s
 split
 -color:#387095•
-cameraFollow body
+cameraFollow body(Body)
 <<=>>
 setCameraXY(%1$s,true);
 %2$s
 split
 -color:#387095•
-setCameraXAt body fixed?
+setCameraXAt body(Body) fixed?
 <<=>>
 setCameraX(%1$s,%2$s);
 %3$s
 split
 -color:#387095•
-setCameraYAt body fixed
+setCameraYAt body(Body) fixed
 <<=>>
 setCameraY(%1$s,%2$s);
 %3$s
@@ -160,7 +160,7 @@ setsplits(%1$s);
 %2$s
 split
 -color:#88213B•
-ifCollision__star__if__ body1 body2
+ifCollision__star__if__ body1(Body) body2(Body)
 <<=>>
 if(checkCollision(%1$s,%2$s)){
 %3$s
@@ -231,7 +231,7 @@ setText ui text
 %1$s.setItemText(%2$s);
 %3$s
 split
-setAlpha body alpha
+setAlpha body(Body) alpha
 <<=>>
 %1$s.getView().setAlpha(%2$s);
 %3$s
@@ -268,61 +268,61 @@ setScaleY item scaleY
 %3$s
 split
 -color:#4A7814•
-setTransform body x y angle
+setTransform body(Body) x y angle
 <<=>>
 %1$s.getBody().setTransform((float)(%2$s),(float)(%3$s),(float)(%4$s));
 %5$s
 split
 -color:#4A7814•
-setAnimation body animation
+setAnimation body(Body) animation
 <<=>>
 setAnimation(%1$s,"%2$s");
 %3$s
 split
 -color:#4A7814•
-setX body x
+setX body(Body) x
 <<=>>
 %1$s.getBody().setTransform((float)(%2$s),%1$s.getBody().getPosition().y,(float)(%1$s.getView().getRotation()));
 %3$s
 split
 -color:#4A7814•
-setY body y
+setY body(Body) y
 <<=>>
 %1$s.getBody().setTransform(%1$s.getBody().getPosition().x,(float)(%2$s),(%1$s).getView().getRotation());
 %3$s
 split
 -color:#4A7814•
-setAngle body angle
+setAngle body(Body) angle
 <<=>>
 %1$s.getBody().setTransform(%1$s.getBody().getPosition(),(float)(%2$s));
 %3$s
 split
 -color:#4A7814•
-setImage body image
+setImage body(Body) image
 <<=>>
 setImage(%1$s,"%2$s");
 %3$s
 split
 -color:#4A7814•
-copyBody body var
+copyBody body(Body) var
 <<=>>
 PlayerItem %2$s = %1$s.getClone();
 %3$s
 split
 -color:#4A7814•
-destroy body
+destroy body(Body)
 <<=>>
 %1$s.destroy();
 %2$s
 split
 -color:#4A7814•
-moveTowardBody body target step
+moveTowardBody body(Body) target step
 <<=>>
 //%1$s.moveTowardBody(%2$s,(float)(%3$s));
 %4$s
 split
 -color:#4A7814•
-moveTowardBody body Vector2 step
+moveTowardBody body(Body) Vector2 step
 <<=>>
 //%1$s.moveTowardPoint(%2$s,(float)(%3$s));
 %4$s
@@ -330,61 +330,61 @@ split
 --bodyControl
 split
 -color:#008375•
-applyForceToCenter body x y wake
+applyForceToCenter body(Body) x y wake
 <<=>>
 %1$s.getBody().applyForceToCenter((float)(%2$s),(float)(%3$s),%4$s);
 %5$s
 split
 -color:#008375•
-applyLinearImpulse body x y pointX pointY wake
+applyLinearImpulse body(Body) x y pointX pointY wake
 <<=>>
 %1$s.getBody().applyLinearImpulse((float)(%2$s),(float)(%3$s),(float)(%4$s),(float)(%5$s), %6$s);
 %7$s
 split
 -color:#008375•
-applyLinearImpulseToCenter body x y wake
+applyLinearImpulseToCenter body(Body) x y wake
 <<=>>
 %1$s.getBody().applyLinearImpulse((float)(%2$s),(float)(%3$s),%1$s.getBody().getWorldCenter().x,%1$s.getBody().getWorldCenter().y, %4$s);
 %5$s
 split
 -color:#008375•
-applyForce body x y pointX pointY wake
+applyForce body(Body) x y pointX pointY wake
 <<=>>
 %1$s.getBody().applyForce((float)(%2$s),(float)(%3$s),(float)(%4$s),(float)(%5$s),%6$s);
 %7$s
 split
 -color:#008375•
-setAngularVelocity body velocity
+setAngularVelocity body(Body) velocity
 <<=>>
 %1$s.getBody().setAngularVelocity((float)(%2$s));
 %3$s
 split
 -color:#008375•
-applyAngularImpulse body impulse wake
+applyAngularImpulse body(Body) impulse wake
 <<=>>
 %1$s.getBody().applyAngularImpulse((float)(%2$s),%3$s);
 %4$s
 split
 -color:#008375•
-setGravityScale body GravityScale
+setGravityScale body(Body) GravityScale
 <<=>>
 %1$s.getBody().setGravityScale(%2$s);
 %3$s
 split
 -color:#008375•
-setLinearVelocity body xVelocity yVelocity
+setLinearVelocity body(Body) xVelocity yVelocity
 <<=>>
 %1$s.getBody().setLinearVelocity((float)(%2$s),(float)(%3$s));
 %4$s
 split
 -color:#008375•
-applyTorque body torque wake
+applyTorque body(Body) torque wake
 <<=>>
 %1$s.getBody().applyTorque((float)(%2$s),%3$s);
 %4$s
 split
 -color:#008375•
-setLinearDamping body value
+setLinearDamping body(Body) value
 <<=>>
 %1$s.getBody().setLinearDamping((float)(%2$s));
 %3$s
@@ -393,31 +393,31 @@ split
 --bodyBooleans
 split
 -color:#008375•
-setAwake body wake
+setAwake body(Body) wake
 <<=>>
 %1$s.getBody().setAwake(%2$s);
 %3$s
 split
 -color:#008375•
-setBullet body bullet
+setBullet body(Body) bullet
 <<=>>
 %1$s.getBody().setBullet(%2$s);
 %3$s
 split
 -color:#008375•
-setFixedRotation body fixed
+setFixedRotation body(Body) fixed
 <<=>>
 %1$s.getBody().setFixedRotation(%2$s);
 %3$s
 split
 -color:#008375•
-setActive body active
+setActive body(Body) active
 <<=>>
 %1$s.getBody().setActive(%2$s);
 %3$s
 split
 -color:#008375•
-setSleepingAllowed body sleeping
+setSleepingAllowed body(Body) sleeping
 <<=>>
 %1$s.getBody().setSleepingAllowed(%2$s);
 %3$s
