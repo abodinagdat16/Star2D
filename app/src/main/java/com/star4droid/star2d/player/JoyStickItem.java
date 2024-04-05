@@ -32,6 +32,9 @@ public class JoyStickItem extends JoyStick implements PlayerItem {
 		setX(x);
 		setY(y);
 		setZ(propertySet.getFloat("z"));
+//       getLayoutParams().height = (int)height;
+//			getLayoutParams().width = (int)width;
+//			setLayoutParams(getLayoutParams());
 		setRotation(propertySet.getFloat("rotation"));
 		setVisibility(propertySet.getString("Visible").equals("true")?View.VISIBLE:View.GONE);
 		setLayoutParams(new FrameLayout.LayoutParams((int)width,(int)height));
