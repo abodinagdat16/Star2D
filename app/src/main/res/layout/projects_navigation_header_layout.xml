@@ -9,20 +9,18 @@
     android:paddingStart="28dp">
 
     <ImageView
-        android:id="@+id/app_icon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/icon"
-        />
-    
+        android:src="@drawable/icon" />
+
     <TextView
-        android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:layout_weight="1"
         android:layout_marginStart="8dp"
-     />
+        android:fontFamily="@font/vt323"
+        android:text="Star Engine 2d"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
     
 
 </LinearLayout>

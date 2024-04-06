@@ -1,7 +1,0 @@
-<resources>
-<color name="button_background">#FF222222</color>
-<color name="button_stroke">#00FFB300</color>
-<color name="unselect_color">#FFFFFFFF</color>
-<color name="text_color">#FFFFFFFF</color>
-<color name="section_color">#515151</color>
-</resources>

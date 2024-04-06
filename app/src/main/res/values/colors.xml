@@ -62,14 +62,14 @@
     <color name="md_theme_dark_surfaceTint">#3D77C2</color>
     <color name="md_theme_dark_outlineVariant">#52443B</color>
     <color name="md_theme_dark_scrim">#000000</color>
-	<color name="sim_yellow">#FFFFB300</color>
-	<color name="sim_black">#222222</color>
-	<color name="sim_grey">#515151</color>
-	<color name="images_tint">#FFFFB300</color>
-	<color name="text_color">#FF000000</color>
-	<color name="button_background">#FFFFFFFF</color>
-<color name="button_stroke">#00000000</color>
-<color name="unselect_color">#FF000000</color>
-<color name="section_color">#E0E0E0</color>
+    <color name="sim_yellow">#FFFFB300</color>
+    <color name="sim_black">#222222</color>
+    <color name="sim_grey">#515151</color>
+    <color name="images_tint">#FFFFB300</color>
+    <color name="text_color">#FF7D3C00</color>
+    <color name="button_background">#FFFFFFFF</color>
+    <color name="button_stroke">#00000000</color>
+    <color name="unselect_color">#FF000000</color>
+    <color name="section_color">#FF7A00</color>
     <color name="white">#FFFFFF</color>
 </resources>
