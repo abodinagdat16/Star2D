@@ -1,10 +1,12 @@
 package com.star4droid.star2d.Views;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
@@ -58,9 +60,10 @@ public class VisualScriptingView extends LinearLayout {
 
     private final HashMap<String, Object> map = new HashMap<>();
     private final HashMap<String, Object> codesMap = new HashMap<>();
-    private final ArrayList<HashMap<String, Object>> imgLm = new ArrayList<>();
+    private final boolean isArabic = false;
+    private final ArrayList<HashMap<String, Object>> imgsLm = new ArrayList<>();
     private final ArrayList<String> interals = new ArrayList<>();
-    public String imgPath = "", hintsLst = "", json_path = "", code_path = "";
+    public String imgsPath = "", hintsLst = "", json_path = "", code_path = "";
     float scale = 1;
     Path temp_path = new Path();
     Circle sc;
@@ -71,12 +74,14 @@ public class VisualScriptingView extends LinearLayout {
     private ArrayList<String> hintsL = new ArrayList<>();
     private DrawFrame frame;
     private ScrollView vs;
+    private LinearLayout linear1;
     private LinearLayout linear;
     private ImageView add;
     private ImageView show;
     private ListView listview1;
 
     private AlertDialog.Builder dl;
+    private SharedPreferences save_sh;
     private AlertDialog cd;
 
     public VisualScriptingView(Context context, String cp, String jp, String hnt, String gs) {
@@ -84,7 +89,7 @@ public class VisualScriptingView extends LinearLayout {
         code_path = cp;
         json_path = jp;
         hintsLst = hnt;
-        imgPath = gs;
+        imgsPath = gs;
         final androidx.appcompat.app.AlertDialog[] dialog = {null};
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -120,7 +125,7 @@ public class VisualScriptingView extends LinearLayout {
         code_path = s[0];
         json_path = s[1];
         hintsLst = s[2];
-        imgPath = s[3];
+        imgsPath = s[3];
         final androidx.appcompat.app.AlertDialog[] dialog = {null};
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -171,27 +176,54 @@ public class VisualScriptingView extends LinearLayout {
     private void initialize() {
         frame = findViewById(R.id.frame);
         vs = findViewById(R.id.vs);
+        linear1 = findViewById(R.id.linear1);
         linear = findViewById(R.id.linear);
         add = findViewById(R.id.add);
         show = findViewById(R.id.show);
         listview1 = findViewById(R.id.listview1);
-
         dl = new AlertDialog.Builder(getContext());
-
+        save_sh = getContext().getSharedPreferences("sh", Activity.MODE_PRIVATE);
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        frame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View _view) {
 
-        add.setOnClickListener(_view -> {
-            if (vs.getVisibility() == View.VISIBLE) {
-                Runnable run = () -> vs.setVisibility(View.INVISIBLE);
-                vs.animate().scaleX(0).withEndAction(run).start();
-            } else {
-                vs.setVisibility(View.VISIBLE);
-                vs.animate().scaleX(1).withEndAction(null).start();
             }
         });
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View _view) {
+                /**/
+				/*
+				final Node node = new Node(getContext()).add(new ValueSetter(getContext())).setAsIf(true);
+				frame.addView(node);
+				java.util.Timer tm = new java.util.Timer();
+				java.util.TimerTask tsk = new TimerTask() {
+					@Override
+					public void run() {
+						new Handler(Looper.getMainLooper()).post((new Runnable() {
+							@Override
+							public void run() {
+								node.updatePos();
+								node.invalidate();
+								frame.invalidate();
+							}
+						});
+					}
+				};
+				tm.schedule(tsk, (int)(150));
+				*/
+                if (vs.getVisibility() == View.VISIBLE) {
+                    Runnable runn = () -> vs.setVisibility(View.INVISIBLE);
+                    vs.animate().scaleX(0).withEndAction(runn).start();
+                } else {
+                    vs.setVisibility(View.VISIBLE);
+                    vs.animate().scaleX(1).withEndAction(null).start();
+                }
+            }
+        });
         show.setVisibility(View.GONE);
-
         show.setOnClickListener(_view -> showCode());
     }
 
@@ -243,14 +275,16 @@ public class VisualScriptingView extends LinearLayout {
         for (String str1 : fls) {
             String fis = FileUtil.readFile(str1);
             if (!fis.isEmpty()) {
-                ArrayList<HashMap<String, Object>> lm = new Gson().fromJson(fis, new TypeToken<ArrayList<HashMap<String, Object>>>() {}.getType());
-
-                if (!lm.isEmpty()) nodes.append("\nsplit\n--").append(Uri.parse(str1).getLastPathSegment());
-
+                ArrayList<HashMap<String, Object>> lm = new Gson().fromJson(fis, new TypeToken<ArrayList<HashMap<String, Object>>>() {
+                }.getType());
+                if (!lm.isEmpty())
+                    nodes.append("\nsplit\n--").append(Uri.parse(str1).getLastPathSegment());
                 for (HashMap<String, Object> map : lm) {
                     try {
-                        nodes.append("\nsplit\n").append(map.get("full"));
-                    } catch (Exception ignored) {}
+                        nodes.append("\nsplit\n").append(map.get("full").toString());
+                    } catch (Exception e) {
+
+                    }
                 }
             }
         }
@@ -264,7 +298,8 @@ public class VisualScriptingView extends LinearLayout {
             ssIn.read(ssBu);
             ssIn.close();
             ss = new String(ssBu, StandardCharsets.UTF_8);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         Collections.addAll(hintsL, ss.split("\n"));
 
@@ -273,12 +308,12 @@ public class VisualScriptingView extends LinearLayout {
 
         for (final String nds : nodes.toString().split("\nsplit\n")) {
             int[] color = new int[1];
-            String[] spT;
-            if (!(nds.startsWith("--"))) spT = nds.split("\n<<=>>\n"); else spT = nds.split(" ");
-
+            String[] spT = null;
+            if (!(nds.startsWith("--"))) {
+                spT = nds.split("\n<<=>>\n");
+            } else spT = nds.split(" ");
             final String[] sp = spT;
             final String[] split = sp[0].split(" ");
-
             if (split[0].startsWith("-color:")) {
                 String info = split[0];
                 String c = info.substring(0, info.indexOf("•") + 1);
@@ -290,24 +325,19 @@ public class VisualScriptingView extends LinearLayout {
                 c = c.replace("•", "");
                 color[0] = Color.parseColor(c);
             }
-
             if (!(nds.startsWith("--"))) {
                 try {
                     codesMap.put(split[0].replace("__star__if__", ""), sp[1]);
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
-
             LayoutInflater linearLL = LayoutInflater.from(getContext());
-
             View linearVV = linearLL.inflate(R.layout.nodes_list_csv, null);
+            linear.addView(linearVV);
             final LinearLayout lin = linearVV.findViewById(R.id.lin);
             final TextView text = linearVV.findViewById(R.id.text);
             final ImageView img = linearVV.findViewById(R.id.img);
-
-            linear.addView(linearVV);
-
             linearVV.setLayoutParams(new LinearLayout.LayoutParams((ViewGroup.LayoutParams.MATCH_PARENT), (ViewGroup.LayoutParams.WRAP_CONTENT)));
-
             if (split[0].startsWith("--")) {
                 text.setText(split[0].replace("--", ""));
                 lin.setBackgroundColor(0xFF202020);
@@ -836,13 +866,13 @@ public class VisualScriptingView extends LinearLayout {
         ArrayList<String> arr = new ArrayList<>();
         StringBuilder p = new StringBuilder();
         for (String s : interals) p.append("/").append(s);
-        FileUtil.listDir(imgPath.concat(p.toString()), arr);
-        imgLm.clear();
+        FileUtil.listDir(imgsPath.concat(p.toString()), arr);
+        imgsLm.clear();
         if (!interals.isEmpty()) {
             {
                 HashMap<String, Object> _item = new HashMap<>();
                 _item.put("file", "...");
-                imgLm.add(_item);
+                imgsLm.add(_item);
             }
 
         }
@@ -850,11 +880,11 @@ public class VisualScriptingView extends LinearLayout {
             {
                 HashMap<String, Object> _item = new HashMap<>();
                 _item.put("file", s);
-                imgLm.add(_item);
+                imgsLm.add(_item);
             }
 
         }
-        listview1.setAdapter(new Listview1Adapter(imgLm));
+        listview1.setAdapter(new Listview1Adapter(imgsLm));
     }
 
     public String _remove_last_from_path(final String _path) {
@@ -1458,6 +1488,15 @@ public class VisualScriptingView extends LinearLayout {
                 }
             });
 
+            if (isArabic) {
+                linear.removeView(name);
+                try {
+                    ((ViewGroup) name.getParent()).removeView(name);
+                } catch (Exception e) {
+
+                }
+                linear.addView(name);
+            }
         }
 
         public String getValue() {
@@ -1508,8 +1547,7 @@ public class VisualScriptingView extends LinearLayout {
                     (int) ((scale * pxToDp(len))),
                     (int) (pxToDp(25) * scale)));
 
-            LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            {
+            LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);{
                 int top = 0;
                 int bottom = (int) (pxToDp(2) * scale);
                 int right = 0;
