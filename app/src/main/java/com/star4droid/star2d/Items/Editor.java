@@ -505,6 +505,7 @@ public class Editor extends FrameLayout {
 		boxPath.lineTo(bx + wd, by + hg);
 		boxPath.lineTo(bx, by + hg);
 		boxPath.lineTo(bx, by);
+        
 		if (SHOW_GRIDS)
 			canvas.drawPath(path, gridPaint);
 		canvas.drawPath(boxPath, paint);

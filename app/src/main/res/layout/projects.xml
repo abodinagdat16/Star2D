@@ -1,90 +1,96 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/main"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:id="@+id/main">
 
-	<com.google.android.material.navigation.NavigationView
-		android:id="@+id/navigation"
-		android:layout_width="wrap_content"
-		android:layout_height="match_parent"
-		app:drawerLayoutCornerSize="0dp"
-		app:headerLayout="@layout/projects_navigation_header_layout"
-		app:itemHorizontalPadding="12dp"
-		style="@style/Widget.App.NavigationView"
-		app:itemShapeInsetEnd="0dp"
-		app:itemShapeInsetStart="0dp"
-		app:itemVerticalPadding="2dp"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:menu="@menu/main_drawer_menu" />
+    <com.google.android.material.navigation.NavigationView
+         android:layout_height="match_parent"
+         android:layout_width="wrap_content"
+         app:itemVerticalPadding="2dp"
+         app:itemShapeInsetStart="0dp"
+         app:itemShapeInsetEnd="0dp"
+         app:drawerLayoutCornerSize="0dp"
+         app:layout_constraintTop_toTopOf="parent"
+         app:menu="@menu/main_drawer_menu"
+         app:itemHorizontalPadding="12dp"
+         app:layout_constraintStart_toStartOf="parent"
+         style="@style/Widget.App.NavigationView"
+         app:headerLayout="@layout/projects_navigation_header_layout"
+         android:id="@+id/navigation" />
 
-	<LinearLayout
-		android:id="@+id/projectsLinear"
-		android:layout_width="0dp"
-		android:layout_height="match_parent"
-		android:gravity="end"
-		android:orientation="vertical"
-		android:padding="18dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/navigation">
+    <LinearLayout
+         android:layout_height="match_parent"
+         android:layout_width="0dp"
+         android:gravity="end"
+         android:padding="18dp"
+         android:orientation="vertical"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@+id/navigation"
+         android:id="@+id/projectsLinear">
 
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:gravity="right"
-			android:orientation="horizontal">
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:gravity="right"
+             android:orientation="horizontal">
 
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/settings"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				style="@style/Widget.Material3.Button.OutlinedButton"
-				android:layout_marginStart="5dp"
-				android:layout_marginEnd="5dp"
-				android:clickable="true"
-				android:text="@string/settings"
-				android:textColor="@color/text_color" />
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:layout_marginEnd="5dp"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:layout_marginStart="5dp"
+                 android:id="@+id/settings"
+                 android:text="@string/settings" />
 
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/restore"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginStart="5dp"
-				style="@style/Widget.Material3.Button.OutlinedButton"
-				android:layout_marginEnd="5dp"
-				android:clickable="true"
-				android:text="@string/restore"
-				android:textColor="@color/text_color" />
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:layout_marginEnd="5dp"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:layout_marginStart="5dp"
+                 android:id="@+id/restore"
+                 android:text="@string/restore" />
 
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/addProject"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				style="@style/Widget.Material3.Button.OutlinedButton"
-				android:clickable="true"
-				android:text="@string/new_project"
-				android:textColor="@color/text_color" />
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:id="@+id/addProject"
+                 android:text="@string/new_project" />
 
-		</LinearLayout>
+        </LinearLayout>
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_margin="10dp"
-			android:layout_weight="1"
-			android:orientation="vertical">
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:layout_margin="10dp"
+             android:orientation="vertical"
+             android:layout_weight="1">
 
-			<ListView
-				android:id="@+id/listview1"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_weight="1"
-				android:choiceMode="none"
-				android:divider="@null"
-				android:dividerHeight="0dp"
-				android:scrollbars="none" />
+            <ListView
+                 android:layout_height="match_parent"
+                 android:layout_width="match_parent"
+                 android:scrollbars="none"
+                 android:divider="@null"
+                 android:choiceMode="none"
+                 android:layout_weight="1"
+                 android:id="@+id/listview1"
+                 android:dividerHeight="0dp">
 
-		</LinearLayout>
-	</LinearLayout>
+            </ListView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

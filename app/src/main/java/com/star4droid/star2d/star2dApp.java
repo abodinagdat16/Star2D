@@ -1,12 +1,16 @@
 package com.star4droid.star2d;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.app.Application;
+import android.os.Build;
 import android.os.Process;
 import android.util.Log;
+import com.google.android.material.color.DynamicColors;
+import com.google.android.material.elevation.SurfaceColors;
 import com.star4droid.star2d.Helpers.EngineSettings;
 import com.star4droid.star2d.Helpers.FileUtil;
 
@@ -45,6 +49,8 @@ public class star2dApp extends Application {
 				star2dApp.this.uncaughtExceptionHandler.uncaughtException(thread, throwable);
 			}
 		});
+        
+           
 		super.onCreate();
 	}
 }

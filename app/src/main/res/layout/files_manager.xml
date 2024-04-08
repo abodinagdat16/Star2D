@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:menu="@menu/menu_files"
-            android:background="@drawable/bg_menu"
+            
             style="@style/Widget.App.NavigationRail" >
 
             <ImageView
@@ -44,6 +44,7 @@
             android:layout_height="match_parent"
             android:choiceMode="none"
             android:divider="@null"
+            
             android:dividerHeight="0dp"
             android:padding="5dp" />
 
@@ -62,7 +63,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:padding="8dp"
                 android:text="@string/there_is_no_files"
-                android:textColor="#FFFFFF"
+                
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

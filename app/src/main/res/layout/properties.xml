@@ -19,7 +19,7 @@ android:orientation="vertical">
 	android:id="@+id/backLin"
 	android:visibility="gone"
 	android:gravity="center_vertical"
-	android:background="@color/button_background"
+	
 	>
 	<ImageView
 		android:layout_height="30dp"
@@ -45,7 +45,7 @@ android:orientation="vertical">
 android:id="@+id/propertiesScroll"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/button_background"
+
 >
 <androidx.viewpager2.widget.ViewPager2
 android:id="@+id/viewPager"

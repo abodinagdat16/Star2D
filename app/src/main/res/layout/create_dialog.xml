@@ -14,7 +14,7 @@ android:orientation="vertical">
 android:id="@+id/linear3"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:background="@color/button_background"
+
 android:gravity="center_vertical"
 android:orientation="horizontal">
 <ImageView
@@ -39,7 +39,7 @@ android:textColor="@color/text_color" />
 android:id="@+id/linear1"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:background="@color/button_background"
+
 android:gravity="center"
 android:orientation="vertical">
 <com.google.android.material.textfield.TextInputLayout
