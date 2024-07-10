@@ -63,11 +63,13 @@ public class ExportThread extends Thread {
 			onProgress("Extracting template files");
 			//if(!FileUtil.isExistFile(dataDir+"/export.apk")) {
 				FileUtil.writeFile(dataDir+"/export.apk","");
-				Utils.extractAssetFile(context,"java/template.apk",dataDir+"/export.apk");
+				Utils.extractAssetFile(context,"files/template.apk",dataDir+"/export.apk");
                 //Utils.unzipf(dataDir+"/export.apk",export_temp,"");
 			//}
 			
 			onProgress("Preparing the project...");
+			
+			Utils.extractAssetFile(context,"files/empty.zip",export_temp+"/assets/project.zip");
 			Utils.zipf(project,export_temp+"/assets/project.zip","tulsgskdiensl626__Xxmoishs");
 			try {
 				ZipFile zipFile=new ZipFile(export_temp+"/assets/project.zip","tulsgskdiensl626__Xxmoishs".toCharArray());

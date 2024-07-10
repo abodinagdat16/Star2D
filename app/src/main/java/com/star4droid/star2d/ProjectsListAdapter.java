@@ -106,12 +106,14 @@ public class ProjectsListAdapter extends BaseAdapter {
 				return;
 			}
 			*/
+			type = "export";
 			if(Build.VERSION.SDK_INT<30){
-				java.io.File file = new java.io.File(FileUtil.getExternalStorageDir()+"/Star2D/"+textView.getText().toString()+".apk");
+			    String out = FileUtil.getExternalStorageDir()+"/Star2D/"+textView.getText().toString()+".apk";
+				java.io.File file = new java.io.File(out);
+				FileUtil.writeFile(out,"");
 				ExportDialog.showFor(context,arrayList.get(position),Uri.fromFile(file));
 				return;
 			}
-			type = "export";
 			ex_project=arrayList.get(position);
 			Utils.saveFile(Uri.parse(arrayList.get(position)).getLastPathSegment()+".apk",saveFile);
 		});

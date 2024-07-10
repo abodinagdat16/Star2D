@@ -21,6 +21,16 @@ public class Project {
 		return path+"/java/com/star4droid/Game/Scripts/"+scene+"/"+body+"Script.java";
 	}
 	
+	public String readEvent(String scene,String event){
+		return FileUtil.readFile(getEventPath(scene,"",event)+".java")/*+FileUtil.readFile(getEventPath(event)+".code")*/;
+	}
+	
+	public String readEvent(String scene,String event,String body){
+		String result= FileUtil.readFile(getEventPath(scene,body,event)+".java")+"\n"+FileUtil.readFile(getEventPath(scene,body,event)+".code");
+		//Log.e("eeeee","empty "+getEventPath(event,body));
+		return result;
+	}
+	
 	public String getCodesPath(String scene){
 		return path+"/java/com/star4droid/Game/"+scene.toLowerCase()+".java";
 	}
@@ -80,6 +90,7 @@ public class Project {
 	
 	public void deleteBody(String scene,String body){
 		FileUtil.deleteFile(path+"/Events/"+scene+"/private/"+body);
+		FileUtil.deleteFile(getScriptsPath(scene)+body);
 	}
 	
 	public String getEventPath(String scene,String body,String event){
@@ -95,7 +106,7 @@ public class Project {
 		return path+"/joints/"+scene+"/";
 	}
 	
-	public String getDex(String scene){
+	public String getDex(){
 		return path+"/dex/scenes.dex";//+scene+".dex";
 	}
 	

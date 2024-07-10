@@ -228,12 +228,15 @@ public class FilesManagerActivity extends AppCompatActivity {
             imp.setOnClickListener(
                 _view1 -> {
                   if (types_x.contains("images")) {
-
+                    if (Build.VERSION.SDK_INT >= 30) files_picker.launch(new String[] {"image/*"});
+              else startActivityForResult(fp_imgs, REQ_CD_FP_FILES);
+                     /*
                     pickMedia.launch(
                         new PickVisualMediaRequest.Builder()
                             .setMediaType(
                                 ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
                             .build());
+                            */
 
                   } else {
                     if (Build.VERSION.SDK_INT >= 30) files_picker.launch(new String[] {"*/*"});

@@ -21,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import com.star4droid.star2d.EditorActivity;
 import com.star4droid.star2d.Helpers.CheckBoxUtils;
+import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.Items.Editor;
 import com.star4droid.star2d.Items.EditorItem;
@@ -39,7 +40,7 @@ public class EditorField implements EditorValue {
 	ViewParent parent;
 	public static String allowedChars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_";
 	String type,imgPath="Null",spinnerPrev="Null";
-	private static String drag_control_fields=null;
+	private static String drag_control_fields=null,disableOnPlayFields=null;
 	Editor editor;
 	public static HashMap<String,Object> spinnerMap;
 	public EditorField(final Context ctx,Editor mEditor,String nm,String mType){
@@ -47,13 +48,16 @@ public class EditorField implements EditorValue {
 		editor = mEditor;
 		if(drag_control_fields==null)
 			drag_control_fields = Utils.readAssetFile("dragControl.json",ctx);
+		if(disableOnPlayFields==null)
+			disableOnPlayFields = Utils.readAssetFile("playOffProps.txt",ctx);
 		if(type.equals("body")){
 			view = LayoutInflater.from(ctx).inflate(R.layout.float_value,null);
 			name = view.findViewById(R.id.name);
 			value = view.findViewById(R.id.value);
 			name.setText(nm);
-			if(nm.equals("Collision")) value.setText("Tap to select");
+			if(nm.equals("Collision")||nm.equals("attach To")) value.setText("Tap to select");
 			value.setOnClickListener(v->{
+				if(isDisabled()) return;
 				final AlertDialog alert = new AlertDialog.Builder(ctx).create();
 				
 				View vv = LayoutInflater.from(ctx).inflate(R.layout.joint_dialog,null);
@@ -71,12 +75,13 @@ public class EditorField implements EditorValue {
 					checkBox.setText(str);
 					checkBox.setChecked(vl.equals(str)||vl.contains("("+str+")"));
 					if(!nm.equals("Collision")){
+					//in Collision only user can select many objects....
 						checkBox.setOnClickListener(vi->{
 							boolean check=checkBox.isChecked();
 							for(int x=0;x<linear.getChildCount();x++)
 								if(linear.getChildAt(x) instanceof AppCompatCheckBox)
 									(((AppCompatCheckBox)linear.getChildAt(x))).setChecked(false);
-							checkBox.setChecked(nm.equals("parent")?check:true);
+							checkBox.setChecked((nm.equals("parent")||nm.equals("attach To"))?check:true);
 							
 						});
 					}
@@ -118,6 +123,8 @@ public class EditorField implements EditorValue {
 					}
 					PropertySet.getPropertySet(editor.getSelectedView()).put(getName(),result);
 					editor.updateProperties();
+					if(editor.getLink()!=null)
+					    editor.getLink().update(PropertySet.getPropertySet(editor.getSelectedView()));
 				});
 				alert.setView(vv);
 				Utils.hideSystemUi(alert.getWindow());
@@ -131,6 +138,7 @@ public class EditorField implements EditorValue {
 			value = view.findViewById(R.id.value);
 			name.setText(nm);
 			value.setOnClickListener(v->{
+					if(isDisabled()) return;
 					ColourSelector.show(editor,getName());
 			});
 		}
@@ -146,6 +154,7 @@ public class EditorField implements EditorValue {
 				@Override
 				public boolean onTouch(View v, MotionEvent event){
 					int ev = event.getAction();
+					if(isDisabled()) return false;
 					switch (ev) {
 						case MotionEvent.ACTION_DOWN:
 						parent = view.getParent();
@@ -169,7 +178,10 @@ public class EditorField implements EditorValue {
 							parent=parent.getParent();
 							x++;
 						}
-						
+						if(editor.getLink()!=null){
+							editor.getLink().sizeChanged(PropertySet.getPropertySet(editor.getSelectedView()));
+							editor.getLink().positionChange(PropertySet.getPropertySet(editor.getSelectedView()));
+						}
 						break;
 						case MotionEvent.ACTION_CANCEL:
 						//ScrollParent.setOnTouchListener(null);
@@ -199,6 +211,7 @@ public class EditorField implements EditorValue {
 			value.setOnClickListener(new View.OnClickListener(){
 				@Override
 				public void onClick(View v){
+					if(isDisabled()) return;
 					NumbersDialog.show(ctx,PropertySet.getPropertySet(editor.getSelectedView()),new NumbersDialog.OnDone(){
 						public boolean onGet(String s){
 							try {
@@ -215,6 +228,8 @@ public class EditorField implements EditorValue {
 							if(getName().equals("tileX")||getName().equals("tileY"))
 							((EditorItem)(editor.getSelectedView())).setProperties(propertySet);
 							else Utils.update(editor.getSelectedView());
+							if(editor.getLink()!=null)
+								editor.getLink().update(propertySet);
 							} catch(Exception ex){}
 							return true;
 						}
@@ -230,6 +245,7 @@ public class EditorField implements EditorValue {
 				value.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View v){
+						if(isDisabled()) return;
 						ImagesSelectorAdapter.show(v.getContext(),new ImagesSelectorAdapter.onSelectImage(){
 							@Override
 							public void onSelect(String path, AlertDialog dialog) {
@@ -237,6 +253,8 @@ public class EditorField implements EditorValue {
 								editor.updateProperties();
 								editor.getSaveState();
 								dialog.dismiss();
+								if(editor.getLink()!=null)
+									editor.getLink().update(PropertySet.getPropertySet(editor.getSelectedView()));
 							}
 						},editor);
 					}
@@ -252,6 +270,8 @@ public class EditorField implements EditorValue {
 					if(getName().equals("Visible")){
 						if(editor.getSelectedView()!=null) Utils.update(editor.getSelectedView());
 					}
+					if(editor.getLink()!=null)
+						editor.getLink().update(PropertySet.getPropertySet(editor.getSelectedView()));
 				});
 				
 				} else if(type.equals("spinner")){
@@ -268,6 +288,7 @@ public class EditorField implements EditorValue {
 					value.setOnClickListener(new View.OnClickListener(){
 						@Override
 						public void onClick(View arg0) {
+							if(isDisabled()) return;
 							View dialog_cv = LayoutInflater.from(ctx).inflate(R.layout.create_dialog,null);
 							final AlertDialog alertDialog = new AlertDialog.Builder(ctx).create();
 							final EditText nam = dialog_cv.findViewById(R.id.name);
@@ -296,13 +317,19 @@ public class EditorField implements EditorValue {
 										}
 									}
 									PropertySet<String,Object> ps = PropertySet.getPropertySet(editor.getSelectedView());
-									if(ps.getString("Script").equals(ps.getString("name")))
+									//change the script when name changed...
+									if(ps.getString("Script").equals(ps.getString("name"))&&!ps.getString("name").equals(nam.getText().toString())){
 										ps.put("Script",nam.getText().toString());
+										FileUtil.moveFile(editor.getProject().getBodyScriptPath(ps.getString("name"),editor.getScene()),
+															editor.getProject().getBodyScriptPath(nam.getText().toString(),editor.getScene()));
+									}
 									ps.put(getName(),nam.getText().toString());
 									value.setText(nam.getText().toString());
 									Utils.update(editor.getSelectedView());
 									alertDialog.dismiss();
 									editor.getSaveState();
+									if(editor.getLink()!=null)
+										editor.getLink().update(PropertySet.getPropertySet(editor.getSelectedView()));
 								}
 							});
 							alertDialog.show();
@@ -334,6 +361,14 @@ public class EditorField implements EditorValue {
 	
 	@Override
 	public boolean update(PropertySet p) {
+		try {
+			return refresh(p);
+		} catch(Exception e){
+			return false;
+		}
+	}
+	
+	private boolean refresh(PropertySet p){
 		int bool = p==null ? View.GONE:(p.containsKey(getName())?View.VISIBLE:View.GONE);
 		if(p==null) return false;
 		view.setVisibility(bool);
@@ -353,6 +388,7 @@ public class EditorField implements EditorValue {
 				 imgPath = p.getString(name.getText().toString());
 				 }
 			if(type.equals("boolean")) {
+				checkBox.setEnabled(!isDisabled());
 				checkBox.setChecked(p.getString(name.getText().toString()).equals("true"));
 				//CheckBoxUtils.setCheckMarkDrawable(checkBox.getContext(),checkBox,android.R.drawable.checkbox_on_background,android.R.drawable.checkbox_off_background,checkBox.getMeasuredHeight());
 				//CheckBoxUtils.resizeCheckBox(checkBox,checkBox.getMeasuredHeight());
@@ -369,10 +405,14 @@ public class EditorField implements EditorValue {
 						break;
 					}
 				}
+				spinner.setEnabled(!isDisabled());
 				spinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
 					@Override
 					public void onItemSelected(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 						PropertySet.getPropertySet(editor.getSelectedView()).put(getName(),arrayList.get(pos));
+						if(getName().equals("Light Type")||getName().equals("Shape")) ((EditorItem)(editor.getSelectedView())).setProperties(
+						PropertySet.getPropertySet(editor.getSelectedView())
+						);
 						editor.getSaveState();
 					}
 
@@ -391,5 +431,17 @@ public class EditorField implements EditorValue {
 			}
 		} else view.setVisibility(View.GONE);
 		return bool==View.VISIBLE;
+	}
+	
+	public String getItemName(){
+		return PropertySet.getPropertySet(editor.getSelectedView()).getString("name");
+	}
+	
+	public boolean isDisabled(){
+		return editor.getLink()!=null&&disableOnPlayFields.contains(","+getName()+",");
+	}
+	
+	public boolean isMultiSelect(){
+	    return getName().equals("Collision");
 	}
 }

@@ -11,7 +11,7 @@ import com.star4droid.star2d.CodeEditor.MyIndexer;
 import com.star4droid.star2d.Items.Editor;
 import com.star4droid.star2d.evo.R;
 import android.content.Intent;
-import com.star4droid.star2d.star2dApp;
+import com.star4droid.star2d.evo.star2dApp;
 
 public class IndexingService extends Service {
 	

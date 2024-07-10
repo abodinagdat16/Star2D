@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.google.gson.Gson;
 import com.star4droid.star2d.Items.*;
 import com.star4droid.star2d.Utils;
-import com.star4droid.star2d.player.ItemScript;
+import com.star4droid.template.Utils.ItemScript;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -103,6 +103,7 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 	}
 	
 	public static PropertySet<String,Object> getDefualt(View view,String addition){
+		
 		String add=(addition==""?"":(","+Utils.readAssetFile("items/"+addition,view.getContext())));
 		return getFrom(Utils.readAssetFile("items/default.json",view.getContext()).replace("--other--",add).replace("ItemName",((Editor)(view.getParent())).getName(view))).updateMatrixToCurrent();
 	}
@@ -156,11 +157,11 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 		try {
 		return Utils.getFloat(get(key).toString());
 		} catch(Exception exception){
-			Log.e(Utils.error_tag,"getting key error : "+key+", error : \n"+Log.getStackTraceString(exception));
-			if(!printed) {
-			    Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
-			    printed=true;
-			}
+			//Log.e(Utils.error_tag,"getting key error : "+key+", error : \n"+Log.getStackTraceString(exception));
+			//if(!printed) {
+			    //Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
+			    //printed=true;
+			//}
 			
 		}
 		return 0;
@@ -170,11 +171,11 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 		try {
 			return Color.parseColor(getString(key));
 		} catch (Exception ex){
-		    Log.e(Utils.error_tag,"getting key error "+key+" :\n"+Log.getStackTraceString(ex));
-		    if(!printed) {
-			    Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
-			    printed=true;
-			}
+		    // Log.e(Utils.error_tag,"getting key error "+key+" :\n"+Log.getStackTraceString(ex));
+		    // if(!printed) {
+			    // Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
+			    // printed=true;
+			// }
 		}
 			return Color.WHITE;
 	}
@@ -183,11 +184,11 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 		try {
 			return Utils.getInt(get(key).toString());
 		} catch(Exception exception){
-		    Log.e(Utils.error_tag,"getting key error : "+key+" \n"+Log.getStackTraceString(exception));
-		    if(!printed) {
-			    Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
-			    printed=true;
-			}
+		    // Log.e(Utils.error_tag,"getting key error : "+key+" \n"+Log.getStackTraceString(exception));
+		    // if(!printed) {
+			    // Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
+			    // printed=true;
+			// }
 		}
 			return 0;
 	}
@@ -202,11 +203,11 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 		try {
 			return get(key).toString();
 		} catch (Exception exception){
-			Log.e(Utils.error_tag,"getting key error : "+key+", error :"+Log.getStackTraceString(exception));
-			if(!printed) {
-			    Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
-			    printed=true;
-			}
+			// Log.e(Utils.error_tag,"getting key error : "+key+", error :"+Log.getStackTraceString(exception));
+			// if(!printed) {
+			    // Log.e(Utils.error_tag,"missing : "+key+", full :\n"+toString());
+			    // printed=true;
+			// }
 		}
 		return "";
 	}

@@ -2,8 +2,8 @@ package com.star4droid.star2d.CodeEditor;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+//import androidx.annotation.NonNull;
+//import androidx.annotation.Nullable;
 
 import com.star4droid.star2d.Helpers.Project;
 import com.star4droid.star2d.Utils;
@@ -72,7 +72,7 @@ public class EngineLanguage extends EmptyLanguage {
 	}
 	
 	@Override
-	public int getIndentAdvance(@NonNull ContentReference content, int line, int column) {
+	public int getIndentAdvance(/*@NonNull*/ ContentReference content, int line, int column) {
 		return getIndentAdvance(content.getLine(line).substring(0, column));
 	}
 	
@@ -93,13 +93,13 @@ public class EngineLanguage extends EmptyLanguage {
 	}
 	
 	@Override
-	@NonNull
+	///*@NonNull*/
 	public AnalyzeManager getAnalyzeManager() {
 		return mTextMateLanguage.getAnalyzeManager();
 	}
 	
 	@Override
-	public void requireAutoComplete(@NonNull ContentReference content, @NonNull CharPosition position, @NonNull CompletionPublisher publisher, @NonNull Bundle extraArguments) {
+	public void requireAutoComplete(/*@NonNull*/ ContentReference content, /*@NonNull*/ CharPosition position, /*@NonNull*/ CompletionPublisher publisher, /*@NonNull*/ Bundle extraArguments) {
 		//mTextMateLanguage.requireAutoComplete(content, position, publisher, extraArguments);
 		codeCompletionHelper.requireAutoComplete(content,position,publisher);
 	}
@@ -110,16 +110,16 @@ public class EngineLanguage extends EmptyLanguage {
 		private final StringBuilder mStringBuilder = new StringBuilder();
 		
 		@Override
-		public boolean matchesRequirement(@NonNull Content text, @NonNull CharPosition position, @Nullable Styles style) {
+		public boolean matchesRequirement(/*@NonNull*/ Content text, /*@NonNull*/ CharPosition position, /*@Nullable */Styles style) {
 			String line = text.getLineString(position.line);
 			String beforeText = line.substring(0, position.column);
 			
 			return beforeText.matches(ENDWISE_PATTERN);
 		}
 		
-		@NonNull
+		///*@NonNull*/
 		@Override
-		public NewlineHandleResult handleNewline(@NonNull Content text, @NonNull CharPosition position, @Nullable Styles style, int tabSize) {
+		public NewlineHandleResult handleNewline(/*@NonNull*/ Content text, /*@NonNull*/ CharPosition position, /*@Nullable */Styles style, int tabSize) {
 		//result,shift
 			return new NewlineHandleResult("",0);
 		}

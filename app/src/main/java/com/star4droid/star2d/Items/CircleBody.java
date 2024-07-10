@@ -14,6 +14,7 @@ import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.evo.R;
 import com.star4droid.star2d.Utils;
+import java.util.ArrayList;
 
 public class CircleBody extends CircularImageView implements EditorItem {
 	Editor editor;
@@ -35,12 +36,38 @@ public class CircleBody extends CircularImageView implements EditorItem {
 	
 	public void setProperties(PropertySet<String, Object> properties) {
 		propertySet = properties;
+		
+		if(propertySet.getString("Shape").equals("Box")){
+		    if(editor!=null){
+		        try {
+		            editor.removeView(this);
+		            BoxBody boxBody = new BoxBody(editor.getContext());
+            				editor.addView(boxBody);
+            				boxBody.setProperties(properties);
+            				//circleBody.getPropertySet().put("z",getLastZ(editor));
+            				editor.selectView(boxBody);
+            				boxBody.update();
+		        } catch(Exception e){}
+		    }
+		    return;
+        }
+		
 		PropertySet<String,Object> temp = PropertySet.getDefualt(this,"circle.json");
 		for(String s:temp.keySet()){
 			if(!propertySet.containsKey(s)){
 				propertySet.put(s,temp.get(s));
 			}
 		}
+		
+	   ArrayList<String> toDel = new ArrayList<>();
+	   for(String key:propertySet.keySet()){
+			if(!temp.containsKey(key)){
+				toDel.add(key);
+			}
+		}
+		for(String key:toDel)
+	        propertySet.remove(key);
+		
 		update();
 		
 		if (!this.propertySet.getString("image").equals("")) {

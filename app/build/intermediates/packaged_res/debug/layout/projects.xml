@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_height="match_parent"
+     android:layout_width="match_parent"
+     android:id="@+id/main">
+
+    <com.google.android.material.navigation.NavigationView
+         android:layout_height="match_parent"
+         android:layout_width="wrap_content"
+         app:itemVerticalPadding="2dp"
+         app:itemShapeInsetStart="0dp"
+         app:itemShapeInsetEnd="0dp"
+         app:drawerLayoutCornerSize="0dp"
+         app:layout_constraintTop_toTopOf="parent"
+         app:menu="@menu/main_drawer_menu"
+         app:itemHorizontalPadding="12dp"
+         app:layout_constraintStart_toStartOf="parent"
+         style="@style/Widget.App.NavigationView"
+         app:headerLayout="@layout/projects_navigation_header_layout"
+         android:id="@+id/navigation" />
+
+    <LinearLayout
+         android:layout_height="match_parent"
+         android:layout_width="0dp"
+         android:gravity="end"
+         android:padding="18dp"
+         android:orientation="vertical"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@+id/navigation"
+         android:id="@+id/projectsLinear">
+
+        <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:gravity="right"
+             android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:layout_marginEnd="5dp"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:layout_marginStart="5dp"
+                 android:id="@+id/settings"
+                 android:text="@string/settings" />
+
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:layout_marginEnd="5dp"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:layout_marginStart="5dp"
+                 android:id="@+id/restore"
+                 android:text="@string/restore" />
+
+            <com.google.android.material.button.MaterialButton
+                 android:layout_height="wrap_content"
+                 android:layout_width="wrap_content"
+                 android:clickable="true"
+                 android:textColor="@color/text_color"
+                 style="@style/Widget.Material3.Button.OutlinedButton"
+                 android:id="@+id/addProject"
+                 android:text="@string/new_project" />
+
+        </LinearLayout>
+
+        <LinearLayout
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:layout_margin="10dp"
+             android:orientation="vertical"
+             android:layout_weight="1">
+
+            <ListView
+                 android:layout_height="match_parent"
+                 android:layout_width="match_parent"
+                 android:scrollbars="none"
+                 android:divider="@null"
+                 android:choiceMode="none"
+                 android:layout_weight="1"
+                 android:id="@+id/listview1"
+                 android:dividerHeight="0dp">
+
+            </ListView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

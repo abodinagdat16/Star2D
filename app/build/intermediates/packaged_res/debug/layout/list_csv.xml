@@ -1,0 +1,112 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/field_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/imageview1"
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:padding="5dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:fontFamily="@font/titillium_web_semibold"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:layout_marginStart="6dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/delLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginVertical="8dp"
+            android:background="#515151"
+            android:gravity="center_vertical"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/imageview2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:focusable="false"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_delete_black"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/backupLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginVertical="8dp"
+            android:background="#515151"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <ImageView
+                android:id="@+id/imageview3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:focusable="false"
+                android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/backup"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/export"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#515151"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imageview4"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/apk_icon"
+                app:tint="#FFFFB300" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

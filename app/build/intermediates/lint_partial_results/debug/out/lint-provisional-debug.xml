@@ -1,0 +1,2441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.0.0" type="conditional_incidents">
+
+    <incident
+        id="ScopedStorage"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*manifest*0}"
+            line="7"
+            column="36"
+            startOffset="365"
+            endLine="7"
+            endColumn="76"
+            endOffset="405"/>
+        <map>
+            <entry
+                name="maxSdkVersion"
+                int="2147483647"/>
+            <entry
+                name="read"
+                boolean="true"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ScopedStorage"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*manifest*0}"
+            line="8"
+            column="33"
+            startOffset="442"
+            endLine="8"
+            endColumn="74"
+            endOffset="483"/>
+        <map>
+            <entry
+                name="maxSdkVersion"
+                int="2147483647"/>
+            <entry
+                name="read"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LockedOrientationActivity"
+        severity="warning"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices">
+        <fix-attribute
+            description="Set screenOrientation=&quot;fullSensor&quot;"
+            robot="true"
+            independent="true"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="screenOrientation"
+            value="fullSensor"/>
+        <location
+            file="${:app*debug*sourceProvider*0*manifest*0}"
+            line="55"
+            column="3"
+            startOffset="2487"
+            endLine="55"
+            endColumn="39"
+            endOffset="2523"/>
+        <map>
+            <condition library="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LockedOrientationActivity"
+        severity="warning"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices">
+        <fix-attribute
+            description="Set screenOrientation=&quot;fullSensor&quot;"
+            robot="true"
+            independent="true"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="screenOrientation"
+            value="fullSensor"/>
+        <location
+            file="${:app*debug*sourceProvider*0*manifest*0}"
+            line="64"
+            column="4"
+            startOffset="2873"
+            endLine="64"
+            endColumn="40"
+            endOffset="2909"/>
+        <map>
+            <condition library="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/backup.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="43"
+            endOffset="212"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/community.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="43"
+            endOffset="212"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/dots_vertical.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="39"
+            endOffset="208"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/ic_delete.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="43"
+            endOffset="212"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/project.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="43"
+            endOffset="212"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="VectorRaster"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/tutorials.xml"
+            line="7"
+            column="16"
+            startOffset="185"
+            endLine="7"
+            endColumn="43"
+            endOffset="212"/>
+        <map>
+            <entry
+                name="folderVersion"
+                int="-1"/>
+            <entry
+                name="containsFillType"
+                boolean="false"/>
+            <entry
+                name="message"
+                string="Resource references will not work correctly in images generated for this vector icon for API &lt; %1$d; check generated icon to make sure it looks acceptable"/>
+            <entry
+                name="containsGradient"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="FontValidation"
+        severity="warning"
+        message="For `minSdkVersion`=26 only `android:` attributes should be used">
+        <fix-attribute
+            description="Delete fontProviderAuthority"
+            namespace="http://schemas.android.com/apk/res-auto"
+            attribute="fontProviderAuthority"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/font/titillium_web_semibold.xml"
+            line="3"
+            column="9"
+            startOffset="112"
+            endLine="3"
+            endColumn="65"
+            endOffset="168"/>
+        <map>
+            <entry
+                name="unexpected-ns"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;8dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;8dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/anim_csv.xml"
+            line="45"
+            column="4"
+            startOffset="1427"
+            endLine="45"
+            endColumn="30"
+            endOffset="1453"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/animation.xml"
+            line="58"
+            column="7"
+            startOffset="2032"
+            endLine="58"
+            endColumn="33"
+            endOffset="2058"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/animation.xml"
+            line="134"
+            column="5"
+            startOffset="4559"
+            endLine="134"
+            endColumn="30"
+            endOffset="4584"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;3dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;3dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/checkbox_value.xml"
+            line="22"
+            column="3"
+            startOffset="762"
+            endLine="22"
+            endColumn="29"
+            endOffset="788"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/code_editor.xml"
+            line="40"
+            column="5"
+            startOffset="1314"
+            endLine="40"
+            endColumn="31"
+            endOffset="1340"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/code_editor.xml"
+            line="111"
+            column="21"
+            startOffset="3607"
+            endLine="111"
+            endColumn="26"
+            endOffset="3612"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/code_editor.xml"
+            line="126"
+            column="22"
+            startOffset="4063"
+            endLine="126"
+            endColumn="27"
+            endOffset="4068"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;8dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;8dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/code_editor.xml"
+            line="137"
+            column="5"
+            startOffset="4393"
+            endLine="137"
+            endColumn="31"
+            endOffset="4419"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/color_field.xml"
+            line="25"
+            column="1"
+            startOffset="753"
+            endLine="25"
+            endColumn="27"
+            endOffset="779"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/color_value_editor.xml"
+            line="79"
+            column="18"
+            startOffset="2108"
+            endLine="79"
+            endColumn="23"
+            endOffset="2113"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/color_value_editor.xml"
+            line="87"
+            column="2"
+            startOffset="2385"
+            endLine="87"
+            endColumn="10"
+            endOffset="2393"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;8dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;8dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/create_dialog.xml"
+            line="31"
+            column="1"
+            startOffset="937"
+            endLine="31"
+            endColumn="26"
+            endOffset="962"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;8dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;8dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/create_dialog.xml"
+            line="75"
+            column="1"
+            startOffset="2339"
+            endLine="75"
+            endColumn="27"
+            endOffset="2365"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/create_dialog.xml"
+            line="48"
+            column="2"
+            startOffset="1483"
+            endLine="48"
+            endColumn="10"
+            endOffset="1491"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;2dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/debug.xml"
+            line="64"
+            column="1"
+            startOffset="1796"
+            endLine="64"
+            endColumn="27"
+            endOffset="1822"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="59"
+            column="26"
+            startOffset="2443"
+            endLine="59"
+            endColumn="52"
+            endOffset="2469"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="177"
+            column="42"
+            startOffset="7426"
+            endLine="177"
+            endColumn="47"
+            endOffset="7431"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="186"
+            column="46"
+            startOffset="7821"
+            endLine="186"
+            endColumn="67"
+            endOffset="7842"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;2dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="183"
+            column="22"
+            startOffset="7643"
+            endLine="183"
+            endColumn="48"
+            endOffset="7669"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="191"
+            column="39"
+            startOffset="8022"
+            endLine="191"
+            endColumn="44"
+            endOffset="8027"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/editor.xml"
+            line="264"
+            column="22"
+            startOffset="10921"
+            endLine="264"
+            endColumn="48"
+            endOffset="10947"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;3dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;3dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/float_value.xml"
+            line="25"
+            column="1"
+            startOffset="740"
+            endLine="25"
+            endColumn="27"
+            endOffset="766"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`start`&quot; instead of &quot;`left`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/float_value_joint.xml"
+            line="26"
+            column="18"
+            startOffset="742"
+            endLine="26"
+            endColumn="22"
+            endOffset="746"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/float_value_joint.xml"
+            line="22"
+            column="2"
+            startOffset="619"
+            endLine="22"
+            endColumn="10"
+            endOffset="627"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="59"
+            column="5"
+            startOffset="1924"
+            endLine="59"
+            endColumn="30"
+            endOffset="1949"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="72"
+            column="5"
+            startOffset="2361"
+            endLine="72"
+            endColumn="30"
+            endOffset="2386"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="85"
+            column="5"
+            startOffset="2795"
+            endLine="85"
+            endColumn="30"
+            endOffset="2820"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="116"
+            column="5"
+            startOffset="3807"
+            endLine="116"
+            endColumn="30"
+            endOffset="3832"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="129"
+            column="5"
+            startOffset="4244"
+            endLine="129"
+            endColumn="30"
+            endOffset="4269"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="142"
+            column="5"
+            startOffset="4676"
+            endLine="142"
+            endColumn="30"
+            endOffset="4701"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="173"
+            column="5"
+            startOffset="5686"
+            endLine="173"
+            endColumn="30"
+            endOffset="5711"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="186"
+            column="5"
+            startOffset="6123"
+            endLine="186"
+            endColumn="30"
+            endOffset="6148"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="199"
+            column="5"
+            startOffset="6556"
+            endLine="199"
+            endColumn="30"
+            endOffset="6581"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="230"
+            column="5"
+            startOffset="7570"
+            endLine="230"
+            endColumn="30"
+            endOffset="7595"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="243"
+            column="5"
+            startOffset="8008"
+            endLine="243"
+            endColumn="30"
+            endOffset="8033"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/floating_input.xml"
+            line="256"
+            column="5"
+            startOffset="8441"
+            endLine="256"
+            endColumn="30"
+            endOffset="8466"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/for_circles.xml"
+            line="12"
+            column="20"
+            startOffset="421"
+            endLine="12"
+            endColumn="25"
+            endOffset="426"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;6dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;6dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/joint_dialog.xml"
+            line="53"
+            column="3"
+            startOffset="1615"
+            endLine="53"
+            endColumn="28"
+            endOffset="1640"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/joint_dialog.xml"
+            line="26"
+            column="5"
+            startOffset="793"
+            endLine="26"
+            endColumn="13"
+            endOffset="801"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;5dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/list_csv.xml"
+            line="69"
+            column="13"
+            startOffset="2611"
+            endLine="69"
+            endColumn="38"
+            endOffset="2636"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;8dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;8dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/list_csv.xml"
+            line="70"
+            column="13"
+            startOffset="2656"
+            endLine="70"
+            endColumn="39"
+            endOffset="2682"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/node.xml"
+            line="40"
+            column="21"
+            startOffset="1302"
+            endLine="40"
+            endColumn="42"
+            endOffset="1323"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/node.xml"
+            line="52"
+            column="21"
+            startOffset="1671"
+            endLine="52"
+            endColumn="42"
+            endOffset="1692"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;4dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;4dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/nodes_list_csv.xml"
+            line="27"
+            column="5"
+            startOffset="865"
+            endLine="27"
+            endColumn="30"
+            endOffset="890"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/player.xml"
+            line="17"
+            column="25"
+            startOffset="568"
+            endLine="17"
+            endColumn="37"
+            endOffset="580"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/player.xml"
+            line="56"
+            column="25"
+            startOffset="1584"
+            endLine="56"
+            endColumn="37"
+            endOffset="1596"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;5dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/project_csv.xml"
+            line="54"
+            column="1"
+            startOffset="1587"
+            endLine="54"
+            endColumn="26"
+            endOffset="1612"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;5dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/project_csv.xml"
+            line="63"
+            column="1"
+            startOffset="1826"
+            endLine="63"
+            endColumn="26"
+            endOffset="1851"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/projects.xml"
+            line="35"
+            column="21"
+            startOffset="1246"
+            endLine="35"
+            endColumn="26"
+            endOffset="1251"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlSymmetry"
+        severity="warning"
+        message="When you define `paddingStart` you should probably also define `paddingEnd` for right-to-left symmetry">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/projects_navigation_header_layout.xml"
+            line="9"
+            column="5"
+            startOffset="340"
+            endLine="9"
+            endColumn="25"
+            endOffset="360"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;4dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;4dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/properties.xml"
+            line="30"
+            column="3"
+            startOffset="911"
+            endLine="30"
+            endColumn="29"
+            endOffset="937"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;5dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/properties.xml"
+            line="60"
+            column="1"
+            startOffset="1785"
+            endLine="60"
+            endColumn="26"
+            endOffset="1810"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;5dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/section.xml"
+            line="20"
+            column="1"
+            startOffset="622"
+            endLine="20"
+            endColumn="26"
+            endOffset="647"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;2dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/section.xml"
+            line="22"
+            column="1"
+            startOffset="685"
+            endLine="22"
+            endColumn="27"
+            endOffset="711"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlSymmetry"
+        severity="warning"
+        message="When you define `paddingRight` you should probably also define `paddingLeft` for right-to-left symmetry">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/section.xml"
+            line="46"
+            column="1"
+            startOffset="1381"
+            endLine="46"
+            endColumn="21"
+            endOffset="1401"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:paddingRight` with `android:paddingEnd=&quot;4dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:paddingEnd=&quot;4dp&quot;"
+            oldString="paddingRight"
+            replacement="paddingEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/section.xml"
+            line="46"
+            column="1"
+            startOffset="1381"
+            endLine="46"
+            endColumn="21"
+            endOffset="1401"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;6dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;6dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/sections_list_csv.xml"
+            line="28"
+            column="1"
+            startOffset="847"
+            endLine="28"
+            endColumn="26"
+            endOffset="872"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/support_dialog.xml"
+            line="46"
+            column="25"
+            startOffset="2017"
+            endLine="46"
+            endColumn="51"
+            endOffset="2043"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/support_dialog.xml"
+            line="57"
+            column="25"
+            startOffset="2566"
+            endLine="57"
+            endColumn="51"
+            endOffset="2592"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/support_dialog.xml"
+            line="68"
+            column="25"
+            startOffset="3119"
+            endLine="68"
+            endColumn="51"
+            endOffset="3145"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/support_dialog.xml"
+            line="79"
+            column="25"
+            startOffset="3671"
+            endLine="79"
+            endColumn="51"
+            endOffset="3697"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="107"
+            column="1"
+            startOffset="3088"
+            endLine="107"
+            endColumn="26"
+            endOffset="3113"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="120"
+            column="1"
+            startOffset="3457"
+            endLine="120"
+            endColumn="26"
+            endOffset="3482"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="133"
+            column="1"
+            startOffset="3823"
+            endLine="133"
+            endColumn="26"
+            endOffset="3848"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="162"
+            column="1"
+            startOffset="4637"
+            endLine="162"
+            endColumn="26"
+            endOffset="4662"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="175"
+            column="1"
+            startOffset="5006"
+            endLine="175"
+            endColumn="26"
+            endOffset="5031"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="188"
+            column="1"
+            startOffset="5370"
+            endLine="188"
+            endColumn="26"
+            endOffset="5395"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="217"
+            column="1"
+            startOffset="6182"
+            endLine="217"
+            endColumn="26"
+            endOffset="6207"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="230"
+            column="1"
+            startOffset="6552"
+            endLine="230"
+            endColumn="26"
+            endOffset="6577"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="243"
+            column="1"
+            startOffset="6917"
+            endLine="243"
+            endColumn="26"
+            endOffset="6942"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="272"
+            column="1"
+            startOffset="7733"
+            endLine="272"
+            endColumn="26"
+            endOffset="7758"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="285"
+            column="1"
+            startOffset="8103"
+            endLine="285"
+            endColumn="26"
+            endOffset="8128"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="298"
+            column="1"
+            startOffset="8468"
+            endLine="298"
+            endColumn="26"
+            endOffset="8493"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="329"
+            column="1"
+            startOffset="9341"
+            endLine="329"
+            endColumn="26"
+            endOffset="9366"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="342"
+            column="1"
+            startOffset="9711"
+            endLine="342"
+            endColumn="26"
+            endOffset="9736"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="355"
+            column="1"
+            startOffset="10081"
+            endLine="355"
+            endColumn="26"
+            endOffset="10106"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="388"
+            column="1"
+            startOffset="11004"
+            endLine="388"
+            endColumn="26"
+            endOffset="11029"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="401"
+            column="1"
+            startOffset="11377"
+            endLine="401"
+            endColumn="26"
+            endOffset="11402"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="414"
+            column="1"
+            startOffset="11747"
+            endLine="414"
+            endColumn="26"
+            endOffset="11772"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="447"
+            column="1"
+            startOffset="12668"
+            endLine="447"
+            endColumn="26"
+            endOffset="12693"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="460"
+            column="1"
+            startOffset="13047"
+            endLine="460"
+            endColumn="26"
+            endOffset="13072"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginLeft` with `android:layout_marginStart=&quot;2dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginStart=&quot;2dp&quot;"
+            oldString="layout_marginLeft"
+            replacement="layout_marginStart"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/values_edit_dialog.xml"
+            line="473"
+            column="1"
+            startOffset="13417"
+            endLine="473"
+            endColumn="26"
+            endOffset="13442"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`start`&quot; instead of &quot;`left`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/vector2_value.xml"
+            line="40"
+            column="21"
+            startOffset="1192"
+            endLine="40"
+            endColumn="25"
+            endOffset="1196"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`start`&quot; instead of &quot;`left`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/vector2_value.xml"
+            line="59"
+            column="20"
+            startOffset="1753"
+            endLine="59"
+            endColumn="24"
+            endOffset="1757"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/vector2_value.xml"
+            line="35"
+            column="4"
+            startOffset="1036"
+            endLine="35"
+            endColumn="12"
+            endOffset="1044"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LabelFor"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/vector2_value.xml"
+            line="54"
+            column="4"
+            startOffset="1602"
+            endLine="54"
+            endColumn="12"
+            endOffset="1610"/>
+        <map>
+            <entry
+                name="hint"
+                boolean="false"/>
+            <entry
+                name="label"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_dialog.xml"
+            line="14"
+            column="18"
+            startOffset="454"
+            endLine="14"
+            endColumn="23"
+            endOffset="459"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_dialog.xml"
+            line="30"
+            column="1"
+            startOffset="885"
+            endLine="30"
+            endColumn="27"
+            endOffset="911"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_dialog.xml"
+            line="38"
+            column="1"
+            startOffset="1104"
+            endLine="38"
+            endColumn="27"
+            endOffset="1130"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;5dp&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_marginEnd=&quot;5dp&quot;"
+            oldString="layout_marginRight"
+            replacement="layout_marginEnd"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_dialog.xml"
+            line="46"
+            column="1"
+            startOffset="1324"
+            endLine="46"
+            endColumn="27"
+            endOffset="1350"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_scripting.xml"
+            line="19"
+            column="28"
+            startOffset="661"
+            endLine="19"
+            endColumn="33"
+            endOffset="666"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`start`&quot; instead of &quot;`left`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/visual_scripting.xml"
+            line="44"
+            column="28"
+            startOffset="1422"
+            endLine="44"
+            endColumn="39"
+            endOffset="1433"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 27">
+        <fix-replace
+            description="Delete tools:targetApi"
+            replacement="">
+            <range
+                file="${:app*debug*sourceProvider*0*resDir*0}/values/themes.xml"
+                startOffset="2485"
+                endOffset="2508"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="33"
+            column="55"
+            startOffset="2485"
+            endLine="33"
+            endColumn="78"
+            endOffset="2508"/>
+        <map>
+            <condition minGE="fffffffffc000000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 27">
+        <fix-replace
+            description="Delete tools:targetApi"
+            replacement="">
+            <range
+                file="${:app*debug*sourceProvider*0*resDir*0}/values-night/themes.xml"
+                startOffset="2532"
+                endOffset="2555"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/values-night/themes.xml"
+            line="34"
+            column="55"
+            startOffset="2532"
+            endLine="34"
+            endColumn="78"
+            endOffset="2555"/>
+        <map>
+            <condition minGE="fffffffffc000000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`Gravity.START`&quot; instead of &quot;`Gravity.LEFT`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/star4droid/star2d/Adapters/NumbersDialog.java"
+            line="38"
+            column="61"
+            startOffset="1381"
+            endLine="38"
+            endColumn="65"
+            endOffset="1385"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`Gravity.END`&quot; instead of &quot;`Gravity.RIGHT`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/star4droid/star2d/Views/VisualScriptingView.java"
+            line="654"
+            column="61"
+            startOffset="20202"
+            endLine="654"
+            endColumn="66"
+            endOffset="20207"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="UnspecifiedImmutableFlag"
+        severity="error"
+        message="Missing `PendingIntent` mutability flag">
+        <fix-alternatives>
+            <fix-replace
+                description="Add FLAG_IMMUTABLE (preferred)"
+                replacement="PendingIntent.FLAG_ONE_SHOT | android.app.PendingIntent.FLAG_IMMUTABLE"
+                shortenNames="true"
+                reformat="value">
+                <range
+                    file="${:app*debug*sourceProvider*0*javaDir*0}/com/star4droid/star2d/star2dApp.java"
+                    startOffset="1280"
+                    endOffset="1307"/>
+            </fix-replace>
+            <fix-replace
+                description="Add FLAG_MUTABLE"
+                replacement="PendingIntent.FLAG_ONE_SHOT | android.app.PendingIntent.FLAG_MUTABLE"
+                shortenNames="true"
+                reformat="value">
+                <range
+                    file="${:app*debug*sourceProvider*0*javaDir*0}/com/star4droid/star2d/star2dApp.java"
+                    startOffset="1280"
+                    endOffset="1307"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/star4droid/star2d/star2dApp.java"
+            line="30"
+            column="101"
+            startOffset="1280"
+            endLine="30"
+            endColumn="128"
+            endOffset="1307"/>
+    </incident>
+
+</incidents>

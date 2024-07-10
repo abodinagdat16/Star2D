@@ -1,8 +1,10 @@
 package com.star4droid.star2d.ElementDefs;
 
-import com.star4droid.star2d.Helpers.PropertySet;
-import com.star4droid.star2d.player.JoyStickItem;
-import com.star4droid.star2d.player.PlayerView;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.star4droid.template.Items.Joystick;
+import com.star4droid.template.Items.StageImp;
+import com.star4droid.template.Utils.PropertySet;
 import java.lang.reflect.Field;
 
 public class JoyStickDef {
@@ -17,18 +19,25 @@ public class JoyStickDef {
 		
 	}
 	
-	public JoyStickItem build(PlayerView player){
+	public Joystick build(StageImp stageImp){
 		if(name.equals("")) throw new RuntimeException("set name to the item..!!");
 		propertySet = new PropertySet<>();
 		for(Field field:getClass().getFields()){
 			try {
 				field.setAccessible(true);
 				propertySet.put(field.getName().replace("_"," "),field.get(this));
-				} catch(Throwable ex){
+			} catch(Throwable ex){
 				
 			}
 		}
 		
-		return new JoyStickItem(player.getContext(),propertySet,player,elementEvents);
+		return Joystick.create(stageImp,Button_Image,Pad_Image)
+				.setElementEvent(elementEvents)
+				.setPropertySet(propertySet);
+	}
+	
+	public static boolean isExistsFile(String f){
+		if(f.equals("")) return false;
+		return new java.io.File(f).exists();
 	}
 }

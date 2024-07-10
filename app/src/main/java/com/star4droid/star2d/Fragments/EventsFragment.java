@@ -62,7 +62,7 @@ public class EventsFragment extends Fragment {
 		for(int x=0;x<scripts.size();x++){
 			String path=Uri.parse(scripts.get(x)).getLastPathSegment();
 			if(path.endsWith(".java")){
-				push(path.replace(".java",""),R.drawable.code,false,false);
+				push(path.replace(".java",""),R.drawable.code,false,true);
 			}
 		}
 		push("Add Script",R.drawable.ic_add_black,false,true);
@@ -82,6 +82,7 @@ public class EventsFragment extends Fragment {
 		hashMap.put("icon",icon);
 		hashMap.put("body",String.valueOf(body));
 		hashMap.put("script",String.valueOf(script));
+		hashMap.put("delete",((!body)&&script)||name.equals("Body Script"));
 		list.add(hashMap);
 	}
 	
@@ -163,7 +164,7 @@ public class EventsFragment extends Fragment {
 						addScript();
 							else
 								if(_data.get(_position).get("name").equals("Body Script")){
-									if(editor.getSelectedView()==null&&editor.getIndexer().isIndexing()) return;
+									if(editor.getSelectedView()==null||(editor.getIndexer()!=null&&editor.getIndexer().isIndexing())) return;
 									PropertySet ps= PropertySet.getPropertySet(editor.getSelectedView());
 									Intent intent= new Intent();
 									intent.putExtra("path",editor.getProject().getBodyScriptPath(ps.getString("name"),editor.getScene()));
@@ -177,8 +178,8 @@ public class EventsFragment extends Fragment {
 			});
 			_view.setOnLongClickListener(new View.OnLongClickListener(){
 				@Override
-				public boolean onLongClick(View arg0) {
-					if((!list.get(_position).get("script").equals("true"))||!_data.get(_position).get("name").equals("Body Script")) return true;
+				public boolean onLongClick(final View clicked) {
+					if(!_data.get(_position).get("delete").toString().equals("true")) return true;
 					AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 					builder.setTitle("Delete "+list.get(_position).get("name").toString());
 					builder.setMessage("Are You sure ?");
@@ -196,6 +197,7 @@ public class EventsFragment extends Fragment {
 							if(list.get(_position).get("script").equals("true")) {
 								FileUtil.deleteFile(path+".java");
 								FileUtil.deleteFile(path+".visual");
+								Utils.showMessage(clicked.getContext(),"path : "+path+".java");
 								//FileUtil.deleteFile(path+".code");
 								list.remove(_position);
 								recyclerView.getAdapter().notifyDataSetChanged();
@@ -244,10 +246,11 @@ public class EventsFragment extends Fragment {
 								@Override
 								public void onClick(View arg0) {
 								String path = editor.getProject().get("scripts")+nam.getText().toString()+".java";
-										if(FileUtil.isExistFile(path)) {
-											Utils.showMessage(ctx,"There is already script with this name...!");
-											return;
+									if(FileUtil.isExistFile(path)) {
+										Utils.showMessage(ctx,"There is already script with this name...!");
+										return;
 									}
+									if(nam.getText().toString().equals("Body Script")) return;
 									for(char c:nam.getText().toString().toCharArray()){
 										if(!EditorField.allowedChars.contains(String.valueOf(c))){
 											Utils.showMessage(ctx,"use A-Z a-z or _ , Not Allowed Char : "+c);
@@ -261,6 +264,7 @@ public class EventsFragment extends Fragment {
 										hash.put("name",nam.getText().toString());
 										hash.put("body",false);
 										hash.put("script",true);
+										hash.put("delete",true);
 										list.add(list.size()-1,hash);
 										recyclerView.getAdapter().notifyDataSetChanged();
 									}

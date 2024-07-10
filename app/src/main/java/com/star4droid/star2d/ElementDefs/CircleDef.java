@@ -1,8 +1,9 @@
 package com.star4droid.star2d.ElementDefs;
-import com.star4droid.star2d.Helpers.PropertySet;
+
+import com.star4droid.template.Items.CircleItem;
+import com.star4droid.template.Items.StageImp;
+import com.star4droid.template.Utils.PropertySet;
 import java.lang.reflect.Field;
-import com.star4droid.star2d.player.PlayerView;
-import com.star4droid.star2d.player.CircleItem;
 
 public class CircleDef {
 	PropertySet<String,Object> propertySet= new PropertySet<>();
@@ -17,18 +18,18 @@ public class CircleDef {
 		propertySet.put("Collision","");
 	}
 	
-	public CircleItem build(PlayerView player){
+	public CircleItem build(StageImp stageImp){
 		if(name.equals("")) throw new RuntimeException("set name to the item..!!");
 		propertySet = new PropertySet<>();
 		for(Field field:getClass().getFields()){
 			try {
 				field.setAccessible(true);
 				propertySet.put(field.getName().replace("_",""),field.get(this));
-				} catch(Throwable ex){
+			} catch(Throwable ex){
 				
 			}
 		}
 		if(Collider_Radius==Integer.MAX_VALUE) propertySet.put("Collider Radius",radius);
-		return new CircleItem(player.getContext(),propertySet,player,elementEvents);
+		return new CircleItem(stageImp,null).setElementEvent(elementEvents).setPropertySet(propertySet);
 	}
 }

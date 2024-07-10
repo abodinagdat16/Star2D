@@ -3,6 +3,7 @@ package com.star4droid.star2d.Helpers;
 import android.animation.ValueAnimator;
 import android.view.MotionEvent;
 import android.view.View;
+import android.app.AlertDialog;
 
 public class SwipeHelper {
 	public static void useViewToSwipe(final View swipe,final View target,final SwipeType type,final int minValue,final int maxValue){
@@ -28,6 +29,7 @@ public class SwipeHelper {
 						boolean by = ((ey>=0)&&(ey<=vh));
 						if(!(bx&&by)) return false;
 						final boolean left_right = type==SwipeType.LEFT_RIGHT||type==SwipeType.RIGHT_LEFT;
+						//sw = start width, ew = end width
 						int sw = (left_right)?target.getMeasuredWidth():target.getMeasuredHeight(),ew=(left_right)?view.getContext().getResources().getDisplayMetrics().widthPixels/4:view.getContext().getResources().getDisplayMetrics().heightPixels/3;
 						if(left_right&&ew<=target.getMeasuredWidth()){
 							ew=1;
@@ -82,5 +84,96 @@ public class SwipeHelper {
 	public enum SwipeType {
 		LEFT_RIGHT,RIGHT_LEFT,
 		TOP_DOWN,DOWN_TOP
+	}
+	
+	public static void onTouch(View view,OnChangeListener onChangeListener){
+		view.setOnTouchListener(new View.OnTouchListener(){
+			float startX=0,startY=0;
+			@Override
+			public boolean onTouch(View v, MotionEvent motionEvent) {
+				int n = motionEvent.getAction();
+				if(n==MotionEvent.ACTION_DOWN){
+					startX= motionEvent.getRawX();
+					startY= motionEvent.getRawY();
+				}
+				if(n==MotionEvent.ACTION_MOVE){
+					int dx = (int)(motionEvent.getRawX()-startX);
+					int dy = (int)(motionEvent.getRawY()-startY);
+					onChangeListener.onChange(dx,dy);
+					//String path = FileUtil.getPackageDataDir(v.getContext())+"/touch.txt";
+					//FileUtil.writeFile(path,FileUtil.readFile(path)+"\ndx : "+dx+", dy : "+dy);
+					startX = motionEvent.getRawX();
+					startY = motionEvent.getRawY();
+				}
+			    return true;
+			}
+			
+		});
+	}
+	
+	public static void dragDialogBy(View view,AlertDialog dialog){
+		onTouch(view,(dx,dy)->{
+			try {
+				setXY(dialog,getX(dialog)+dx,getY(dialog)+dy);
+			} catch(Exception ex){}
+		});
+	}
+	
+	public static void scaleDialogBy(View view,AlertDialog dialog){
+		onTouch(view,(dx,dy)->{
+			try {
+				setWH(dialog,getW(dialog)+dx,getH(dialog)+dy);
+			} catch(Exception ex){}
+		});
+	}
+	
+	public static void scaleViewBy(View scaler,OnChangeListener onChangeListener,View... targets){
+		onTouch(scaler,(dx,dy)->{
+			for(View target:targets)
+				try {
+					target.getLayoutParams().width+=dx;
+					if(target.getLayoutParams().width<100)
+						target.getLayoutParams().width=100;
+					target.getLayoutParams().height+=dy;
+					if(target.getLayoutParams().height<100)
+						target.getLayoutParams().height=100;
+					target.setLayoutParams(target.getLayoutParams());
+				} catch(Exception ex){}
+				if(onChangeListener!=null) onChangeListener.onChange(dx,dy);
+		});
+	}
+	
+	public static int getX(AlertDialog dialog){
+	  return dialog.getWindow().getAttributes().x;
+    }
+  
+  public static int getY(AlertDialog dialog){
+	  return dialog.getWindow().getAttributes().y;
+  }
+  
+  public static int getW(AlertDialog dialog){
+	  return dialog.getWindow().getDecorView().getMeasuredWidth();
+    }
+  
+  public static int getH(AlertDialog dialog){
+	  return dialog.getWindow().getDecorView().getMeasuredHeight();
+  }
+	
+	public static void setXY(AlertDialog dialog,int x,int y){
+	  dialog.getWindow().getAttributes().x = x;
+	  dialog.getWindow().getAttributes().y = y;
+	  //dialog.getWindow().getWindowManager().updateViewLayout(view,dialog.getWindow().getAttributes());
+	  dialog.getWindow().setAttributes(dialog.getWindow().getAttributes());
+    }
+	
+	public static void setWH(AlertDialog dialog,int width,int height){
+	  dialog.getWindow().getAttributes().width = width;
+	  dialog.getWindow().getAttributes().height = height;
+	  //dialog.getWindow().getWindowManager().updateViewLayout(view,dialog.getWindow().getAttributes());
+	  dialog.getWindow().setAttributes(dialog.getWindow().getAttributes());
+    }
+	
+	public interface OnChangeListener {
+		public void onChange(int xChange,int yChange);
 	}
 }

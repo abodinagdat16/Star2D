@@ -1,0 +1,674 @@
+[
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_add_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_add_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_unlock.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/unlock.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_pause.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/pause.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_lang.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/lang.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_nodes_list_csv.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/nodes_list_csv.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_edit_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/edit_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_properties.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/properties.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_package_variant.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/package_variant.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_pause_yellow.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/pause_yellow.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_for_circles.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/for_circles.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_light.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/light.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_keyboard_close.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/keyboard_close.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_list_csv.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/list_csv.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_back_arrow.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/back_arrow.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_projects_navigation_header_layout.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/projects_navigation_header_layout.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_arrow.9.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/arrow.9.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_give_perm.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/give_perm.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_properties.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/properties.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_field_background.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/field_background.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_float_value_joint.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/float_value_joint.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_values_edit_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/values_edit_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_pause_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_pause_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/menu_body_events_menu.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/menu/body_events_menu.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_grids_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/grids_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_expand_more_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_expand_more_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_community.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/community.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_joint_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/joint_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_color_value_editor.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/color_value_editor.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_floating_input.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/floating_input.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_imgs_style.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/imgs_style.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_anim_csv.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/anim_csv.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_on_update_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/on_update_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_files_manager.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/files_manager.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_check_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/check_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_value_setter.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/value_setter.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_dots_vertical.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/dots_vertical.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_play_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/play_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_play_yellow.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/play_yellow.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_grid_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/grid_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_joystick.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/joystick.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_player.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/player.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_spinner_value.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/spinner_value.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_folder_white.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_folder_white.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_del_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/del_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_add_popup.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/add_popup.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_center_camera.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/center_camera.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_projects.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/projects.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_drop_down_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/drop_down_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_vector2_value.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/vector2_value.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_body_created_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/body_created_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_visual_scripting.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/visual_scripting.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_create_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/create_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_circle.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/circle.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_progress.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/progress.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_wallpaper.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/wallpaper.png"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_loading_screen.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/loading_screen.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_sections_list_csv.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/sections_list_csv.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_projects_stroke.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/projects_stroke.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_checkbox_value.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/checkbox_value.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_checkbox_marked_outline.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/checkbox_marked_outline.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_touch_end_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/touch_end_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_field.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/field.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_mouse.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/mouse.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_settings_layout.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/settings_layout.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_debug.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/debug.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_two_collision.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/two_collision.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_redo.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/redo.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_light_settings.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/light_settings.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_txt_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/txt_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_night.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/night.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_palette_swatch.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/palette_swatch.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_visible.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_visible.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_image_value.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/image_value.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_project_csv.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/project_csv.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_color_field.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/color_field.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_select_style.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/select_style.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_video_background.9.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/video_background.9.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_code_editor.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/code_editor.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_editor_point_picker.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/editor_point_picker.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_button_gradient.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/button_gradient.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_play_arrow_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_play_arrow_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_help_box.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/help_box.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_editor.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/editor.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_loading_screen.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/loading_screen.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/font_titillium_web_semibold.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/font/titillium_web_semibold.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_save_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/save_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_step_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/step_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_drag_control.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/drag_control.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_checkbox.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/checkbox.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_section_field.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/section_field.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_folder_outline.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/folder_outline.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_apk_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/apk_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_box.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/box.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_project.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/project.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_missing_file_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/missing_file_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/font_vt323.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/font/vt323.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/menu_main_drawer_menu.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/menu/main_drawer_menu.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_export_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/export_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_vector_combine.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/vector_combine.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_delete.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_support_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/support_dialog.xml"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_player_dialog.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/player_dialog.xml"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/drawable_play_float.png.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/drawable/play_float.png"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_debug.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/debug.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/xml_backup_rules.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_collision_end_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/collision_end_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_description_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_description_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_move_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/move_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_delete_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_delete_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/menu_menu_files.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/menu/menu_files.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_body_image_card.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/body_image_card.xml"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_editor.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/editor.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_right_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/right_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_tutorials.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/tutorials.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_scale_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/scale_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_checkbox_blank_outline.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/checkbox_blank_outline.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_right_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/right_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/xml_data_extraction_rules.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_theaters_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_theaters_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_choices_popup.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/choices_popup.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/menu_coding_choices_menu.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/menu/coding_choices_menu.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_reset.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/reset.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_visual_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/visual_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_undo.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/undo.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_copy_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/copy_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_float_value.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/float_value.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_invisible.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_invisible.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_file.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/file.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/color_navigation_item_background_color.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/color/navigation_item_background_color.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_launcher_background.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_bottom_info.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/bottom_info.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_section.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/section.xml"
+    },
+    {
+        "merged": "com.star4droid.star2d.evo.app-merged_res-33:/layout_activity_main.xml.flat",
+        "source": "com.star4droid.star2d.evo.app-main-35:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_lock.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/lock.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_clear_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/clear_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_pointer_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/pointer_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_animation.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/animation.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_filter_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_filter_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_sounds_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/sounds_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_mouse_click.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/mouse_click.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_code.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/code.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_folder_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_folder_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_add_light.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/add_light.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_rotate_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/rotate_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/xml_file_paths.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/xml/file_paths.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_touch_start_icon.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/touch_start_icon.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_ic_error_black.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/ic_error_black.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_bg_menu.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/bg_menu.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_backup.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/backup.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_imgs_dialog.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/imgs_dialog.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/color_navigation_item_color.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/color/navigation_item_color.xml"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/drawable_screen_rotation.png.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/drawable/screen_rotation.png"
+    },
+    {
+        "merged": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-merged_res-33:/layout_node.xml.flat",
+        "source": "/data/data/com.itsaky.androidide/files/home/.gradle/daemon/8.4/com.star4droid.star2d.evo.app-main-35:/layout/node.xml"
+    }
+]

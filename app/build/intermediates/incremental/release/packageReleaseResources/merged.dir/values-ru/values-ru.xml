@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_joint">Добавить соединение</string>
+    <string name="alpha">Альфа</string>
+    <string name="animation_pictures">Анимация изображения</string>
+    <string name="box_body">Создать квадрат</string>
+    <string name="cancel">Отмена</string>
+    <string name="choose_color">Выберите цвет</string>
+    <string name="circle_body">Создать круг</string>
+    <string name="click_plus_to_add">Нажмите (+), чтобы добавить файл</string>
+    <string name="code_editor">Редактоо кода</string>
+    <string name="community">Сообщество</string>
+    <string name="contact">Контакт</string>
+    <string name="copy">Копировать</string>
+    <string name="create">Создать</string>
+    <string name="create_project">Создать проект</string>
+    <string name="d8_enable">Включить D8 для файлов jar Dexing</string>
+    <string name="delete">Удалить</string>
+    <string name="download">Скачать</string>
+    <string name="edit">Edit</string>
+    <string name="error_send">Ошибка.... Скопируйте ее и отправьте мне для улучшения приложения.</string>
+    <string name="export">Экспорт</string>
+    <string name="frame_duration">Длительность кадра (мс)</string>
+    <string name="game_name">Имя игры</string>
+    <string name="give_perm">дайте необходимые разрешения...</string>
+    <string name="icon_tap">Иконка (нажмите, чтобы выбрать)</string>
+    <string name="import_text">Импортировать</string>
+    <string name="install">Установить</string>
+    <string name="joystick_item">Создать джостик</string>
+    <string name="lang">ru</string>
+    <string name="language">Язык</string>
+    <string name="new_project">Новый проект</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="ok">Хорошо</string>
+    <string name="package_name">Имя пакета</string>
+    <string name="please_wait">Подождите пожалуйста...</string>
+    <string name="portrait_game">Портретная ориентация</string>
+    <string name="pro_editor_enable">Включить профессиональный редактор кода (Android 8+)</string>
+    <string name="progress_item">Элемент прогресса</string>
+    <string name="projects">Проекты</string>
+    <string name="restore">Восстановить</string>
+    <string name="result">Результат</string>
+    <string name="save">Сохранить</string>
+    <string name="saved">Сохранено...!!!</string>
+    <string name="sections_list">Список разделов</string>
+    <string name="select">Выбрать</string>
+    <string name="settings">Настройки</string>
+    <string name="support">
+  Как вы знаете... для продолжения любого проекта необходима поддержка, этот движок создан с помощью простого разработчика, простых инструментов, ограниченного Интернета, ограниченного времени, поэтому, пожалуйста, помогите мне продолжить его разработку, оставьте хороший обзор на странице. , поделитесь с друзьями и не забудьте финансовую поддержку, даже 1 доллар, просто чтобы придать мне духа и доказать, что вы интересны и хотите поддержать движок.\n спасибо, что прочитали это...≈≈ \n удачного кодирования...
+ </string>
+    <string name="text_item">Создать текст</string>
+    <string name="there_is_no_files">Здесь нет файлов</string>
+    <string name="translation_by">Translation By SlimeLime</string>
+    <string name="translator_url">https://t.me/slimeHomeDeveloping</string>
+    <string name="tutorial">Туториал</string>
+    <string name="tutorials">Туториалы</string>
+    <string name="version_code">Номер сборки</string>
+    <string name="version_name">Версия</string>
+    <string name="your_images">Ваша картинка</string>
+</resources>

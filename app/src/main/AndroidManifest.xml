@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="5"
-	android:versionName="0.0.5Beta">
+    android:versionCode="6"
+	package="com.star4droid.star2d.evo"
+	android:versionName="0.0.6Beta">
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -20,7 +21,7 @@
         android:supportsRtl="false"
 		android:requestLegacyExternalStorage="true"
 		android:usesCleartextTraffic="true"
-		android:name="com.star4droid.star2d.star2dApp"
+		android:name="com.star4droid.star2d.evo.star2dApp"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.star4droid.star2d.MainActivity"

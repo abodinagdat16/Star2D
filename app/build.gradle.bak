@@ -1,0 +1,71 @@
+
+plugins {
+    id 'com.android.application'
+    
+}
+
+android {
+    namespace 'com.star4droid.star2d.evo'
+    compileSdk 34
+    buildToolsVersion '34.0.4'
+    lint {
+    disable 'MissingTranslation', 'TypographyFractions'
+    checkOnly 'NewApi', 'HandlerLeak'
+    abortOnError false
+    checkReleaseBuilds false
+}
+    defaultConfig {
+        applicationId "com.star4droid.star2d.evo"
+        minSdk 26
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+        
+        vectorDrawables { 
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+    
+}
+
+dependencies {
+
+
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation fileTree(dir: 'libs', include: ['*.jar']);
+    implementation fileTree(dir: 'libs', include: ['*.aar']);
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.guava:guava:32.0.1-android'
+    implementation 'com.android.tools:r8:8.1.56'
+    implementation platform("io.github.Rosemoe.sora-editor:bom:0.22.1")
+    implementation "io.github.Rosemoe.sora-editor:editor"
+    implementation "io.github.Rosemoe.sora-editor:language-textmate"
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }
+
+}

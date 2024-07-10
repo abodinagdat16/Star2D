@@ -1,8 +1,8 @@
 package com.star4droid.star2d.ElementDefs;
 
-import com.star4droid.star2d.Helpers.PropertySet;
-import com.star4droid.star2d.player.TextItem;
-import com.star4droid.star2d.player.PlayerView;
+import com.star4droid.template.Items.StageImp;
+import com.star4droid.template.Items.TextItem;
+import com.star4droid.template.Utils.PropertySet;
 import java.lang.reflect.Field;
 
 public class TextDef {
@@ -17,7 +17,7 @@ public class TextDef {
 		
 	}
 	
-	public TextItem build(PlayerView player){
+	public TextItem build(StageImp stageImp){
 		if(name.equals("")) throw new RuntimeException("set name to the item..!!");
 		propertySet = new PropertySet<>();
 		for(Field field:getClass().getFields()){
@@ -28,6 +28,6 @@ public class TextDef {
 				
 			}
 		}
-		return new TextItem(player.getContext(),propertySet,player,elementEvents);
+		return TextItem.create(stageImp,propertySet,elementEvents);
 	}
 }

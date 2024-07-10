@@ -1,0 +1,9 @@
+{
+  "add": [
+    "io.github.Rosemoe.sora-editor:editor:0.22.1",
+    "io.github.Rosemoe.sora-editor:language-textmate:0.22.1"
+  ],
+  "remove": [
+    "io.github.Rosemoe.sora-editor:bom:0.22.1"
+  ]
+}

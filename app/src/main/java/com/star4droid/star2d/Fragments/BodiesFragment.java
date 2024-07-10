@@ -134,7 +134,7 @@ public class BodiesFragment extends Fragment {
           .equals(PropertySet.getPropertySet(editor.getSelectedView()).getString("name")))
         convertView
             .findViewById(R.id.linear)
-            .setBackgroundColor(SurfaceColors.SURFACE_4.getColor(getContext()));
+            .setBackgroundColor(/*SurfaceColors.SURFACE_4.getColor(getContext())*/android.graphics.Color.BLACK);
       ImageView lock = convertView.findViewById(R.id.lock);
       ImageView hide = convertView.findViewById(R.id.hide);
       lock.setImageResource(

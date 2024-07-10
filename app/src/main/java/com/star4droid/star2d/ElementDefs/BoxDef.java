@@ -1,8 +1,8 @@
 package com.star4droid.star2d.ElementDefs;
 
-import com.star4droid.star2d.Helpers.PropertySet;
-import com.star4droid.star2d.player.BoxItem;
-import com.star4droid.star2d.player.PlayerView;
+import com.star4droid.template.Items.BoxBody;
+import com.star4droid.template.Items.StageImp;
+import com.star4droid.template.Utils.PropertySet;
 import java.lang.reflect.Field;
 
 public class BoxDef {
@@ -20,8 +20,8 @@ public class BoxDef {
 		propertySet.put("Collision","");
 	}
 	
-	public BoxItem build(PlayerView player){
-		if(name.equals("")) throw new RuntimeException("set name to the item..!!");
+	public BoxBody build(StageImp stage){
+		if(name.equals("")) throw new RuntimeException("BoxDef error : set name to the item..!!");
 		propertySet = new PropertySet<>();
 		for(Field field:getClass().getFields()){
 			try {
@@ -33,6 +33,6 @@ public class BoxDef {
 		}
 		if(Collider_Width==Integer.MAX_VALUE) propertySet.put("Collider Height",height);
 		if(Collider_Height==Integer.MAX_VALUE) propertySet.put("Collider Width",width);
-		return new BoxItem(player.getContext(),propertySet,player,elementEvents);
+		return new BoxBody(stage,null).setElementEvent(elementEvents).setPropertySet(propertySet);
 	}
 }

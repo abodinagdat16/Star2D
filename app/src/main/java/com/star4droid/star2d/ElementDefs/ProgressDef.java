@@ -1,8 +1,8 @@
 package com.star4droid.star2d.ElementDefs;
 
-import com.star4droid.star2d.Helpers.PropertySet;
-import com.star4droid.star2d.player.ProgressItem;
-import com.star4droid.star2d.player.PlayerView;
+import com.star4droid.template.Items.ProgressItem;
+import com.star4droid.template.Items.StageImp;
+import com.star4droid.template.Utils.PropertySet;
 import java.lang.reflect.Field;
 
 public class ProgressDef {
@@ -18,18 +18,20 @@ public class ProgressDef {
 		
 	}
 	
-	public ProgressItem build(PlayerView player){
+	public ProgressItem build(StageImp stageImp){
 		if(name.equals("")) throw new RuntimeException("set name to the item..!!");
 		propertySet = new PropertySet<>();
 		for(Field field:getClass().getFields()){
 			try {
 				field.setAccessible(true);
 				propertySet.put(field.getName().replace("_"," "),field.get(this));
-				} catch(Throwable ex){
+			} catch(Throwable ex){
 				
 			}
 		}
 		
-		return new ProgressItem(player.getContext(),propertySet,player,elementEvents);
+		return new ProgressItem(stageImp.getUiStage())
+					.setElementEvent(elementEvents)
+					.setPropertySet(propertySet);
 	}
 }

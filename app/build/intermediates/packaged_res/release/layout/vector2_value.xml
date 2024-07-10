@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:gravity="center"
+    android:orientation="vertical">
+	<TextView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:text="Name.."
+		android:gravity="center"
+		
+		android:id="@+id/name"/>
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		>
+		<ImageView
+		android:layout_width="45dp"
+		android:layout_height="match_parent"
+		android:id="@+id/pick"
+		android:scaleType="fitCenter"
+		android:padding="4dp"
+		app:tint="@color/text_color"
+		android:src="@drawable/mouse_click"/>
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			app:prefixText="x : "
+			android:layout_weight="1"
+			android:focusable="true"
+			
+			>
+		<EditText
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:id="@+id/x"
+			android:padding="4dp"
+			android:gravity="left"
+			android:focusable="true"
+			
+			android:layout_margin="5dp"
+			android:inputType="numberDecimal|numberSigned"
+			/>
+		</com.google.android.material.textfield.TextInputLayout>
+		<com.google.android.material.textfield.TextInputLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_weight="1"
+			android:focusable="true"
+			
+			app:prefixText="y : ">
+		<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/y"
+		android:padding="4dp"
+		android:gravity="left"
+		
+		android:inputType="numberDecimal|numberSigned"
+		android:focusable="true"
+		android:layout_margin="5dp"
+		/>
+		</com.google.android.material.textfield.TextInputLayout>
+	</LinearLayout>
+</LinearLayout>

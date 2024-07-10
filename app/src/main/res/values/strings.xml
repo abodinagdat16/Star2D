@@ -61,4 +61,16 @@
 	<string name="translation_by">Powered By Star4Droid</string>
 	<string name="translator_url"></string>
 	<string name="compiler">Compiler</string>
+	<string name="enter_value">Enter Value</string>
+	<string name="point_light">Point Light</string>
+	<string name="directional_light">Directional Light</string>
+	<string name="cone_light">Cone Light</string>
+	<string name="enable_blur" translatable="false">Enable Blur</string>
+	<string name="blur_number" translatable="false">Blur Number</string>
+	<string name="culling" translatable="false">Enable Culling</string>
+	<string name="gamma_correction" translatable="false">Gamma Correction</string>
+	<string name="ambient_light" translatable="false">Ambient Light</string>
+	<string name="use_diffuse_light" translatable="false">Use Diffuse Light</string>
+	<string name="shadows" translatable="false">Enable Shadows</string>
+	<string name="light_settings">Light Settings</string>
 </resources>

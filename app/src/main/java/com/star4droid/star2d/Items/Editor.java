@@ -28,11 +28,13 @@ import com.google.gson.reflect.TypeToken;
 import com.star4droid.star2d.Adapters.EditorField;
 import com.star4droid.star2d.Adapters.Section;
 import com.star4droid.star2d.CodeEditor.MyIndexer;
+import com.star4droid.star2d.Helpers.EditorLink;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Helpers.Project;
 import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.Helpers.ScaleGesture;
 import com.star4droid.star2d.Utils;
+import com.star4droid.template.Items.StageImp;
 import java.util.Comparator;
 import java.util.Collections;
 import java.util.ArrayList;
@@ -53,6 +55,7 @@ public class Editor extends FrameLayout {
 	LinearLayout propertiesLinear;
 	PointPicker picker;
 	private MyIndexer myIndexer;
+	EditorLink editorLink;
 	private static Editor currentEditor;
 	GradientDrawable selectorDrawable = new GradientDrawable() { public GradientDrawable getIns(int a, int b, int c, int d) { this.setCornerRadius(a); this.setStroke(b, c); this.setColor(d); return this; } }.getIns(0, 3, Color.RED, Color.TRANSPARENT);
 	/*
@@ -82,7 +85,11 @@ public class Editor extends FrameLayout {
 	@Override
 	public void onConfigurationChanged(Configuration _configuration) {
 		super.onConfigurationChanged(_configuration);
-		ScreenView = new ScreenSize(this);
+		/*
+		if(ScreenView==null)
+		    ScreenView = new ScreenSize(this);
+		else ScreenView.update();
+		*/
 		updateChilds();
 		updateSelector();
 		
@@ -117,6 +124,12 @@ public class Editor extends FrameLayout {
 			}
 		};
 		currentEditor = this;
+	}
+	
+	public void linkTo(StageImp stageImp){
+		if(stageImp==null)
+			editorLink = null;
+		else editorLink = new EditorLink(this,stageImp);
 	}
 
 	public void setIndexer(MyIndexer indexer){
@@ -164,24 +177,6 @@ public class Editor extends FrameLayout {
 	
 	public enum ORIENATION {
 		LANDSCAPE,PORTRAIT
-	}
-	
-	public String readEvent(String event){
-		return FileUtil.readFile(getEventPath(event)+".java")/*+FileUtil.readFile(getEventPath(event)+".code")*/;
-	}
-	
-	public String readEvent(String event,String body){
-		String result= FileUtil.readFile(getEventPath(event,body)+".java")+FileUtil.readFile(getEventPath(event,body)+".code");
-		//Log.e("eeeee","empty "+getEventPath(event,body));
-		return result;
-	}
-	
-	public String getEventPath(String event){
-		return project.getEventPath(scene,"",event);
-	}
-	
-	public String getEventPath(String event,String body){
-		return project.getEventPath(scene,body,event);
 	}
 	
 	public ORIENATION getOrienation(){
@@ -452,7 +447,8 @@ public class Editor extends FrameLayout {
 			if (Utils.isEditorItem(getChildAt(x)))
 				Utils.update(getChildAt(x));
 	}
-		
+	
+	@Override	
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		if(ScreenView==null) ScreenView = new ScreenSize(this);
@@ -510,18 +506,11 @@ public class Editor extends FrameLayout {
 			canvas.drawPath(path, gridPaint);
 		canvas.drawPath(boxPath, paint);
 	}
-
-	//Useless
-	public static float[] rotate(double angle, float dx, float dy) {
-		double ep = 1e-10;
-		double x = dx * Math.cos(angle) - dy * Math.sin(angle);
-		double y = dx * Math.sin(angle) + dy * Math.cos(angle);
-		//because of some reasons, i used this way..., if you want more details
-		//try see the result without it like cos(90) , it's wrong result
-		//search why that ?
-		return new float[] { Math.abs(x) < ep ? 0 : (float) x, Math.abs(y) < ep ? 0 : (float) y };
+	
+	public EditorLink getLink(){
+		return editorLink;
 	}
-
+	
 	private TOUCHMODE touch_mode = TOUCHMODE.GRID;
 
 	public void setTouchMode(TOUCHMODE mode) {
@@ -589,6 +578,7 @@ public class Editor extends FrameLayout {
 				propertySet.put("x", propertySet.getFloat("x") + (dx * DeltaScale * (1 / scale)));
 				propertySet.put("y", propertySet.getFloat("y") + (dy * DeltaScale * (1 / scale)));
 				propertySet.updateMatrixToCurrent();
+				if(editorLink!=null) editorLink.positionChange(propertySet);
 			} else if (touch_mode == TOUCHMODE.SCALE&&!lockedItem) {
 				if (propertySet.containsKey("width")) {
 					//float[] rotation = rotate(Math.toRadians(selectedView.getRotation()),dx,dy);
@@ -603,11 +593,13 @@ public class Editor extends FrameLayout {
 					propertySet.put("height", Math.max(y, 1f));
 					if(propertySet.containsKey("Collider Width")) propertySet.put("Collider Width", Math.max(1f,cx));
 					if(propertySet.containsKey("Collider Height")) propertySet.put("Collider Height", Math.max(1f,cy));
+					if(editorLink!=null) editorLink.sizeChanged(propertySet);
 				} else if(propertySet.containsKey("radius")){
 					float rad = propertySet.getFloat("radius") + (dx * DeltaScale * (1 / scale));
 					float cRad = propertySet.getFloat("Collider Radius") + (dx * DeltaScale * (1 / scale));
 					propertySet.put("radius", Math.max(rad, 1f));
 					propertySet.put("Collider Radius", Math.max(cRad,1f));
+					if(editorLink!=null) editorLink.sizeChanged(propertySet);
 				}
 			} else if (touch_mode == TOUCHMODE.ROTATE&&!lockedItem) {
 				float centerX = selectedView.getX() + selectedView.getMeasuredWidth() / 2.0f,
@@ -623,6 +615,7 @@ public class Editor extends FrameLayout {
 				while (angle < 0)
 					angle += 360;
 				propertySet.put("rotation", angle);
+				if(editorLink!=null) editorLink.positionChange(propertySet);
 				propertySet.updateMatrixToCurrent();
 			} else if (touch_mode == TOUCHMODE.GRID||lockedItem) {
 				moveX += dx * DeltaScale * (1 / scale);
@@ -770,6 +763,8 @@ public class Editor extends FrameLayout {
 					break;
 					case "JOYSTICK":
 					item = new JoyStickItem(getContext());
+					case "LIGHT":
+					item = new LightItem(getContext());
 					break;
 				}
 				

@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+	<ImageView
+		android:layout_height="35dp"
+		android:layout_width="35dp"
+		android:src="@drawable/pointer_icon"
+		android:scaleType="fitCenter"/>
+	<ImageView
+	android:layout_height="35dp"
+	android:layout_width="35dp"
+	android:id="@+id/pick"
+	android:src="@drawable/check_icon"
+	app:tint="@color/images_tint"
+	android:scaleType="fitCenter"/>
+</LinearLayout>

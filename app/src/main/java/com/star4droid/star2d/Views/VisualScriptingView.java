@@ -68,7 +68,7 @@ public class VisualScriptingView extends LinearLayout {
   private final boolean isArabic = false;
   private final ArrayList<HashMap<String, Object>> imgsLm = new ArrayList<>();
   private final ArrayList<String> interals = new ArrayList<>();
-  public String imgsPath = "", hintsLst = "", json_path = "", code_path = "";
+  public String imgsPath = "", hintsLst = "", json_path = "", code_path = "",project="";
   float scale = 1;
   Path temp_path = new Path();
   Circle sc;
@@ -89,12 +89,13 @@ public class VisualScriptingView extends LinearLayout {
   private SharedPreferences save_sh;
   private AlertDialog cd;
 
-  public VisualScriptingView(Context context, String cp, String jp, String hnt, String gs) {
+  public VisualScriptingView(Context context, String codePath, String jsonPath, String hnt, String ppath) {
     super(context);
-    code_path = cp;
-    json_path = jp;
+    project = ppath;
+    code_path = codePath;
+    json_path = jsonPath;
     hintsLst = hnt;
-    imgsPath = gs;
+    imgsPath = project+"/images/";
     final androidx.appcompat.app.AlertDialog[] dialog = {null};
     new Handler(Looper.getMainLooper())
         .post(
@@ -125,7 +126,9 @@ public class VisualScriptingView extends LinearLayout {
   public VisualScriptingView(Context context, AttributeSet set, int i) {
     super(context, set, i);
   }
-
+  public String getString(int id){
+    return getContext().getString(id);
+  }
   public void onDone(VisualScriptingView view) {}
 
   public void setStrings(String... s) {
@@ -768,70 +771,66 @@ public class VisualScriptingView extends LinearLayout {
       _view.setLayoutParams(new FrameLayout.LayoutParams((int) (_width), (int) (_height)));
     }
   }
-
-  public void _popupFor(final Node _node) {
-    if (_node.left_circle.getParent() != null) {
-      View popV = getLayoutInflater().inflate(R.layout.choices_popup, null);
-      final PopupWindow pop =
-          new PopupWindow(
-              popV, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-      final LinearLayout copy = popV.findViewById(R.id.copy);
-      final LinearLayout delete = popV.findViewById(R.id.delete);
-      pop.setAnimationStyle(android.R.style.Animation_Dialog);
-      pop.showAsDropDown(_node, 0, 0);
-      pop.setBackgroundDrawable(new BitmapDrawable());
-      copy.setOnClickListener(
-          new View.OnClickListener() {
+  
+  public void deleteNode(Node _node){
+      frame.removeView(_node);
+      frame.removeView(_node.right_circle);
+      frame.removeView(_node.left_circle);
+      frame.removeView(_node.true_circle);
+      frame.removeView(_node.false_circle);
+      _node.cpath.reset();
+      _node.path.reset();
+      for (int i = 0; i < frame.getChildCount(); i++) {
+        View view = frame.getChildAt(i);
+        if (view instanceof Node) {
+          ((Node) view).updatePos();
+          view.invalidate();
+        }
+      }
+      frame.invalidate();
+  }
+  
+  public void copyNode(Node _node){
+      final Node nd = new Node(getContext());
+      nd.loadFrom(_node.getMap());
+      frame.addView(nd);
+      java.util.Timer tm = new java.util.Timer();
+      java.util.TimerTask tsk =
+          new TimerTask() {
             @Override
-            public void onClick(View _view) {
-              pop.dismiss();
-              final Node nd = new Node(getContext());
-              nd.loadFrom(_node.getMap());
-              frame.addView(nd);
-              java.util.Timer tm = new java.util.Timer();
-              java.util.TimerTask tsk =
-                  new TimerTask() {
+            public void run() {
+              new Handler(Looper.getMainLooper())
+                  .post(
+                      new Runnable() {
+                        @Override
+                        public void run() {
+                          nd.update();
+                          nd.updatePos();
+                          nd.invalidate();
+                          frame.invalidate();
+                        }
+                      });
+            }
+          };
+      tm.schedule(tsk, (150));
+  }
+  
+  public void _popupFor(final Node _node){
+        PopupMenu popupMenu = new PopupMenu(getContext(), _node);
+        popupMenu.getMenu().add(0, 0,0,getString(R.string.delete)).setIcon(R.drawable.ic_delete);
+        popupMenu.getMenu().add(0,1,1,getString(R.string.copy)).setIcon(R.drawable.copy_icon);
+    
+        popupMenu.setOnMenuItemClickListener(
+                new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public void run() {
-                      new Handler(Looper.getMainLooper())
-                          .post(
-                              new Runnable() {
-                                @Override
-                                public void run() {
-                                  nd.update();
-                                  nd.updatePos();
-                                  nd.invalidate();
-                                  frame.invalidate();
-                                }
-                              });
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getItemId()==1)
+                            copyNode(_node);
+                                else deleteNode(_node);
+                        return true;
                     }
-                  };
-              tm.schedule(tsk, (150));
-            }
-          });
-      delete.setOnClickListener(
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View _view) {
-              frame.removeView(_node);
-              frame.removeView(_node.right_circle);
-              frame.removeView(_node.left_circle);
-              frame.removeView(_node.true_circle);
-              frame.removeView(_node.false_circle);
-              pop.dismiss();
-              _node.cpath.reset();
-              _node.path.reset();
-              for (int i = 0; i < frame.getChildCount(); i++) {
-                View view = frame.getChildAt(i);
-                if (view instanceof Node) {
-                  ((Node) view).updatePos();
-                  view.invalidate();
-                }
-              }
-              frame.invalidate();
-            }
-          });
-    }
+                });
+        popupMenu.show();
   }
 
   public double _toNumber(final String s) {
@@ -907,7 +906,11 @@ public class VisualScriptingView extends LinearLayout {
       dl.create().show();
     }
   }
-
+  String[] imagesList = new String[]{};
+  public String[] getImagesList(){
+    return imagesList;
+  }
+  
   public void _refreshList() {
     ArrayList<String> arr = new ArrayList<>();
     StringBuilder p = new StringBuilder();
@@ -921,12 +924,14 @@ public class VisualScriptingView extends LinearLayout {
         imgsLm.add(_item);
       }
     }
+    imagesList = new String[arr.size()];
+    int xx =0;
     for (String s : arr) {
-      {
         HashMap<String, Object> _item = new HashMap<>();
         _item.put("file", s);
         imgsLm.add(_item);
-      }
+        imagesList[xx] = s;
+        xx++;
     }
     listview1.setAdapter(new Listview1Adapter(imgsLm));
   }
@@ -1527,7 +1532,7 @@ public class VisualScriptingView extends LinearLayout {
   class ValueSetter extends LinearLayout {
     private final TextView value;
     private final TextView name;
-    private String type;
+    private String type="";
     private String mainName;    
     public LinearLayout linear;
     public Node node;
@@ -1606,8 +1611,11 @@ public class VisualScriptingView extends LinearLayout {
                   if (dist <= Utils.convertPixelsToDp(getApplicationContext(), (20))) {
                     if (type != null && type != "") {
                       String[] menuItems=provideListForType(type);
+                      if(menuItems==null) {
+                      edit();
+                        return true;
+                      }
                       showPopupMenu(value, menuItems);
-
                     } else edit();
                   }
                   break;
@@ -1718,43 +1726,50 @@ public class VisualScriptingView extends LinearLayout {
     }
 
     private void showPopupMenu(View v, String[] menuItems) {
-    PopupMenu popupMenu = new PopupMenu(getContext(), v);
-
-    for (int i = 0; i < menuItems.length; i++) {
-        popupMenu.getMenu().add(0, i, i, menuItems[i]);
+        PopupMenu popupMenu = new PopupMenu(getContext(), v);
+        
+        popupMenu.getMenu().add(0,0,0,getString(R.string.enter_value)).setIcon(R.drawable.edit_icon);
+        for (int i = 1; i < menuItems.length+1; i++) {
+            popupMenu.getMenu().add(0, i, i, menuItems[i-1]);
+        }
+    
+        popupMenu.setOnMenuItemClickListener(
+                new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getItemId()==0){
+                            edit();
+                        } else {
+                           value.setText(menuItems[item.getItemId()-1]);
+                           setValue(menuItems[item.getItemId()-1]);
+                        }
+                        return true;
+                    }
+                });
+        popupMenu.show();
     }
-
-    popupMenu.setOnMenuItemClickListener(
-            new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    value.setText(menuItems[item.getItemId()]);
-                    setValue(menuItems[item.getItemId()]);
-                    return true;
-                }
-            });
-    popupMenu.show();
-}
 
 
     public void edit() {
-      if (getName().equals("image")) {
-        interals.clear();
-        _refreshList();
-        try {
-          ((ViewGroup) listview1.getParent()).removeView(listview1);
-        } catch (Exception e) {
-
-        }
-        cd =
-            new AlertDialog.Builder(
-                    getContext(), android.R.style.Theme_DeviceDefault_NoActionBar_Fullscreen)
-                .create();
-        cd.setView(listview1);
-        Utils.hideSystemUi(cd.getWindow());
-        cd.show();
-        targetText = value;
-        return;
+      if (getType().equals("image")) {
+            interals.clear();
+            _refreshList();
+            if(imgsLm.size()!=0){
+                try {
+                  ((ViewGroup) listview1.getParent()).removeView(listview1);
+                } catch (Exception e) {
+        
+                }
+                cd =
+                    new AlertDialog.Builder(
+                            getContext(), android.R.style.Theme_DeviceDefault_NoActionBar_Fullscreen)
+                        .create();
+                cd.setView(listview1);
+                Utils.hideSystemUi(cd.getWindow());
+                cd.show();
+                targetText = value;
+                return;
+          }
       }
       final AlertDialog cd =
           new AlertDialog.Builder(
@@ -2162,21 +2177,39 @@ public class VisualScriptingView extends LinearLayout {
   }
 
   private String[] getBodies() {
-    ArrayList<String> list = new ArrayList<>();
-    for (String s : hintsL) {
-        if("- Items".equals(s))    continue ;
-        if (s.startsWith("- ")) { 
-            break;
-        } else {
-            list.add(s);
+        ArrayList<String> list = new ArrayList<>();
+        for (String s : hintsL) {
+            if("- Items".equals(s))    continue ;
+            if (s.startsWith("- ")) { 
+                break;
+            } else {
+                list.add(s);
+            }
         }
+        return list.toArray(new String[0]);
     }
-    return list.toArray(new String[0]);
-}
+    
+    private String[] getList(String target,boolean lastSegment){
+        ArrayList<String> files = new ArrayList<>();
+        FileUtil.listDir(project+"/"+target,files);
+        if(lastSegment)
+            for(int pos=0;pos<files.size();pos++){
+    		    files.set(pos,Uri.parse(files.get(pos)).getLastPathSegment());
+    		}
+        return files.toArray(new String[0]);
+    }
     
     private String[] provideListForType(String type){
         switch(type){
+            case "image":
+                // _refreshList();
+                // return imagesList;
+                return null;
             case "Body": return getBodies();
+            case "scene": return getList("scenes",true);
+            case "sound": return getList("sounds",true);
+            case "animation": return getList("anims",true);
+            case "file": return getList("files",true);
             case "Boolean" : return new String[] {"true","false"};
             default: return null;
         }

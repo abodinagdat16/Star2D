@@ -71,7 +71,7 @@ public class ProjectsActivity extends AppCompatActivity {
 
         initVars();
 
-        if (checkPerms(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_MEDIA_LOCATION))
+        if (checkPerms(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE/*, Manifest.permission.ACCESS_MEDIA_LOCATION*/))
             init();
 
         findViewById(R.id.settings).setOnClickListener(v -> {

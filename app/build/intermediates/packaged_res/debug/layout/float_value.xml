@@ -1,0 +1,63 @@
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:gravity="center_vertical"
+	android:padding="3dp"
+	>
+<TextView
+android:id="@+id/name"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="2dp"
+android:singleLine="true"
+android:layout_weight="1"
+android:gravity="center_horizontal|center_vertical"
+android:text="TextView"
+android:textSize="8sp"
+android:layout_marginRight="3dp"
+android:textStyle="bold"
+android:textColor="@color/text_color"
+android:background="@drawable/section_field"
+ />
+ <LinearLayout
+	 android:layout_height="wrap_content"
+	 android:layout_width="match_parent"
+	 android:orientation="horizontal"
+	 android:layout_weight="1"
+	 >
+<TextView
+android:id="@+id/value"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="1"
+android:padding="2dp"
+android:singleLine="true"
+android:gravity="center_horizontal|center_vertical"
+android:text="TextView"
+android:textSize="8sp"
+android:textStyle="bold"
+android:textColor="@color/text_color"
+android:hint="Nothing"
+android:textColorHint="#FFFFFF"
+android:background="@drawable/section_field"
+ />
+ <ImageView
+	 android:layout_width="25dp"
+	 android:layout_height="match_parent"
+	 android:src="@drawable/drag_control"
+	 android:padding="2dp"
+	 app:tint="@color/text_color"
+	 android:id="@+id/control"
+	 android:visibility="invisible"
+	 />
+ </LinearLayout>
+ </LinearLayout>
+</LinearLayout>

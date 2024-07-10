@@ -26,10 +26,12 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.badlogic.gdx.backends.android.AndroidFragmentApplication;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.star4droid.star2d.Activities.FilesManagerActivity;
 import com.star4droid.star2d.Adapters.AddPopup;
+import com.star4droid.star2d.Adapters.AddLightPopup;
 import com.star4droid.star2d.Adapters.ColourSelector;
 import com.star4droid.star2d.Adapters.EditorField;
 import com.star4droid.star2d.Adapters.MissingFileDialog;
@@ -57,9 +59,9 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EditorActivity extends AppCompatActivity {
+public class EditorActivity extends AppCompatActivity implements AndroidFragmentApplication.Callbacks {
     public String ADD_SCENE = "Add Scene";
-    ImageView play, grid, move, rotate, scale, rotateScreen, openFiles, center_camera,
+    ImageView play, playFloat, grid, move, rotate, scale, rotateScreen, openFiles, center_camera,
             addBody, deleteBody, save, deleteScene, undo, redo, sceneColor, lock, copyScene, renameScene;
     Spinner scenesSpinner, bodiesSpinner;
     Editor editor;
@@ -71,6 +73,7 @@ public class EditorActivity extends AppCompatActivity {
     String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_";
     ArrayList<String> bodiesList;
     BodiesFragment bodiesFragment;
+	android.app.AlertDialog playerDialog;
 
     public static ArrayAdapter getSpinnerAdapter(ArrayList<String> arrayList, Context context, final Spinner spinner) {
         return new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, arrayList) {
@@ -141,6 +144,8 @@ public class EditorActivity extends AppCompatActivity {
         editor.setProject(project);
         editor.setScene("scene1");
         editor.loadFromPath();
+		editor.setOrienation(editor.getConfig().getString("or").equals("")?Editor.ORIENATION.PORTRAIT:Editor.ORIENATION.LANDSCAPE);
+		
         indexFiles();
         refreshBodies();
         new Timer().schedule(new TimerTask() {
@@ -159,6 +164,13 @@ public class EditorActivity extends AppCompatActivity {
         setupSwitchModeButton(grid, Editor.TOUCHMODE.GRID);
         setupSwitchModeButton(rotate, Editor.TOUCHMODE.ROTATE);
         updateScenes();
+		
+        findViewById(R.id.add_light).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View add_btn) {
+                AddLightPopup.showFor(EditorActivity.this, add_btn, editor);
+            }
+        });
         addBody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -322,6 +334,31 @@ public class EditorActivity extends AppCompatActivity {
         });
 
         play.setOnClickListener(view -> {
+            compileAndRun(false);
+        });
+        
+        playFloat.setOnClickListener(v->{
+			compileAndRun(true);
+		});
+        
+        findViewById(R.id.right_swipe).setOnClickListener(view -> {
+        });
+        bodiesFragment = new BodiesFragment(editor);
+        SwipeHelper.useViewToSwipe(findViewById(R.id.right_swipe), right_linear, SwipeHelper.SwipeType.RIGHT_LEFT, 1, Integer.MAX_VALUE);
+        properties = new Properties(this);
+        propsLinear.addView(properties.getView());
+        properties.getViewPager().setAdapter(new FragmentAdapter(this, editor));
+        right_viewPager.setAdapter(new RightFragmentAdapter(this, editor));
+        //disable viewpager touch because we don't need it currently...
+        right_viewPager.requestDisallowInterceptTouchEvent(true);
+        SPNote.show(this);
+    }
+    
+    private void compileAndRun(boolean window){
+        if(playerDialog!=null){
+                exit();
+                return;
+            }
             if (!FileUtil.isExistFile(FileUtil.getPackageDataDir(EditorActivity.this) + "/bin/cp.jar")) {
                 MissingFileDialog.showFor(EditorActivity.this, MissingFileDialog.CP);
                 return;
@@ -354,14 +391,27 @@ public class EditorActivity extends AppCompatActivity {
 
                         @Override
                         public void onSuccess(String message) {
-                            dialog[0] = Utils.updateMessage(dialog[0], message, true);
-                            FileUtil.writeFile(project.getDex(editor.getScene()), "");
-                            FileUtil.moveFile(project.getPath() + "/java/classes.dex", project.getDex(editor.getScene()));
+                            //dialog[0] = Utils.updateMessage(dialog[0], message, true);
+                            if(dialog[0]!=null&&dialog[0].isShowing())
+                                dialog[0].dismiss();
+                            FileUtil.writeFile(project.getDex(), "");
+                            FileUtil.moveFile(project.getPath() + "/java/classes.dex", project.getDex());
+                            if(window){
+                                playerDialog = PlayerDialog.showFor(EditorActivity.this,project.getPath(),editor.getScene());
+								playFloat.setVisibility(View.INVISIBLE);
+								//play.setVisibilty(View.INVISIBLE);
+								scenesSpinner.setEnabled(false);
+								switchFor(false,scenesSpinner,copyScene,renameScene,addBody,deleteBody,findViewById(R.id.add_light));
+								play.setImageResource(R.drawable.ic_pause_black);
+								editor.updateProperties();
+                                return;
+                            }
                             Intent i = new Intent();
                             if (editor.getOrienation() == Editor.ORIENATION.PORTRAIT) {
                                 i.setClass(EditorActivity.this, PortraitPlayer.class);
                             } else i.setClass(EditorActivity.this, LandscapePlayer.class);
                             i.putExtra("path", project.getPath());
+							i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.putExtra("scene", editor.getScene());
                             startActivity(i);
                             //dialog.dismiss();
@@ -370,22 +420,9 @@ public class EditorActivity extends AppCompatActivity {
                     });
                     compile.start();
                 }
-            });
-
-        });
-        findViewById(R.id.right_swipe).setOnClickListener(view -> {
-        });
-        bodiesFragment = new BodiesFragment(editor);
-        SwipeHelper.useViewToSwipe(findViewById(R.id.right_swipe), right_linear, SwipeHelper.SwipeType.RIGHT_LEFT, 1, Integer.MAX_VALUE);
-        properties = new Properties(this);
-        propsLinear.addView(properties.getView());
-        properties.getViewPager().setAdapter(new FragmentAdapter(this, editor));
-        right_viewPager.setAdapter(new RightFragmentAdapter(this, editor));
-        //disable viewpager touch because we don't need it currently...
-        right_viewPager.requestDisallowInterceptTouchEvent(true);
-        SPNote.show(this);
+                });
     }
-
+    
     public void updateUndoRedo() {
         undo.setImageTintList(ColorStateList.valueOf(editor.canUndo() ? getColor(R.color.sim_yellow) : getColor(R.color.unselect_color)));
         redo.setImageTintList(ColorStateList.valueOf(editor.canRedo() ? getColor(R.color.sim_yellow) : getColor(R.color.unselect_color)));
@@ -507,6 +544,7 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     public void init() {
+        playFloat = findViewById(R.id.play_float);
         addBody = findViewById(R.id.addBody);
         play = findViewById(R.id.play);
         grid = findViewById(R.id.grid);
@@ -654,4 +692,34 @@ public class EditorActivity extends AppCompatActivity {
         }
 
     }
+    
+    private void switchFor(boolean enable,View... views){
+        for(View v:views)
+            v.setEnabled(enable);
+    }
+    
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if(editor!=null)
+			editor.setToCurrentEditor();
+	}
+	@Override
+	public void exit() {
+	    if(editor.getLink()!=null&&editor.getLink().getStage()!=null)
+	        editor.getLink().getStage().pause();
+		editor.linkTo(null);
+		editor.updateProperties();
+		if(playerDialog!=null){
+			if(playerDialog.isShowing())
+				playerDialog.dismiss();
+			playerDialog = null;
+			scenesSpinner.setEnabled(true);
+			playFloat.setVisibility(View.VISIBLE);
+			play.setImageResource(R.drawable.play_icon);
+			//play.setVisibilty(View.VISIBLE);
+			switchFor(true,scenesSpinner,copyScene,renameScene,addBody,deleteBody,findViewById(R.id.add_light));
+		}
+	}
+	
 }

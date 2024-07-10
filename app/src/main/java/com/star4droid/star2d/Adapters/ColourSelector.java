@@ -17,8 +17,8 @@ import com.star4droid.star2d.evo.R;
 import com.star4droid.star2d.Utils;
 
 public class ColourSelector {
-	public static void show(final Editor editor,final String key){
-		Context context= editor.getContext();
+	
+	public static void show(Context context,SelectListener listener){
 		View view = LayoutInflater.from(context).inflate(R.layout.color_value_editor,null);
 		final AlertDialog dialog = new AlertDialog.Builder(context).create();
 		dialog.setView(view);
@@ -82,20 +82,34 @@ public class ColourSelector {
 		view.findViewById(R.id.select).setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v){
+				if(listener!=null) {
+					if(listener.OnSelect(resultText.getText().toString()))
+						dialog.dismiss();
+				}
+			}
+		});
+		//Utils.hideSystemUi(dialog.getWindow());
+		dialog.show();
+	}
+	
+	public static void show(final Editor editor,final String key){
+		show(editor.getContext(),(hex)->{
 				if(key.equals("sceneColor")){
-					editor.setSceneColor(resultText.getText().toString());
-					dialog.dismiss();
-					return;
+					editor.setSceneColor(hex);
+					return true;
 				}
 				PropertySet<String,Object> p = PropertySet.getPropertySet(editor.getSelectedView());
-				p.put(key,resultText.getText().toString());
+				p.put(key,hex);
 				((EditorItem)(editor.getSelectedView())).setProperties(p);
 				editor.updateProperties();
 				editor.getSaveState();
-				dialog.dismiss();
-			}
+				if(editor.getLink()!=null)
+					editor.getLink().update(p);
+				return true;
 		});
-		Utils.hideSystemUi(dialog.getWindow());
-		dialog.show();
+	}
+	
+	public interface SelectListener {
+		public boolean OnSelect(String hex);
 	}
 }

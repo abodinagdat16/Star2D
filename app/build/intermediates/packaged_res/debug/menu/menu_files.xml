@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/select_files"
+            android:checkable="true"
+            android:icon="@drawable/file"
+            android:title="Files" />
+        <item
+            android:id="@+id/select_images"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_filter_black"
+            android:title="Images" />
+        <item
+            android:id="@+id/select_anims"
+            android:checkable="true"
+            android:icon="@drawable/ic_theaters_black"
+            android:title="Anims" />
+
+        <item
+            android:id="@+id/select_sounds"
+            android:checkable="true"
+            android:icon="@drawable/sounds_icon"
+            android:title="Sounds" />
+    </group>
+</menu>

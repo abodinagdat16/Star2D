@@ -63,4 +63,6 @@
 	السقوط لا يعني الفشل ، بل يعني انه اللعبه اشتغلت :)
 	</string>
 	<string name="compiler">المترجم</string>
+	<string name="enter_value">ادخل قيمه</string>
+	<string name="light_settings">إعدادات الضوء</string>
 </resources>

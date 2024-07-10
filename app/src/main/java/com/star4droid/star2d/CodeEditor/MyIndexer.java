@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableMap;
 import com.star4droid.star2d.Helpers.FileUtil;
 import com.star4droid.star2d.Items.Editor;
 import com.star4droid.star2d.Utils;
+import com.star4droid.star2d.Helpers.EngineSettings;
 import com.tyron.javacompletion.JavaCompletions;
 import com.tyron.javacompletion.options.JavaCompletionOptionsImpl;
 import com.tyron.javacompletion.tool.Indexer;
@@ -87,7 +88,7 @@ public class MyIndexer extends Indexer {
 			jars.clear();
 		}*/
 		
-		if((!FileUtil.isExistFile(idx2))||new java.io.File(idx2).length()==0){
+		if((!FileUtil.isExistFile(idx2))||new java.io.File(idx2).length()==0||!EngineSettings.get().getString("JAR_FILE_VERSION","").equals("1.1")){
 		FileUtil.writeFile(idx2,"");
 		Utils.extractAssetFile(editor.getContext(),"java/game.jar",data+"/bin/addition.jar");
 		Utils.unzipf(data+"/bin/addition.jar",data+"/bin/add/","");
@@ -95,6 +96,7 @@ public class MyIndexer extends Indexer {
 		run(jars,idx2,Collections.emptyList(),Collections.emptyList(),data+"/bin/add/");
 		FileUtil.deleteFile(data+"/bin/add/");
 		jars.clear();
+		EngineSettings.set("JAR_FILE_VERSION","1.1");
 		}
 		
 		/*if((!FileUtil.isExistFile(idx4))||new java.io.File(idx4).length()==0){

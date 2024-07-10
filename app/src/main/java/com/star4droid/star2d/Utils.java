@@ -18,7 +18,6 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +54,7 @@ import com.star4droid.star2d.Helpers.PropertySet;
 import com.star4droid.star2d.Items.BoxBody;
 import com.star4droid.star2d.Items.EditorItem;
 import com.star4droid.star2d.evo.R;
+import com.star4droid.star2d.evo.star2dApp;
 import java.io.InputStream;
 import java.io.FileOutputStream;
 import java.io.File;
@@ -117,12 +117,12 @@ public class Utils {
 			try {
 			return Double.parseDouble(str);
 			} catch(Exception ex){
-				String err1=Log.getStackTraceString(ex);
+				String err1=getStackTraceString(ex);
 				try {
 				NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
 				return nf.parse(str).doubleValue();
 				} catch(ParseException e){
-					throw new Exception(err1+"\n"+Log.getStackTraceString(e));
+					throw new Exception(err1+"\n"+getStackTraceString(e));
 					//return 0;
 				}
 			}
@@ -133,12 +133,12 @@ public class Utils {
 			try {
 				return Float.parseFloat(str);
 				} catch(Exception ex){
-					String err1=Log.getStackTraceString(ex);
+					String err1=getStackTraceString(ex);
 					try {
 					NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
 					return nf.parse(str).floatValue();
 					} catch(ParseException e){
-						throw new Exception(err1+"\n"+Log.getStackTraceString(e));
+						throw new Exception(err1+"\n"+getStackTraceString(e));
 					}
 			}
 		}
@@ -148,12 +148,12 @@ public class Utils {
 			try {
 				return Integer.parseInt(str);
 				} catch(Exception ex){
-					String err1=Log.getStackTraceString(ex);
+					String err1=getStackTraceString(ex);
 					try {
 					NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH);
 					return nf.parse(str).intValue();
 					} catch (ParseException e){
-						throw new Exception(err1+"\n"+Log.getStackTraceString(e));
+						throw new Exception(err1+"\n"+getStackTraceString(e));
 					}
 			}
 		}
@@ -169,7 +169,7 @@ public class Utils {
 				String s = new String(Bu, "UTF-8");
 				return s;
 				} catch(Exception e){
-				Log.e(error_tag,Log.getStackTraceString(e));
+				Log(error_tag,getStackTraceString(e));
 				return "";
 			}
 		}
@@ -181,7 +181,7 @@ public class Utils {
 		
 		public static String replaceNonstandardDigits(String input) {
 			if (input == null || input.isEmpty()) {
-				Log.e(error_tag,"empty string");
+				Log(error_tag,"empty string");
 				return "0";
 			}
 			
@@ -201,7 +201,12 @@ public class Utils {
 		}
 		
 		public static void log(String s,Context ctx){
-			Log.e(error_tag,s);
+		    int x=1;
+		    while(FileUtil.isExistFile(FileUtil.getPackageDataDir(ctx)+"/logs/log"+x+".txt")){
+					x++;
+				}
+			FileUtil.writeFile(FileUtil.getPackageDataDir(ctx)+"/logs/log"+x+".txt",s);
+			Log(error_tag,s);
 		}
 		
 		private static boolean isNonstandardDigit(char ch) {
@@ -285,7 +290,7 @@ public class Utils {
 				.addListener(new RequestListener<Bitmap>(){
 					@Override
 					public boolean onLoadFailed(GlideException ex, Object arg1, Target<Bitmap> arg2, boolean arg3) {
-						Log.e(error_tag,ex.getMessage());
+						Log(error_tag,ex.getMessage());
 					    return false;
 					}
 
@@ -301,7 +306,7 @@ public class Utils {
 				.addListener(new RequestListener<Bitmap>(){
 					@Override
 					public boolean onLoadFailed(GlideException ex, Object arg1, Target<Bitmap> arg2, boolean arg3) {
-						Log.e(error_tag,ex.getMessage());
+						Log(error_tag,ex.getMessage());
 						return false;
 					}
 					
@@ -329,7 +334,7 @@ public class Utils {
 							repeat.y = PropertySet.getPropertySet(imageView).getInt("tileY");
 						}
 						if(repeat!=null){
-							//Log.e("repeat_tag","rx : "+repeat.x+", ry : "+repeat.y+", path : "+Uri.parse(path).getLastPathSegment());
+							//Log("repeat_tag","rx : "+repeat.x+", ry : "+repeat.y+", path : "+Uri.parse(path).getLastPathSegment());
 							if(!(repeat.x==1&&repeat.y==1)){
 								final Bitmap bm=bitmap;
 								new Thread(){
@@ -395,12 +400,12 @@ public class Utils {
 					canvas.drawBitmap(bitmap, srcRect, destRect, paint);
 					
 					if(repeatedBitmap.getByteCount()>50*1048576){
-						Log.e(error_tag,"too large : "+repeatedBitmap.getByteCount());
+						Log(error_tag,"too large : "+repeatedBitmap.getByteCount());
 						return repeatedBitmap;
 					}
 					/*
 					if(System.currentTimeMillis()-tm>900){
-						Log.e(error_tag,"take a long time, size : "+repeatedBitmap.getByteCount()+"B");
+						Log(error_tag,"take a long time, size : "+repeatedBitmap.getByteCount()+"B");
 						//return repeatedBitmap;
 					}
 					*/
@@ -477,6 +482,15 @@ public class Utils {
 		}
 		
 		public static void createEmptyZipFile(String filePath) {
+		    FileUtil.writeFile(filePath,"");
+		    
+		    /*
+		    try {
+		        extractAssetFile(getContext(),"files/empty.zip",filePath);
+		    } catch(Exception ex){
+		        Log("empty zip creation error, "+ex.toString(),getStackTraceString(ex));
+		    }
+			*/
 			try {
 				java.io.File file = new java.io.File(filePath);
 				
@@ -488,6 +502,7 @@ public class Utils {
 				zipOutputStream.close();
 				} catch (java.io.IOException e) {
 				e.printStackTrace();
+				Log("empty zip creation error, "+e.toString(),getStackTraceString(e));
 			}
 		}
 		
@@ -685,5 +700,26 @@ public class Utils {
 			resources.updateConfiguration(config, resources.getDisplayMetrics());
 		}
 		AppCompatDelegate.setDefaultNightMode(EngineSettings.get().getBoolean("night",false)?AppCompatDelegate.MODE_NIGHT_YES:AppCompatDelegate.MODE_NIGHT_NO);
+	}
+	
+	public static void Log(String error,String string){
+		int x=0;
+		String str=star2dApp.getContext().getExternalFilesDir(null)+"/logs/log"+"%1$s"+".txt";
+		while(FileUtil.isExistFile(star2dApp.getContext().getExternalFilesDir(null)+"/logs/log"+x+".txt")){
+			x++;
+		}
+		FileUtil.writeFile(String.format(str,x+""),error+" :\n"+string);
+	}
+		
+	public static String getStackTraceString(Throwable throwable){
+			String full="";
+			String space="";
+			for(int x =0;x<12;x++)
+				space+="_";
+			for(StackTraceElement element:throwable.getStackTrace()){
+				full+="class name : "+element.getClassName()+"\n file : "+element.getFileName()+
+				"\n line number : "+element.getLineNumber()+"\n method : "+element.getMethodName()+"\n"+space+"\n";
+			}
+			return full;
 	}
 }

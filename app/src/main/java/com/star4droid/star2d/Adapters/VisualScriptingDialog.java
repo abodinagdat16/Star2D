@@ -94,11 +94,18 @@ public class VisualScriptingDialog {
 			files.set(i,Uri.parse(files.get(i)).getLastPathSegment());
 		}
 		if(files.size()>0) hintsList.add("- Animations");
+		//sounds
+		files.clear();
+		FileUtil.listDir(editor.getProject().get("sounds"),files);
+		for(int i=0;i<files.size();i++) {
+			files.set(i,Uri.parse(files.get(i)).getLastPathSegment());
+		}
+		if(files.size()>0) hintsList.add("- Sounds");
 		hintsList.addAll(files);
 		
 		final AlertDialog dl = Utils.showMessage(context,"please wait...");
 		
-		VisualScriptingView vs = new VisualScriptingView(context,cp+".java",cp+".visual",new Gson().toJson(hintsList),editor.getProject().getImagesPath()){
+		VisualScriptingView vs = new VisualScriptingView(context,cp+".java",cp+".visual",new Gson().toJson(hintsList),editor.getProject().getPath()){
 			public void onDone(final VisualScriptingView vs){
 				dl.dismiss();
 				//init done , add view's and show dialog

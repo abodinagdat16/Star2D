@@ -199,7 +199,7 @@ public class CompileThread extends Thread {
 				opt.add("--verbose");
 				opt.add("--output="+filesPath+"/classes.dex");
 				opt.add(dataDir+"/bin/classes.jar");
-				com.android.dx.command.dexer.Main.main(opt.toArray(new String[0]));
+				//com.android.dx.command.dexer.Main.main(opt.toArray(new String[0]));
 			}
 			} catch (Exception e) {
 			push(CHANGE_ERROR, "Dex failed: " + e.toString());

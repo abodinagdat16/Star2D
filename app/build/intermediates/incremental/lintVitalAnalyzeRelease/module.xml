@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/storage/emulated/0/AndroidIDEProjects/Star2D.E/app"
+    name=":app"
+    type="APP"
+    maven="Star2D.E:app:"
+    agpVersion="8.0.0"
+    buildFolder="build"
+    bootClassPath="/data/data/com.itsaky.androidide/files/home/android-sdk/platforms/android-34/android.jar:/data/data/com.itsaky.androidide/files/home/android-sdk/build-tools/34.0.4/core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

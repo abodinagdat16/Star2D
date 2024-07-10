@@ -27,6 +27,7 @@ public class TextItem extends AppCompatTextView implements EditorItem {
 		this.setAutoSizeTextTypeUniformWithConfiguration(1,100000,1,AppCompatTextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
 		setLayoutParams(new LayoutParams(50, 50));
 		setTextColor(Color.WHITE);
+		setPadding(0,0,0,0);
 		setOnClickListener(new OnClickListener() {
 			public void onClick(View view) {
 				
