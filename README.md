@@ -26,6 +26,7 @@
 
 > [!NOTE]
 > Please read [note.txt](https://github.com/abodinagdat16/Star2D/blob/master/assets/note.txt)
+> You can use our project and modify the code but you should include a notice attributing the original source
 
 > [!CAUTION]
 > We added some bugs to the engine 🚒
