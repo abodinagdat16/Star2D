@@ -30,6 +30,12 @@ public class PlayerDialog extends AndroidFragmentApplication {
 		this.scene = scene;
 	}
 	@Override
+	public void onResume(){
+		//try {
+			super.onResume();
+		//} catch(Exception e){}
+	}
+	@Override
 	public void onDestroy() {
 		super.onDestroy();
 		if(stage==null) return;
