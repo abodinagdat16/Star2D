@@ -120,7 +120,7 @@ public class Joystick extends Touchpad implements PlayerItem {
 	protected void sizeChanged() {
 		super.sizeChanged();
 		//if(getStage()!=null) setY(joystickY);
-		setOrigin(getWidth()*0.5f,getHeight()*0.5f);
+		//setOrigin(getWidth()*0.5f,getHeight()*0.5f);
 		if(getStyle()!=null&&getStyle().knob!=null){
 			getStyle().knob.setMinHeight(getHeight()*0.35f);
 			getStyle().knob.setMinWidth(getWidth()*0.35f);
@@ -171,14 +171,17 @@ public class Joystick extends Touchpad implements PlayerItem {
 	
 	@Override
 	public double getPower() {
-		float x = getX();
-		float y = getY();
-		float w = getWidth();
-		float h = getHeight();
+		// float x = getX();
+		// float y = getY();
+		// float w = getWidth();
+		// float h = getHeight();
 
 		if (getStyle() != null&&getStyle().knob!=null) {
-			float jx = x + getKnobX() - getStyle().knob.getMinWidth() / 2f;
-			float jy = y + getKnobY() - getStyle().knob.getMinHeight() / 2f;
+		    //calculate pad x , y (useless)
+			// float jx = x + getKnobX() - getStyle().knob.getMinWidth() / 2f;
+			// float jy = y + getKnobY() - getStyle().knob.getMinHeight() / 2f;
+			
+			//distance between center and x,y of pad
 			float dst = Vector2.dst2(0,0,getKnobPercentX(),getKnobPercentY());
 			return (double)dst;
 		}
