@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import android.widget.TextView;
 import com.star4droid.template.Items.StageImp;
 
 public class MainActivity extends AndroidApplication {
@@ -19,7 +20,21 @@ public class MainActivity extends AndroidApplication {
 			}
 		}
 		AndroidApplicationConfiguration configuration= new AndroidApplicationConfiguration();
-		initialize(StageImp.getFromDex((getIntent().hasExtra("path")&&(!getIntent().getStringExtra("path").equals("")))?getIntent().getStringExtra("path"):(new java.io.File(getFilesDir()+"/game/").listFiles()[0]+""),
-		(getIntent().hasExtra("scene")&&(!getIntent().getStringExtra("scene").equals("")))?getIntent().getStringExtra("scene"):"scene1",null,null),configuration);
+		StageImp dex = StageImp.getFromDex((getIntent().hasExtra("path")&&(!getIntent().getStringExtra("path").equals("")))?getIntent().getStringExtra("path"):(new java.io.File(getFilesDir()+"/game/").listFiles()[0]+""),
+		(getIntent().hasExtra("scene")&&(!getIntent().getStringExtra("scene").equals("")))?getIntent().getStringExtra("scene"):"scene1",null,null);
+		if(dex != null)
+		    initialize(dex,configuration);
+		else {
+		    TextView text = new TextView(this);
+		    text.setText("Error....!!!");
+		    setContentView(text);
+		}
+	}
+	
+	@Override
+	protected void onResume(){
+		//try {
+			super.onResume();
+		//} catch(Exception e){}
 	}
 }
