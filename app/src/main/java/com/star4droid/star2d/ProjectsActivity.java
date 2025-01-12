@@ -6,6 +6,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.ClipData;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -221,27 +222,45 @@ public class ProjectsActivity extends AppCompatActivity {
         if (result == RESULT_OK) {
             ArrayList<String> _filePath =
                     Utils.getArrayList(code, result, data, ProjectsActivity.this);
-                /*if (data != null) {
+                if (data != null) {
                     if (data.getClipData() != null) {
                         for (int _index = 0; _index < data.getClipData().getItemCount(); _index++) {
                             ClipData.Item _item = data.getClipData().getItemAt(_index);
-                            _filePath.add(
+                            if (code == ExportDialog.RECIEVE_ICON) {
+                                ExportDialog.imgPath = FileUtil.convertUriToFilePath(getApplicationContext(), _item.getUri());
+                                return;
+                            } else if (code == FILE_PICKER_CODE) {
+                                try {
+                                    restoreProject(getContentResolver().openInputStream(_item.getUri()));
+                                } catch(Exception ex){}
+                            }
+                            /*_filePath.add(
                                     FileUtil.convertUriToFilePath(
-                                            getApplicationContext(), _item.getUri()));
+                                            getApplicationContext(), _item.getUri()));*/
                         }
                     } else {
-                        _filePath.add(
+                        if (code == ExportDialog.RECIEVE_ICON) {
+                                ExportDialog.imgPath = FileUtil.convertUriToFilePath(getApplicationContext(), data.getData());
+                                return;
+                        } else if (code == FILE_PICKER_CODE) {
+                            try {
+                                restoreProject(getContentResolver().openInputStream(data.getData()));
+                            } catch(Exception ex){}
+                        }
+                        /*_filePath.add(
                                 FileUtil.convertUriToFilePath(
-                                        getApplicationContext(), data.getData()));
+                                        getApplicationContext(), data.getData()));*/
+                                        
                     }
-                }*/
+                }
             // onFilePicked....
-            if (code == ExportDialog.RECIEVE_ICON) {
+           /* if (code == ExportDialog.RECIEVE_ICON) {
                 //Utils.showMessage(this,_filePath.get(0));
                 Utils.setImageFromFile(ExportDialog.icon, _filePath.get(0));
                 ExportDialog.imgPath = _filePath.get(0);
                 return;
             }
+            
             if (code == FILE_PICKER_CODE) {
                 String err = "";
                 for (String f : _filePath)
@@ -253,7 +272,7 @@ public class ProjectsActivity extends AppCompatActivity {
                         err = err + "\n File : " + f + " - error : \n" + e;
                     }
                 if (!err.equals("")) Utils.showMessage(ProjectsActivity.this, err);
-            }
+            }*/
         }
     }
 
