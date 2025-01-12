@@ -95,7 +95,8 @@ public class BoxBody extends Image implements PlayerItem {
 	protected void sizeChanged() {
 		super.sizeChanged();
 		//if(getStage()!=null) setY(boxY);
-		setOrigin(getWidth()*0.5f,getHeight()*0.5f);
+		if(!getProperties().getString("type").equals("UI"))
+		    setOrigin(getWidth()*0.5f,getHeight()*0.5f);
 	}
 	
 	private void createBody(){
