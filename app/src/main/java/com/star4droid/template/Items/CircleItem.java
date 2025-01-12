@@ -147,7 +147,8 @@ public class CircleItem extends Image implements PlayerItem {
 	protected void sizeChanged() {
 		super.sizeChanged();
 		//if(getStage()!=null) setY(circleY);
-		setOrigin(getWidth()*0.5f,getHeight()*0.5f);
+		if(getProperties().getString("type").equals("UI"))
+		    setOrigin(getWidth()*0.5f,getHeight()*0.5f);
 	}
 	
 	@Override
