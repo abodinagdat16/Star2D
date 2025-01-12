@@ -718,8 +718,8 @@ public class EditorActivity extends AppCompatActivity implements AndroidFragment
 			playFloat.setVisibility(View.VISIBLE);
 			play.setImageResource(R.drawable.play_icon);
 			//play.setVisibilty(View.VISIBLE);
-			switchFor(true,scenesSpinner,copyScene,renameScene,addBody,deleteBody,findViewById(R.id.add_light));
 		}
+		switchFor(true,scenesSpinner,copyScene,renameScene,addBody,deleteBody,findViewById(R.id.add_light));
 	}
 	
 }
