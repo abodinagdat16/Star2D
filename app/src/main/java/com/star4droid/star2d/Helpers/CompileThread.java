@@ -182,7 +182,7 @@ public class CompileThread extends Thread {
 	public void compile(){
 		try {
 			writeFile(filesPath.concat("/classes.dex"), "");
-			if (EngineSettings.get().getBoolean("d8",false)) {
+			if (true/*EngineSettings.get().getBoolean("d8",false)*/) {
 				push(CHANGE_STATUS,"Dexing with D8...");
 				ArrayList<String> opt= new ArrayList<>();
 				opt.add("--output");
