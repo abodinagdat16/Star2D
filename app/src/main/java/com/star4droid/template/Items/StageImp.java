@@ -34,19 +34,19 @@ import java.util.HashMap;
 import box2dLight.RayHandler;
 
 public class StageImp extends ApplicationAdapter {
-	World world = new World(new Vector2(0,-9.8f),true);
-	boolean playing=true, debugBox2d = false;
-	Stage UiStage,GameStage;
+	public World world = new World(new Vector2(0,-9.8f),true);
+	public boolean playing=true, debugBox2d = false;
+	public Stage UiStage,GameStage;
 	int steps=6,backgroundColor=0xFFFFFF;
-    Box2DDebugRenderer debugRenderer;
+    public Box2DDebugRenderer debugRenderer;
 	Color backgroundColorGdx= Color.WHITE;
-	Project project;
-	PropertySet<String,Object> propertySet;
+	public Project project;
+	public PropertySet<String,Object> propertySet;
 	ArrayList<StageImp> previousStages= new ArrayList<>();
 	HashMap<String,Object> collisionMap= new HashMap<>();
 	//Image background;
 	StagePair stagePair;//useless...
-	ProjectAssetLoader assetLoader;
+	public ProjectAssetLoader assetLoader;
 	LoadingStage loadingStage;
 	Preferences preferences;
 	PlayerItem followX,followY;
@@ -135,7 +135,7 @@ public class StageImp extends ApplicationAdapter {
 		return null;
 	}
 	
-	private void drawDebug(){
+	public void drawDebug(){
 	    debugRenderer.render(world, GameStage.getCamera().combined);
 	}
 	
@@ -329,11 +329,11 @@ public class StageImp extends ApplicationAdapter {
 	}
 	
 	public float getWidth(){
-		return UiStage.getWidth();
+		return GameStage.getWidth();
 	}
 	
 	public float getHeight(){
-		return UiStage.getHeight();
+		return GameStage.getHeight();
 	}
 	
 	public World getWorld(){
@@ -397,7 +397,7 @@ public class StageImp extends ApplicationAdapter {
 	}
 	
 	public Stage getUiStage(){
-		return UiStage;
+		return GameStage;
 	}
 	
 	public StageImp setPropertySet(PropertySet<String,Object> set){
@@ -414,8 +414,8 @@ public class StageImp extends ApplicationAdapter {
 	}
 	
 	public float toStageY(float worldY){
-		if(UiStage==null) return worldY;
-		return UiStage.getViewport().getWorldHeight()-worldY;
+		if(GameStage==null) return worldY;
+		return GameStage.getViewport().getWorldHeight()-worldY;
 	}
 	
 	public Viewport getViewport(){
@@ -594,6 +594,17 @@ public class StageImp extends ApplicationAdapter {
 	
 	public void setZoom(float zoom){
 		((OrthographicCamera)getCamera()).zoom = 1/zoom;
+		for(Actor actor:GameStage.getActors()){
+				if(actor==null) continue;
+				String actorName=(actor.getName()==null)?"":actor.getName();
+				//names+=", "+actorName;
+					if(actor instanceof PlayerItem&&((PlayerItem)actor).getProperties()!=null&&((PlayerItem)actor).getProperties().containsKey("type")&&((PlayerItem)actor).getProperties().getString("type").equals("UI")){
+					    //keep the UI items in the same size....
+					    actor.setOrigin(actor.getWidth(),0);
+					    actor.setScale(1/zoom);
+					    //actor.setOrigin(actor.getWidth()*0.5f,actor.getHeight()*0.5f);
+					}
+			}
 	}
 	
 	public float getZooming(){
@@ -643,7 +654,7 @@ public class StageImp extends ApplicationAdapter {
 			getCamera().position.y = followY.getActorY()+followY.getActor().getWidth()*0.5f+cameraOffset[1];
 		}
 		GameStage.draw();
-		UiStage.draw();
+		//UiStage.draw();
 		if(debugBox2d)
 		    drawDebug();
 		if(playing) for(int x=0;x<steps;x++)
@@ -688,14 +699,16 @@ public class StageImp extends ApplicationAdapter {
 	
 	public void act() {
 		if(preferences==null) return;
-		UiStage.act();
+		//UiStage.act();
 		GameStage.act();
 	}
 	
 	public void addActor(Actor actor) {
-		if(actor instanceof PlayerItem&&((PlayerItem)actor).getProperties()!=null&&((PlayerItem)actor).getProperties().containsKey("type")&&((PlayerItem)actor).getProperties().getString("type").equals("UI"))
+		/*if(actor instanceof PlayerItem&&((PlayerItem)actor).getProperties()!=null&&((PlayerItem)actor).getProperties().containsKey("type")&&((PlayerItem)actor).getProperties().getString("type").equals("UI"))
 			UiStage.addActor(actor);
-		else GameStage.addActor(actor);
+		else
+		*/
+		GameStage.addActor(actor);
 	}
 	
 	public void dispose(){
