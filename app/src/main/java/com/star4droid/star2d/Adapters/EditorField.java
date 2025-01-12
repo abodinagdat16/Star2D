@@ -279,6 +279,15 @@ public class EditorField implements EditorValue {
 					spinner = view.findViewById(R.id.spinner);
 					name = view.findViewById(R.id.name);
 					name.setText(nm);
+				} else if(type.equals("points")){
+					view = LayoutInflater.from(ctx).inflate(R.layout.float_value,null);
+					name = view.findViewById(R.id.name);
+					value = view.findViewById(R.id.value);
+					name.setText(nm);
+					value.setOnClickListener(v->{
+					    //android.widget.Toast(ctx,"shown",1500).show();
+						CustomColliderEditor.showFor(editor);
+					});
 				} else if(type.equals("string")){
 					//lazy to create new layout
 					view = LayoutInflater.from(ctx).inflate(R.layout.float_value,null);
@@ -352,7 +361,8 @@ public class EditorField implements EditorValue {
 	
 	@Override
 	public void setValue(String string){
-		value.setText(string);
+		if(value!=null)
+			value.setText(string);
 	}
 	
 	public String getName(){
@@ -428,6 +438,8 @@ public class EditorField implements EditorValue {
 				value.setBackgroundColor(Color.parseColor(p.getString(getName())));
 			} else if(type.equals("body")&&(!getName().equals("Collision"))){
 				value.setText(p.getString(getName()));
+			} else if(type.equals("points")){
+				value.setText("{" + p.getString(getName()) + "}");
 			}
 		} else view.setVisibility(View.GONE);
 		return bool==View.VISIBLE;
