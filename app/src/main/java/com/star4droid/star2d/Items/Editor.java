@@ -312,7 +312,7 @@ public class Editor extends FrameLayout {
 			selector.setVisibility(VISIBLE);
 			int height = selectedView.getMeasuredHeight();
 			int width = selectedView.getMeasuredWidth();
-			boolean bool = propertySet == null ? false : propertySet.containsKey("ColliderX");
+			boolean bool = propertySet == null ? false : (propertySet.containsKey("ColliderX") && propertySet.containsKey("Collider Height"));
 			if (bool) {
 				String HKey = propertySet.containsKey("Collider Height")?"Collider Height":"Collider Radius";
 				String WKey = propertySet.containsKey("Collider Width")?"Collider Width":"Collider Radius";
@@ -752,6 +752,9 @@ public class Editor extends FrameLayout {
 					case "BOX":
 					item = new BoxBody(getContext());
 					break;
+					case "CUSTOM":
+					item = new CustomBody(getContext());
+					break;
 					case "CIRCLE":
 					item = new CircleBody(getContext());
 					break;
@@ -763,6 +766,7 @@ public class Editor extends FrameLayout {
 					break;
 					case "JOYSTICK":
 					item = new JoyStickItem(getContext());
+					break;
 					case "LIGHT":
 					item = new LightItem(getContext());
 					break;
