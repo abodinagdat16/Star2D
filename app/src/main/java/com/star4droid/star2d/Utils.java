@@ -181,7 +181,7 @@ public class Utils {
 		
 		public static String replaceNonstandardDigits(String input) {
 			if (input == null || input.isEmpty()) {
-				Log(error_tag,"empty string");
+				//Log(error_tag,"empty string");
 				return "0";
 			}
 			
@@ -279,6 +279,7 @@ public class Utils {
 				imageView.setImageResource(R.drawable.icon);
 				return;
 			}
+			//android.widget.Toast.makeText(imageView.getContext(),"exist : " + _path,2500).show();
 			if(repeat==null&&cut1==null){
 				java.io.File file = new java.io.File(path);
 				Uri imageUri = Uri.fromFile(file);
@@ -322,10 +323,13 @@ public class Utils {
 					@Override
 					public void onLoadFailed(Drawable arg0) {
 						imageView.setImageDrawable(imageView.getContext().getDrawable(R.drawable.icon));
+						//android.widget.Toast.makeText(imageView.getContext(),"error",2500).show();
 					}
 
 					@Override
 					public void onResourceReady(Bitmap bitmap, Transition<? super Bitmap> arg1) {
+					if(bitmap == null) throw new RuntimeException("Bitmap returns null!!");
+					//android.widget.Toast.makeText(imageView.getContext(),"ready : " + path,2500).show();
 						if(cut1!=null){
 							bitmap = cutBitmap(bitmap,cut1.x,cut1.y,cut2.x,cut2.y);
 						}
@@ -335,7 +339,7 @@ public class Utils {
 						}
 						if(repeat!=null){
 							//Log("repeat_tag","rx : "+repeat.x+", ry : "+repeat.y+", path : "+Uri.parse(path).getLastPathSegment());
-							if(!(repeat.x==1&&repeat.y==1)){
+							if(repeat.x!=1 || repeat.y!=1){
 								final Bitmap bm=bitmap;
 								new Thread(){
 									public void run(){
@@ -348,6 +352,7 @@ public class Utils {
 								return;
 							}
 						}
+						//android.widget.Toast.makeText(imageView.getContext(),"set : " + path,2500).show();
 						imageView.setImageBitmap(bitmap);
 					}
 
@@ -400,7 +405,7 @@ public class Utils {
 					canvas.drawBitmap(bitmap, srcRect, destRect, paint);
 					
 					if(repeatedBitmap.getByteCount()>50*1048576){
-						Log(error_tag,"too large : "+repeatedBitmap.getByteCount());
+						//Log(error_tag,"too large : "+repeatedBitmap.getByteCount());
 						return repeatedBitmap;
 					}
 					/*
@@ -706,12 +711,16 @@ public class Utils {
 		int x=0;
 		String str=star2dApp.getContext().getExternalFilesDir(null)+"/logs/log"+"%1$s"+".txt";
 		while(FileUtil.isExistFile(star2dApp.getContext().getExternalFilesDir(null)+"/logs/log"+x+".txt")){
+		    if(FileUtil.readFile(String.format(str,x+"")).equals(error+" :\n"+string))
+		    break;
 			x++;
 		}
 		FileUtil.writeFile(String.format(str,x+""),error+" :\n"+string);
 	}
 		
 	public static String getStackTraceString(Throwable throwable){
+			//disabled, because I think it lag the app....
+			if(true) return throwable.toString();
 			String full="";
 			String space="";
 			for(int x =0;x<12;x++)
