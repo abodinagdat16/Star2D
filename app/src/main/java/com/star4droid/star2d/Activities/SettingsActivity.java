@@ -23,7 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
 		setContentView(R.layout.settings_layout);
 		CheckBox AutoComp = findViewById(R.id.auto_completion),
 		d8=findViewById(R.id.d8),night_mode=findViewById(R.id.night_mode);
-		d8.setChecked(EngineSettings.get().getBoolean("d8",false));
+		d8.setChecked(true || EngineSettings.get().getBoolean("d8",false));
+		d8.setEnabled(false);
 		AutoComp.setChecked(EngineSettings.get().getBoolean("AutoComp",false));
 		AutoComp.setOnCheckedChangeListener((compound,b)->{
 			EngineSettings.set("AutoComp",compound.isChecked());
