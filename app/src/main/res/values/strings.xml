@@ -13,6 +13,7 @@
 	<string name="install">install</string>
 	<string name="cancel">Cancel</string>
 	<string name="box_body">Box Body</string>
+	<string name="custom_body">Custom Body (⭐)</string>
 	<string name="circle_body">Circular Body</string>
 	<string name="text_item">Text Item</string>
 	<string name="joystick_item">Joystick Item</string>
@@ -73,4 +74,6 @@
 	<string name="use_diffuse_light" translatable="false">Use Diffuse Light</string>
 	<string name="shadows" translatable="false">Enable Shadows</string>
 	<string name="light_settings">Light Settings</string>
+	<string name="add_point">Add Point</string>
+	<string name="delete_the_point">Delete The Point</string>
 </resources>
