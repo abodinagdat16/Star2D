@@ -111,7 +111,7 @@ public class TextItem extends Label implements PlayerItem{
 	protected void sizeChanged() {
 		super.sizeChanged();
 		//if(getStage()!=null) setY(textY);
-		setOrigin(getWidth()*0.5f,getHeight()*0.5f);
+		//setOrigin(getWidth()*0.5f,getHeight()*0.5f);
 		// auto text size
 		// capHeight * scale =  height 
 		//  scale = height / capHeight
@@ -152,7 +152,7 @@ public class TextItem extends Label implements PlayerItem{
 		setVisible(propertySet.getString("Visible").equals("true"));
 		//setText(propertySet.get("Text").toString());
 		//Utils.showMessage(getContext(),propertySet.get("Text").toString());
-		setColor(new Color(propertySet.getColor("Text Color")));
+		getStyle().fontColor= new Color(propertySet.getColor("Text Color"));
 		if(getStage()==null)
 		    stage.addActor(this);
 		if(getScript()!=null)
