@@ -193,7 +193,7 @@ public class ProgressItem extends Group implements PlayerItem {
 	protected void sizeChanged() {
 		super.sizeChanged();
 		//if(getStage()!=null) setY(progressY);
-		setOrigin(getWidth()*0.5f,getHeight()*0.5f);
+		//setOrigin(getWidth()*0.5f,getHeight()*0.5f);
 		if(backgroundImg.getWidth()!=getWidth()||backgroundImg.getHeight()!=getHeight()){
 			backgroundImg.setSize(getWidth(),getHeight());
 			updateProgress();
