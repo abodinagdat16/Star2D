@@ -34,6 +34,7 @@ public class AddPopup {
         popupMenu.getMenu().add(0,2,2,activity.getString(R.string.text_item)).setIcon(R.drawable.txt_icon);
         popupMenu.getMenu().add(0,3,3,activity.getString(R.string.joystick_item)).setIcon(R.drawable.joystick);
         popupMenu.getMenu().add(0,4,4,activity.getString(R.string.progress_item)).setIcon(R.drawable.progress);
+        popupMenu.getMenu().add(0,5,5,activity.getString(R.string.custom_body)).setIcon(R.drawable.progress);
     
         popupMenu.setOnMenuItemClickListener(
                 new PopupMenu.OnMenuItemClickListener() {
@@ -79,6 +80,14 @@ public class AddPopup {
             				editor.selectView(progressItem);
             				activity.refreshBodies();
             				progressItem.update();
+                        } else if(item.getItemId() == 5){
+                            CustomBody custom = new CustomBody(activity);
+            				editor.addView(custom);
+            				custom.setDefault();
+            				custom.getPropertySet().put("z",getLastZ(editor));
+            				editor.selectView(custom);
+            				activity.refreshBodies();
+            				custom.update();
                         }
                         return true;
                     }
