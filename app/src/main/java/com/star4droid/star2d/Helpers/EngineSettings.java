@@ -2,7 +2,6 @@ package com.star4droid.star2d.Helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import java.util.HashMap;
 
 public class EngineSettings {
 	public static SharedPreferences sharedPreferences;
