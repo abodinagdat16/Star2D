@@ -37,16 +37,15 @@ public class CircleBody extends CircularImageView implements EditorItem {
 	public void setProperties(PropertySet<String, Object> properties) {
 		propertySet = properties;
 		
-		if(propertySet.getString("Shape").equals("Box")){
+		if(!propertySet.getString("Shape").equals("Circle")){
 		    if(editor!=null){
 		        try {
 		            editor.removeView(this);
-		            BoxBody boxBody = new BoxBody(editor.getContext());
-            				editor.addView(boxBody);
-            				boxBody.setProperties(properties);
-            				//circleBody.getPropertySet().put("z",getLastZ(editor));
-            				editor.selectView(boxBody);
-            				boxBody.update();
+		            EditorItem newBody = propertySet.getString("Shape").equals("Box") ? new BoxBody(editor.getContext()) : new CustomBody(getContext());
+            				editor.addView((View)newBody);
+            				newBody.setProperties(properties);
+            				editor.selectView((View)newBody);
+            				newBody.update();
 		        } catch(Exception e){}
 		    }
 		    return;
