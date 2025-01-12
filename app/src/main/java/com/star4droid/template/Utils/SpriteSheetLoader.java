@@ -9,6 +9,7 @@ import com.star4droid.star2d.Helpers.Project;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import com.badlogic.gdx.graphics.Texture;
 
 public class SpriteSheetLoader extends Thread {
 	HashMap<String,Animation> animations = new HashMap<>();
@@ -46,7 +47,7 @@ public class SpriteSheetLoader extends Thread {
 			Drawable def = Utils.getDrawable(Gdx.files.internal("images/logo.png"));
 			for(HashMap<String,Object> hashMap:animsList){
 				String img = project.getImagesPath()+hashMap.get("name").toString().replace(Utils.seperator,"/");
-				drawables[x] = assetLoader.contains(img)?assetLoader.get(img):def;
+				drawables[x] = assetLoader.contains(img)?Utils.getDrawable(assetLoader.get(img,Texture.class)):def;
 				x++;
 			}
 			Animation<Drawable> animation= new Animation<>(dur,drawables);
