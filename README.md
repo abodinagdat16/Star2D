@@ -39,10 +39,10 @@
 </div>
 
 ## The New Custom Collision Shape Maker
-<img src="assets/collider.png" style="width:100%; height:auto;" alt="Custom Collision Shape Maker"/>
+<img src="assets/20250112_210005.png" style="width:100%; height:auto;" alt="Custom Collision Shape Maker"/>
 
 ## Want to Write Code?
-<img src="assets/code.png" style="width:100%; height:auto;" alt="Code Editor Screenshot"/>
+<img src="assets/Screenshot_20250105_062007_com.star4droid.star2d.evo.jpg" style="width:100%; height:auto;" alt="Code Editor Screenshot"/>
 
 > [!Note]
 > Please read [note.txt](https://github.com/abodinagdat16/Star2D/blob/master/assets/note.txt).  
