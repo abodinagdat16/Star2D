@@ -10,6 +10,7 @@
 	<string name="install">تثبيت</string>
 	<string name="cancel">إلغاء</string>
 	<string name="box_body">عنصر مربع</string>
+	<string name="custom_body">عنصر مخصص (⭐)</string>
 	<string name="circle_body">عنصر دائري</string>
 	<string name="text_item">عنصر نصي</string>
 	<string name="joystick_item">عنصر جويستيك</string>
@@ -65,4 +66,6 @@
 	<string name="compiler">المترجم</string>
 	<string name="enter_value">ادخل قيمه</string>
 	<string name="light_settings">إعدادات الضوء</string>
+	<string name="add_point">إضافة نقطة</string>
+	<string name="delete_the_point">حذف النقطة</string>
 </resources>
