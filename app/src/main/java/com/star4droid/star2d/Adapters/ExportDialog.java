@@ -32,7 +32,8 @@ public class ExportDialog {
 		version_name = cv.findViewById(R.id.version_name),
 		package_name= cv.findViewById(R.id.package_name);
 		icon = cv.findViewById(R.id.icon);
-		restore(context,project,portrait,version,version_name,package_name,name);
+		SharedPreferences sh = restore(context,project,portrait,version,version_name,package_name,name);
+		imgPath = sh.getString(project+"-image","");
 		icon.setOnClickListener(v->{
 			Intent intent= new Intent(Intent.ACTION_GET_CONTENT);
 			intent.setType("image/*");
@@ -71,7 +72,7 @@ public class ExportDialog {
 		return str;
 	}
 	
-	public static void restore(Context context,String project,AppCompatCheckBox portrait,TextInputEditText... texts){
+	public static SharedPreferences restore(Context context,String project,AppCompatCheckBox portrait,TextInputEditText... texts){
 		SharedPreferences sh = context.getSharedPreferences("export",Context.MODE_PRIVATE);
 		String imgPath=sh.getString(project+"-image","");
 		if(FileUtil.isExistFile(imgPath)) Utils.setImageFromFile(icon,imgPath);
@@ -86,5 +87,7 @@ public class ExportDialog {
 			}
 			if(x==0) x++;
 		}
+		return sh;
 	}
+	
 }
