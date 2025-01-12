@@ -3,6 +3,8 @@ package com.star4droid.star2d.Helpers;
 import box2dLight.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.ChainShape;
+import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.star4droid.star2d.Items.Editor;
@@ -54,9 +56,21 @@ public class EditorLink {
 					((PolygonShape)shape).setAsBox(propertySet.getFloat("Collider Width")*0.5f,
 													propertySet.getFloat("Collider Height")*0.5f);
 					item.getActor().setSize(propertySet.getFloat("width"),propertySet.getFloat("height"));
-				} else {
+				} else if(shape instanceof CircleShape){
 					shape.setRadius(propertySet.getFloat("Collider Radius")*0.5f);
 					item.getActor().setSize(propertySet.getFloat("radius"),propertySet.getFloat("radius"));
+				} else if(shape instanceof ChainShape){
+					ChainShape chainShape = ((ChainShape)shape);
+					if(!propertySet.getString("Points").equals("")){
+						String[] pointsStr = propertySet.getString("Points").split("-");
+						Vector2[] points = new Vector2[pointsStr.length];
+						for(int i = 0; i < points.length; i++){
+							try {
+								points[i] = new Vector2(com.star4droid.star2d.Utils.getFloat(pointsStr[i].split(",")[0])*propertySet.getFloat("width"),com.star4droid.star2d.Utils.getFloat(pointsStr[i].split(",")[1]) * propertySet.getFloat("height"));
+							} catch(Exception e){}
+						}
+						chainShape.createChain(points);
+					}
 				}
 				item.getProperties().putAll(propertySet);
 				item.update();
