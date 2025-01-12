@@ -168,6 +168,7 @@ public class CodeGenerator {
 	
 	public static String getType(String type){
 		if(type.equals("BOX")) return "BoxDef";
+		if(type.equals("CUSTOM")) return "CustomDef";
 		if(type.equals("JOYSTICK")) return "JoyStickDef";
 		if(type.equals("TEXT")) return "TextDef";
 		if(type.equals("CIRCLE")) return "CircleDef";
