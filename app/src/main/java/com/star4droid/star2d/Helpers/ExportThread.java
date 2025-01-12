@@ -80,8 +80,9 @@ public class ExportThread extends Thread {
 			} catch(Exception exception){}
 			String manifest = String.format(Utils.readAssetFile("java/manifest.xml",context),(Object[])manifest_values);
 			FileUtil.writeFile(export_temp+"/manifest",manifest);
-			if(FileUtil.isExistFile(img))
-				FileUtil.copyFile(img,export_temp+"/drawable/icon.png");
+			if(FileUtil.isExistFile(img)){
+				FileUtil.copyFile(img,export_temp+"/res/drawable/icon.png");
+			}
 			FileUtil.writeFile(export_temp+"/assets/version",""+new Random().nextInt(9999999));
 			onProgress("Manifest encoding...");
 			AxmlUtil.encodeFile(export_temp+"/manifest",export_temp+"/AndroidManifest.xml");
@@ -97,7 +98,7 @@ public class ExportThread extends Thread {
 			onProgress("Moving to the selected path...");
 			//UriUtils.deleteUri(context,export_path);
 			UriUtils.copyUriToUri(context,Uri.fromFile(new java.io.File(dataDir+"/export.sign.apk")),export_path);
-			FileUtil.deleteFile(dataDir+"/export.apk");
+			//FileUtil.deleteFile(dataDir+"/export.apk");
 			FileUtil.deleteFile(dataDir+"/export.sign.apk");
 			onSuccess("Done \n path : "+FileUtil.convertUriToFilePath(context,export_path));
 		} catch(Exception ex){
@@ -115,6 +116,19 @@ public class ExportThread extends Thread {
 				
 			});
 			alertD.setPositiveButton(context.getString(R.string.install),(dl,which)->{
+			    android.os.StrictMode.setVmPolicy(new
+			android.os.StrictMode.VmPolicy.Builder().build());
+			if(android.os.Build.VERSION.SDK_INT>=24){
+							try{
+											java.lang.reflect.Method
+											m=android.os.StrictMode.class.getMethod(
+											"disableDeathOnFileUriExposure");
+											m.invoke(null);
+							}
+							catch(Exception e) {
+											//showMessage(e.toString());
+							}
+			}
 				ApkInstaller.installApplication(context,export_path);
 			});
 			alertD.create().show();
