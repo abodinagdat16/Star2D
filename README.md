@@ -3,6 +3,7 @@
 
   # Star2D
   Star2D is a game engine developed for Android.
+<a href="https://github.com/abodinagdat16/Star2D/releases/latest">(download link 🔗)</a>
 
   Hello everyone, very busy nowadays, but I like this project very much 💕. Thanks to everyone supporting me while developing it.
 
