@@ -37,16 +37,15 @@ public class BoxBody extends AppCompatImageView implements EditorItem {
 	
 	public void setProperties(PropertySet<String, Object> properties) {
 		propertySet = properties;
-		if(propertySet.getString("Shape").equals("Circle")){
+		if(!propertySet.getString("Shape").equals("Box")){
 		    if(editor!=null){
 		        try {
 		            editor.removeView(this);
-		            CircleBody circleBody = new CircleBody(editor.getContext());
-            				editor.addView(circleBody);
-            				circleBody.setProperties(properties);
-            				//circleBody.getPropertySet().put("z",getLastZ(editor));
-            				editor.selectView(circleBody);
-            				circleBody.update();
+		            EditorItem newBody = propertySet.getString("Shape").equals("Circle") ? new CircleBody(editor.getContext()) : new CustomBody(getContext());
+            				editor.addView((View)newBody);
+            				newBody.setProperties(properties);
+            				editor.selectView((View)newBody);
+            				newBody.update();
 		        } catch(Exception e){}
 		    }
 		    return;
