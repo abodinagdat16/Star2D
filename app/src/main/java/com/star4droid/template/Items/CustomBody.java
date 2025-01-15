@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.star4droid.star2d.ElementDefs.ElementEvent;
 import com.star4droid.template.Utils.ChildsHolder;
 import com.star4droid.template.Utils.PlayerItem;
+import java.util.ArrayList;
 import com.star4droid.template.Utils.PropertySet;
 import com.star4droid.template.Utils.Utils;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -152,20 +153,31 @@ public class CustomBody extends Image implements PlayerItem {
 			//PolygonShape shape = new PolygonShape();
 			//shape.setAsBox(propertySet.getFloat("Collider Width")*0.5f,propertySet.getFloat("Collider Height")*0.5f);
 			ChainShape shape = new ChainShape();
+			ArrayList<Vector2> array = new ArrayList<>();
 			if(!propertySet.getString("Points").equals("")){
 				String[] pointsStr = propertySet.getString("Points").split("-");
-				Vector2[] points = new Vector2[pointsStr.length];
+				
 				float hg = propertySet.getFloat("height"),
 				        wd = propertySet.getFloat("height");
-				for(int i = 0; i < points.length; i++){
+				for(int i = 0; i < pointsStr.length; i++){
 					try {
 					    String[] pointStr = pointsStr[i].split(",");
 					    float py = Utils.getFloat(pointStr[1]),
 					        px = Utils.getFloat(pointStr[0]);
-						points[i] = new Vector2(px * wd - wd * 0.5f,Math.abs(1f - py) * hg - hg * 0.5f);
+						array.add(new Vector2(px * wd - wd * 0.5f,Math.abs(1f - py) * hg - hg * 0.5f));
 						//points[i] = new Vector2(Math.abs(1f - px) * wd - wd * 0.5f,Math.abs(1f - py) * hg - hg * 0.5f);
-					} catch(Exception e){}
+					} catch(Exception e){
+					    //new RuntimeException("error points : \n+ "+Utils.getStackTraceString(e));
+					    Gdx.files.external("/logs/custom.txt").writeString("error points : \n+ "+Utils.getStackTraceString(e),false);
+					}
 				}
+				Vector2[] points = new Vector2[array.size()];
+				int po = 0;
+				for(Vector2 vec:array){
+				    points[po] = vec;
+				    po++;
+				}
+				Gdx.files.external("/logs/points.txt").writeString("points: "+propertySet.getString("Points"),false);
 				shape.createChain(points);
 			}
 			FixtureDef fx = new FixtureDef();
