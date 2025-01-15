@@ -234,7 +234,7 @@ public class BoxBody extends Image implements PlayerItem {
 	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		if(animation!=null)
-			super.setDrawable(animation.getKeyFrame(animationTime));
+			super.setDrawable(animation.getKeyFrame(animationTime,true));
 		update();
 		if(animation!=null)
 			animationTime+=Gdx.graphics.getDeltaTime();
