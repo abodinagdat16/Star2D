@@ -62,17 +62,17 @@ dependencies {
     implementation platform("io.github.Rosemoe.sora-editor:bom:0.22.1")
     implementation "io.github.Rosemoe.sora-editor:editor"
     implementation "io.github.Rosemoe.sora-editor:language-textmate"
-    implementation 'com.badlogicgames.gdx:gdx:1.12.1'
+    implementation 'com.badlogicgames.gdx:gdx:1.13.1'
 
-testImplementation 'com.badlogicgames.gdx:gdx-platform:1.12.1'
+testImplementation 'com.badlogicgames.gdx:gdx-platform:1.13.1'
 // https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-backend-lwjgl
-testImplementation 'com.badlogicgames.gdx:gdx-backend-lwjgl:1.12.1'
+testImplementation 'com.badlogicgames.gdx:gdx-backend-lwjgl:1.13.1'
 // https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-backend-android
-implementation 'com.badlogicgames.gdx:gdx-backend-android:1.12.1'
+implementation 'com.badlogicgames.gdx:gdx-backend-android:1.13.1'
 // https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-box2d
-implementation 'com.badlogicgames.gdx:gdx-box2d:1.12.1'
+implementation 'com.badlogicgames.gdx:gdx-box2d:1.13.1'
 // https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-box2d-platform
-testImplementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.12.1'
+testImplementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.13.1'
     constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
@@ -82,6 +82,6 @@ testImplementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.12.1'
         }
     }
 // https://mvnrepository.com/artifact/com.badlogicgames.gdx/gdx-box2d
-implementation 'com.badlogicgames.gdx:gdx-box2d:1.12.1'
+implementation 'com.badlogicgames.gdx:gdx-box2d:1.13.1'
 
 }
