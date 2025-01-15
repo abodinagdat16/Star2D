@@ -1,7 +1,10 @@
 
 plugins {
     id 'com.android.application'
-    
+    id 'net.idlestate.gradle-duplicate-classes-check' version '1.2.0'
+    checkForDuplicateClasses {
+    ignoreFailures = true
+    }
 }
 
 android {
