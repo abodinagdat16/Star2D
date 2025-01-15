@@ -38,9 +38,9 @@ public class SpriteSheetLoader extends Thread {
 			String content = Gdx.files.absolute(file.getAbsolutePath()).readString();
 			ArrayList<HashMap<String,Object>> animsList = content.equals("")?new ArrayList<>():new Gson().fromJson(content, new TypeToken<ArrayList<HashMap<String, Object>>>(){}.getType());
 			if(animsList.size()==0) continue;
-			int dur=300;
+			float dur=0.3f;//300ms
 			try {
-				dur = Utils.getInt(animsList.get(0).get("dur").toString());
+				dur = Utils.getFloat(animsList.get(0).get("dur").toString())*0.001f;
 			} catch(Exception exception){}
 			Drawable[] drawables= new Drawable[animsList.size()];
 			int x=0;
@@ -59,7 +59,8 @@ public class SpriteSheetLoader extends Thread {
 	}
 	
 	public Animation getAnimation(String anim){
-		return animations.containsKey(anim)?animations.get(anim):null;
+		Animation an = animations.containsKey(anim)?animations.get(anim):null;
+		return an;
 	}
 	
 	public interface LoadListener {
