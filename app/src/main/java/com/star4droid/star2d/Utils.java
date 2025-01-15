@@ -488,7 +488,11 @@ public class Utils {
 		
 		public static void createEmptyZipFile(String filePath) {
 		    FileUtil.writeFile(filePath,"");
-		    
+			try {
+		    	Utils.extractAssetFile(com.star4droid.star2d.evo.star2dApp.getContext(),"files/empty.zip",filePath);
+		    } catch (Exception ex){
+				
+			}
 		    /*
 		    try {
 		        extractAssetFile(getContext(),"files/empty.zip",filePath);
@@ -496,6 +500,8 @@ public class Utils {
 		        Log("empty zip creation error, "+ex.toString(),getStackTraceString(ex));
 		    }
 			*/
+			
+			/*
 			try {
 				java.io.File file = new java.io.File(filePath);
 				
@@ -509,6 +515,7 @@ public class Utils {
 				e.printStackTrace();
 				Log("empty zip creation error, "+e.toString(),getStackTraceString(e));
 			}
+			*/
 		}
 		
 		public static void zipFolderContents(String folder,String target,String password) throws Exception {
@@ -731,4 +738,50 @@ public class Utils {
 			}
 			return full;
 	}
+	
+	/**
+     * Moves a folder from sourcePath to destinationPath.
+     *
+     * @param sourcePath      The path of the folder to be moved.
+     * @param destinationPath The path to move the folder to.
+     * @return true if the move operation was successful, false otherwise.
+     */
+    public static boolean moveFolder(String sourcePath, String destinationPath) {
+        File sourceFolder = new File(sourcePath);
+        File destinationFolder = new File(destinationPath);
+
+        // Validate source folder
+        if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
+            return false; // Source folder doesn't exist or isn't a folder
+        }
+
+        // Create destination folder if it doesn't exist
+        if (!destinationFolder.exists()) {
+            if (!destinationFolder.mkdirs()) {
+                return false; // Failed to create destination folder
+            }
+        }
+
+        // Move files and subfolders recursively
+        File[] files = sourceFolder.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                File destFile = new File(destinationFolder, file.getName());
+                if (file.isDirectory()) {
+                    // Recursive call for subdirectories
+                    if (!moveFolder(file.getAbsolutePath(), destFile.getAbsolutePath())) {
+                        return false;
+                    }
+                } else {
+                    // Move file
+                    if (!file.renameTo(destFile)) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // Delete the source folder after moving its contents
+        return true;// sourceFolder.delete();
+    }
 }
