@@ -94,6 +94,7 @@ public class VisualScriptingDialog {
 			files.set(i,Uri.parse(files.get(i)).getLastPathSegment());
 		}
 		if(files.size()>0) hintsList.add("- Animations");
+		hintsList.addAll(files);
 		//sounds
 		files.clear();
 		FileUtil.listDir(editor.getProject().get("sounds"),files);
