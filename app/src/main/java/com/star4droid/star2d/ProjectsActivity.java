@@ -83,8 +83,12 @@ public class ProjectsActivity extends AppCompatActivity {
         });
 		
 		projectsPath = FileUtil.getPackageDataDir(this) + "/projects/";
-
+        
         FileUtil.listDir(projectsPath, projectsList);
+        projectsList.clear();
+        
+		for(String folder: projectsList)
+		    Utils.moveFolder(folder, getFilesDir() +"/projects/" + new java.io.File(folder).getName());
 		
         projectsPath = getFilesDir()+"/projects/"; //FileUtil.getPackageDataDir(this) + "/projects/";
 
