@@ -394,6 +394,9 @@ public class EditorActivity extends AppCompatActivity implements AndroidFragment
                             //dialog[0] = Utils.updateMessage(dialog[0], message, true);
                             if(dialog[0]!=null&&dialog[0].isShowing())
                                 dialog[0].dismiss();
+                            java.io.File file = new java.io.File(project.getDex());
+                            if(file.exists())
+                                file.setWritable(true);
                             FileUtil.writeFile(project.getDex(), "");
                             FileUtil.moveFile(project.getPath() + "/java/classes.dex", project.getDex());
                             if(window){
