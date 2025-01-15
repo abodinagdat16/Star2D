@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="6"
+    android:versionCode="6" 
 	package="com.star4droid.star2d.evo"
 	android:versionName="0.0.6Beta">
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
