@@ -81,11 +81,15 @@ public class ProjectsActivity extends AppCompatActivity {
             intent.setClass(this, SettingsActivity.class);
             startActivity(intent);
         });
-
-        projectsPath = FileUtil.getPackageDataDir(this) + "/projects/";
+		
+		projectsPath = FileUtil.getPackageDataDir(this) + "/projects/";
 
         FileUtil.listDir(projectsPath, projectsList);
+		
+        projectsPath = getFilesDir()+"/projects/"; //FileUtil.getPackageDataDir(this) + "/projects/";
 
+        FileUtil.listDir(projectsPath, projectsList);
+		
         listView1.setAdapter(new ProjectsListAdapter(this, projectsList));
 
         filePicker = registerForActivityResult(new ActivityResultContracts.OpenMultipleDocuments(), uriList -> {
@@ -286,7 +290,7 @@ public class ProjectsActivity extends AppCompatActivity {
             public void run() {
                 final StringBuilder err = new StringBuilder();
                 final String restoreP =
-                        FileUtil.getPackageDataDir(ProjectsActivity.this) + "/projects/";
+                        projectsPath + "/projects/";
                 try {
                     Utils.unzipf(inputStream, restoreP, "");
                 } catch (Exception ex) {
