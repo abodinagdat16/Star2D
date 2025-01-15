@@ -3,6 +3,7 @@ package com.star4droid.star2d.ElementDefs;
 import com.star4droid.template.Items.CustomBody;
 import com.star4droid.template.Items.StageImp;
 import com.star4droid.template.Utils.PropertySet;
+import com.star4droid.star2d.Utils;
 import java.lang.reflect.Field;
 
 public class CustomDef {
@@ -21,16 +22,20 @@ public class CustomDef {
 	
 	public CustomBody build(StageImp stage){
 		if(name.equals("")) throw new RuntimeException("CustomDef error : set name to the item..!!");
-		propertySet = new PropertySet<>();
-		for(Field field:getClass().getFields()){
-			try {
-				field.setAccessible(true);
-				propertySet.put(field.getName().replace("_"," "),field.get(this));
-			} catch(Throwable ex){
-				
-			}
+		try {
+    		propertySet = new PropertySet<>();
+    		for(Field field:getClass().getFields()){
+    			try {
+    				field.setAccessible(true);
+    				propertySet.put(field.getName().replace("_"," "),field.get(this));
+    			} catch(Throwable ex){
+    				
+    			}
+    		}
+    		
+    		return new CustomBody(stage,null).setElementEvent(elementEvents).setPropertySet(propertySet);
+		} catch(Exception ex){
+		    throw new RuntimeException("CustomDef error : \n" + Utils.getStackTraceString(ex));
 		}
-		
-		return new CustomBody(stage,null).setElementEvent(elementEvents).setPropertySet(propertySet);
 	}
 }
