@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.google.gson.Gson;
 import com.star4droid.star2d.Items.*;
 import com.star4droid.star2d.Utils;
-import com.star4droid.star2d.player.ItemScript;
+import com.star4droid.template.Utils.ItemScript;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
