@@ -38,6 +38,9 @@ public class CodeGenerator {
 	"\n			%1$s_Def.initialize(%2$s);\n"+
 	"%1$s = (%3$s)(this.world.createJoint(%1$s_Def));";
 	
+	private static final String fixZIndexDefault =
+	"\n         %1$s.getActor().setZIndex((int)(%1$s_def.z));";
+	
 	public static void generateFor(Editor editor,final GenerateListener generateListener){
 	    ArrayList<PropertySet<String,Object>> properties = new ArrayList<>();
 	    for(int x=0;x<editor.getChildCount();x++){
@@ -53,7 +56,7 @@ public class CodeGenerator {
 	public static void generateFor(Project project,String scene,Context context,ArrayList<PropertySet<String,Object>> properties,final GenerateListener generateListener){
 		new Thread(){
 			public void run(){
-				String itemsCode="";
+				String itemsCode="",fixZ = "";
 				String vars="",lightsVar="",jointVars="";
 				final StringBuilder scriptBuilder= new StringBuilder("");
 				boolean thereIsScript=false;
@@ -129,6 +132,8 @@ public class CodeGenerator {
 								initCode = (initCode.equals("")?(""):(initCode+"\n"))+"			"+name+"_def."+entry.getKey().replace(" ","_")+"="+qu1+entry.getValue().toString()+qu2+";";
 							}
 							itemsCode=itemsCode+(itemsCode.equals("")?"":"\n")+String.format(isLight?defaultLightCode:defualtItemCode,defType,propertySet.getString("name"),initCode,events);
+							if(!isLight)
+							    fixZ = fixZ + String.format(fixZIndexDefault,propertySet.getString("name"));
 							
 							if((!isLight)&&propertySet.getParent()!=null)
 								itemsCode+=propertySet.getParent().getString("name")+".addChild("+name+");\n";
@@ -152,7 +157,7 @@ public class CodeGenerator {
 				itemsCode+="\n"+joint.toString()+project.readEvent(scene,"OnCreate");
 				if(!vars.equals("")) vars+=";";
 				if(!lightsVar.equals("")) lightsVar+=";";
-				final String code=itemsCode;
+				final String code=itemsCode + fixZ;
 				final String variables=vars+"\n"+jointVars+"\n"+lightsVar;
 				final boolean replaceImportOfTheScript = (!thereIsScript);
 				if(generateListener!=null) {
