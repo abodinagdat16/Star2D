@@ -56,7 +56,7 @@ public class StageImp extends ApplicationAdapter {
 	private RayHandler rayHandler;
 	Viewport viewport;
 	boolean loadComplete=false,onCreateCalled=false;
-	SpriteSheetLoader spriteSheetLoader;
+	public SpriteSheetLoader spriteSheetLoader;
 	ArrayList<LightInfo> lights= new ArrayList<>();
 	
 	public StageImp(){
@@ -519,7 +519,8 @@ public class StageImp extends ApplicationAdapter {
 			Project project = new Project(path);
 			PropertySet<String,Object> set = PropertySet.getFrom(Utils.readFile(project.getConfig(scene)));
 			String optimizedDir = null;// star2dApp.getContext().getDir("odex", android.content.Context.MODE_PRIVATE).getAbsolutePath();
-			
+			java.io.File file = new java.io.File(project.getDex());
+			file.setReadOnly();
 			dalvik.system.DexClassLoader dcl = new dalvik.system.DexClassLoader(project.getDex(), optimizedDir, null, StageImp.class.getClassLoader() );
             
 			Class<?> playerClass = dcl.loadClass("com.star4droid.Game."+scene.toLowerCase());
@@ -556,7 +557,11 @@ public class StageImp extends ApplicationAdapter {
 	}
 	
 	public void setAnimation(PlayerItem playerItem,String anim){
-		
+		try {
+		    playerItem.setAnimation(spriteSheetLoader.getAnimation(anim));
+		} catch(Exception ex){
+		    //toast("animation : "+ anim + ", player : " + playerItem.getName() + ", error : "+ex.toString());
+		}
 	}
 	
 	public void createSound(String sound,String id){}
