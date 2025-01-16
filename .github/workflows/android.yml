@@ -51,9 +51,13 @@ jobs:
         cd "$TEMP_DIR"
         zip -r "../$ZIP_OUTPUT" classes*.dex
 
+        ls
         # Return to the workspace
         cd -
 
+    - name: show files list
+      run: ls
+      
     # Upload Classes ZIP artifact
     - name: Upload Classes ZIP
       uses: actions/upload-artifact@v4
