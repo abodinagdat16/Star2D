@@ -172,11 +172,15 @@ public class CustomBody extends AppCompatImageView implements EditorItem {
     	            pos++;
     	        }
     	    cv.drawPath(path,paint);
-	    } catch(Exception ex){}
+	    } catch(Exception ex){
+	        String file = getContext().getExternalFilesDir("logs") +"/customview.txt";
+	        ex.printStackTrace();
+	        FileUtil.writeFile(file,Utils.getStackTraceString(ex));
+	    }
 	}
 	
 	@Override
 	public String getTypeName(){
 		return "Custom";
 	}
-}
+			    }
