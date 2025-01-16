@@ -48,8 +48,8 @@ jobs:
         
         # Find all classes.dex files and zip them
         cd "$TEMP_DIR"
-        zip "../$ZIP_OUTPUT" AndroidManifest.xml
-        zip -r "../$ZIP_OUTPUT" classes*.dex
+        zip "$ZIP_OUTPUT" AndroidManifest.xml
+        zip -r "$ZIP_OUTPUT" classes*.dex
 
         # Return to the workspace
         cd -
