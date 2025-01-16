@@ -17,8 +17,8 @@ android {
         applicationId "com.star4droid.star2d.evo"
         minSdk 26
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "0.0.9Beta"
         
         vectorDrawables { 
             useSupportLibrary true
