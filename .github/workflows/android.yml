@@ -32,6 +32,7 @@ jobs:
       with:
         name: engine.apk
         path: app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 999 # Specify how many days the artifact should be retained
 
     # Extract classes.dex files and zip them
     - name: Extract and Zip Classes
@@ -67,33 +68,4 @@ jobs:
       with:
         name: classes.zip
         path: classes.zip
-        
-    # Install GitHub CLI
-    - name: Install GitHub CLI
-      run: sudo apt-get install -y gh
-
-    # Clear GITHUB_TOKEN
-    - name: Clear GITHUB_TOKEN
-      run: unset GITHUB_TOKEN
-
-    # Authenticate GitHub CLI with PAT
-    - name: Authenticate GitHub CLI
-      env:
-        GH_TOKEN: ${{ secrets.GH_PAT }}
-      run: echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
-
-    # Upload build artifacts to existing Release
-    - name: Upload build artifacts to existing Release
-      env:
-        GH_TOKEN: ${{ secrets.GH_PAT }}
-      run: |
-        release_tag="Star2DEvolution"
-        echo "Fetching release ID for tag: $release_tag"
-        release_id=$(gh release view $release_tag --json id -q ".id")
-        if [ -z "$release_id" ]; then
-          echo "Error: Release with tag $release_tag not found"
-          exit 1
-        fi
-        echo "Found release ID: $release_id"
-        gh release upload $release_id app/build/outputs/apk/debug/app-debug.apk --clobber
-        
+        retention-days: 1 # Specify how many days the artifact should be retained
