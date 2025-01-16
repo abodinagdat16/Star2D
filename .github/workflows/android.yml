@@ -49,12 +49,16 @@ jobs:
         
         # Find all classes.dex files and zip them
         cd "$TEMP_DIR"
+        
+        zip "../$ZIP_OUTPUT" AndroidManifest.xml
+        
         zip -r "../$ZIP_OUTPUT" classes*.dex
 
         cd ..
         ls
         # Return to the workspace
         cd -
+        mv "$TEMP_DIR/../$ZIP_OUTPUT" .
 
     - name: show files list
       run: ls
