@@ -17,18 +17,31 @@ TOTAL_FILES=$(find "$LOCAL_PATH" -type f | wc -l)
 CURRENT_FILE=0
 
 # Iterate over files in the local folder
-for FILE in $(find "$LOCAL_PATH" -type f); do
+find "$LOCAL_PATH" -type f | while IFS= read -r FILE; do
   # Increment the current file counter
   CURRENT_FILE=$((CURRENT_FILE + 1))
   
-  # Display the progress at the bottom
-  echo -ne "Processing file $CURRENT_FILE/$TOTAL_FILES\r"
+  # Extract the file name only (not the full path)
+  FILE_NAME=$(basename "$FILE")
+  
+  # Display the progress and file name
+  echo -ne "Processing file $CURRENT_FILE/$TOTAL_FILES: $FILE_NAME\r"
+
+  # Check if the file exists (extra safety)
+  if [ ! -f "$FILE" ]; then
+    echo -e "\nError: File not found - $FILE"
+    continue
+  fi
 
   # Get the relative file path
   RELATIVE_PATH=${FILE#$LOCAL_PATH/}
 
-  # Read file content
+  # Encode the file content
   CONTENT=$(base64 -w 0 "$FILE")
+  if [ $? -ne 0 ]; then
+    echo -e "\nError: Failed to encode file - $FILE_NAME"
+    continue
+  fi
 
   # Check if the file exists in the repository
   API_RESPONSE=$(gh api "/repos/$REPO/contents/$TARGET_PATH/$RELATIVE_PATH" --jq '.sha' 2>/dev/null)
