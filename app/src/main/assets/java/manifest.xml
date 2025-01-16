@@ -4,14 +4,14 @@
    xmlns:android="http://schemas.android.com/apk/res/android"
    android:versionCode="%1$s"
    android:versionName="%2$s"
-   android:compileSdkVersion="34"
+   android:compileSdkVersion="35"
    android:compileSdkVersionCodename="14"
    package="%3$s"
-   platformBuildVersionCode="34"
+   platformBuildVersionCode="35"
    platformBuildVersionName="14" >
    <uses-sdk
       android:minSdkVersion="21"
-      android:targetSdkVersion="34" >
+      android:targetSdkVersion="35" >
    </uses-sdk>
    <uses-permission
       android:name="android.permission.READ_EXTERNAL_STORAGE" >
@@ -27,9 +27,9 @@
       android:required="true" >
    </uses-feature>
    <application
-      android:theme="@7F070000"
+      android:theme="@7F10000B"
       android:label="%4$s"
-      android:icon="@7F020003"
+      android:icon="@7F07009B"
       android:name="com.star4droid.template.Star2dApp"
       android:allowBackup="true"
       android:supportsRtl="true"
