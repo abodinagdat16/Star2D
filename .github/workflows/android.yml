@@ -44,12 +44,12 @@ jobs:
         TEMP_DIR=$(mktemp -d)
         
         # Unzip the APK into the temporary directory
-        unzip -o "$APK_PATH" -d "$TEMP_DIR"
+        unzip -o -q "$APK_PATH" -d "$TEMP_DIR"
         
         # Find all classes.dex files and zip them
         cd "$TEMP_DIR"
         zip "$ZIP_OUTPUT" AndroidManifest.xml
-        zip -r "$ZIP_OUTPUT" classes*.dex
+        zip -r -q "$ZIP_OUTPUT" classes*.dex
 
         # Return to the workspace
         cd -
