@@ -1,3 +1,4 @@
+-- TODO : Fixing Dx (currently D8 only works)
 //I took about 2 months to create this engine, if you are trying to modify it using reverse engineering without my permission, it's very annoying, be kind and leave plz, I am trying hard to make this engine free for all (paid features because I can't eat likes)... just for your knowledge:
 // I have been without internet (free mode) for more than 8 months except little times,
 // I don't get chance until now to try real ChatGPT or midjourney and other AI's..., thanks for messenger bots : MixerBox, NoGTP..
