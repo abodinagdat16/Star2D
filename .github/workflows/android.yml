@@ -47,9 +47,9 @@ jobs:
         # Unzip the APK into the temporary directory
         unzip -o "$APK_PATH" -d "$TEMP_DIR"
         
-        # Find all classes.dex files
+        # Find all classes.dex files and zip them
         cd "$TEMP_DIR"
-        zip "../$ZIP_OUTPUT" classes*.dex
+        zip -r "../$ZIP_OUTPUT" classes*.dex
 
         # Return to the workspace
         cd -
