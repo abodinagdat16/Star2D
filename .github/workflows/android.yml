@@ -27,9 +27,36 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    # Upload APK artifact after build
+    # Upload APK artifact
     - name: Upload APK
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: engine.apk
         path: app/build/outputs/apk/debug/app-debug.apk
+
+    # Extract classes.dex files and zip them
+    - name: Extract and Zip Classes
+      if: always() # Ensure this runs even if the APK upload succeeds
+      run: |
+        APK_PATH="app/build/outputs/apk/debug/app-debug.apk"
+        ZIP_OUTPUT="classes.zip"
+        
+        # Create a temporary directory
+        TEMP_DIR=$(mktemp -d)
+        
+        # Unzip the APK into the temporary directory
+        unzip -o "$APK_PATH" -d "$TEMP_DIR"
+        
+        # Find all classes.dex files
+        cd "$TEMP_DIR"
+        zip "../$ZIP_OUTPUT" classes*.dex
+
+        # Return to the workspace
+        cd -
+
+    # Upload Classes ZIP artifact
+    - name: Upload Classes ZIP
+      uses: actions/upload-artifact@v3
+      with:
+        name: classes.zip
+        path: classes.zip
