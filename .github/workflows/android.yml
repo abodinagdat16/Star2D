@@ -5,7 +5,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,21 +26,29 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
+    # Install GitHub CLI
     - name: Install GitHub CLI
       run: sudo apt-get install -y gh
 
+    # Clear GITHUB_TOKEN
+    - name: Clear GITHUB_TOKEN
+      run: unset GITHUB_TOKEN
+
+    # Authenticate GitHub CLI with PAT
     - name: Authenticate GitHub CLI
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+        GH_TOKEN: ${{ secrets.GH_PAT }}
+      run: echo "${{ secrets.GH_PAT }}" | gh auth login --with-token
 
+    # Upload build artifacts to existing Release
     - name: Upload build artifacts to existing Release
+      env:
+        GH_TOKEN: ${{ secrets.GH_PAT }}
       run: |
         release_tag="Star2DEvolution"
         release_id=$(gh release view $release_tag --json id -q ".id")
         gh release upload $release_id app/build/outputs/apk/debug/app-debug.apk --clobber
-        
-    
+
     # Upload APK artifact
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -64,20 +71,17 @@ jobs:
         
         # Find all classes.dex files and zip them
         cd "$TEMP_DIR"
-        
         zip "../$ZIP_OUTPUT" AndroidManifest.xml
-        
-        zip -r "$ZIP_OUTPUT" classes*.dex
+        zip -r "../$ZIP_OUTPUT" classes*.dex
 
-        ls
         # Return to the workspace
         cd -
-        echo "moving files .."
-        echo "$TEMP_DIR/$ZIP_OUTPUT"
         
+        # Move the ZIP file to the workspace
         mv "$TEMP_DIR/$ZIP_OUTPUT" .
 
-    - name: show files list
+    # Show files list
+    - name: Show files list
       run: ls
       
     # Upload Classes ZIP artifact
