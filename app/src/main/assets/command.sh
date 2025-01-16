@@ -46,25 +46,28 @@ find "$LOCAL_PATH" -type f | while IFS= read -r FILE; do
   # Check if the file exists in the repository
   API_RESPONSE=$(gh api "/repos/$REPO/contents/$TARGET_PATH/$RELATIVE_PATH" --jq '.sha' 2>/dev/null)
 
-  # If the file exists, include the sha; otherwise, create a new file
+  # Prepare JSON payload
   if [ -n "$API_RESPONSE" ]; then
-    gh api \
-      -X PUT \
-      -H "Accept: application/vnd.github.v3+json" \
-      "/repos/$REPO/contents/$TARGET_PATH/$RELATIVE_PATH" \
-      -F message="Update $RELATIVE_PATH" \
-      -F content="$CONTENT" \
-      -F sha="$API_RESPONSE" \
-      -F branch="$BRANCH"
+    JSON_PAYLOAD=$(jq -n \
+      --arg message "Update $RELATIVE_PATH" \
+      --arg content "$CONTENT" \
+      --arg sha "$API_RESPONSE" \
+      --arg branch "$BRANCH" \
+      '{message: $message, content: $content, sha: $sha, branch: $branch}')
   else
-    gh api \
-      -X PUT \
-      -H "Accept: application/vnd.github.v3+json" \
-      "/repos/$REPO/contents/$TARGET_PATH/$RELATIVE_PATH" \
-      -F message="Add $RELATIVE_PATH" \
-      -F content="$CONTENT" \
-      -F branch="$BRANCH"
+    JSON_PAYLOAD=$(jq -n \
+      --arg message "Add $RELATIVE_PATH" \
+      --arg content "$CONTENT" \
+      --arg branch "$BRANCH" \
+      '{message: $message, content: $content, branch: $branch}')
   fi
+
+  # Upload file using GitHub API
+  echo "$JSON_PAYLOAD" | gh api \
+    -X PUT \
+    -H "Accept: application/vnd.github.v3+json" \
+    "/repos/$REPO/contents/$TARGET_PATH/$RELATIVE_PATH" \
+    --input -
 done
 
 # Print completion message
