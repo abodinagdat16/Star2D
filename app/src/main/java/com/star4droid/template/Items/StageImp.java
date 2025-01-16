@@ -187,6 +187,7 @@ public class StageImp extends ApplicationAdapter {
 	public final void create() {
 		super.create();
 		init(viewport);
+		setupCollision();
 		InputMultiplexer multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(UiStage);
 		multiplexer.addProcessor(GameStage);
