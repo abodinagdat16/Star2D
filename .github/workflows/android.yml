@@ -1,5 +1,4 @@
-clobber
-        name: Android CI
+name: Android CI
 
 on:
   workflow_dispatch: # Trigger manually from the GitHub Actions UI
