@@ -6,5 +6,6 @@
 "string":",name,Text",
 "static":",TYPE,",
 "color":",Text Color,Progress Color,color,Background Color,",
-"body":",Collision,Script,attach To,parent"
+"body":",Collision,Script,attach To,parent",
+"points":",Points,"
 }
