@@ -294,7 +294,7 @@ public class ProjectsActivity extends AppCompatActivity {
             public void run() {
                 final StringBuilder err = new StringBuilder();
                 final String restoreP =
-                        projectsPath + "/projects/";
+                        projectsPath;
                 try {
                     Utils.unzipf(inputStream, restoreP, "");
                 } catch (Exception ex) {
