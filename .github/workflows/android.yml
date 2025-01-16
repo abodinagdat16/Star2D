@@ -1,10 +1,7 @@
 name: Android CI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_dispatch: # Trigger manually from the GitHub Actions UI
 
 jobs:
   build:
@@ -32,7 +29,7 @@ jobs:
 
     # Upload APK artifact after build
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: apk
+        name: engine.apk
         path: app/build/outputs/apk/debug/app-debug.apk
