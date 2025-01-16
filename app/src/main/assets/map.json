@@ -3,7 +3,7 @@
 "Appearance":",Text,X Ray,Soft,Softness Length,Progress,Max,Background Color,Progress Color,Visible,Pad Image,Button Image,image,tileX,tileY,Text Color",
 "Transform":",x,y,z,Static Light,attach To,Offset X,Offset Y,rotation,width,height,radius,",
 "Gravity":",friction,restitution,density,Active,Bullet,Gravity Scale,Fixed Rotation,isSensor",
-"Collider":",Shape,Collision,ColliderX,ColliderY,Collider Width,Collider Height,Collider Radius",
+"Collider":",Points,Collision,Shape,ColliderX,ColliderY,Collider Width,Collider Height,Collider Radius",
 "static":"TYPE",
 "Light":",rays,Light Type,Cone Degree,Distance,color"
 }
