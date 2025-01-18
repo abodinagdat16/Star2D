@@ -19,7 +19,7 @@ jobs:
         cache: gradle
     # decode manifest 
     - name : Decode manifest 
-      run : java -cp assets/axml.jar axml.xml.Main e "./app/src/main/AndroidManifest.xml" ./out.xml
+      run : java -cp assets/axml.jar:app/src/main/assets/cp.jar axml.xml.Main e "./app/src/main/AndroidManifest.xml" ./out.xml
     # Upload APK artifact
     - name: Upload manifest artifact
       uses: actions/upload-artifact@v4
