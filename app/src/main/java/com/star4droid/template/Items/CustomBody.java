@@ -168,6 +168,7 @@ public class CustomBody extends Image implements PlayerItem {
 						//points[i] = new Vector2(Math.abs(1f - px) * wd - wd * 0.5f,Math.abs(1f - py) * hg - hg * 0.5f);
 					} catch(Exception e){
 					    //new RuntimeException("error points : \n+ "+Utils.getStackTraceString(e));
+					    e.printStackTrace();
 					    Gdx.files.external("/logs/custom.txt").writeString("error points : \n+ "+Utils.getStackTraceString(e),false);
 					}
 				}
@@ -196,9 +197,6 @@ public class CustomBody extends Image implements PlayerItem {
 		}
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-		else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	@Override
 	public void update() {
@@ -226,8 +224,17 @@ public class CustomBody extends Image implements PlayerItem {
 	public Body getBody() {
 	    return body;
 	}
-
 	
+	@Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
+	}
+
 	@Override
 	public ChildsHolder getChildsHolder() {
 		if(childsHolder!=null)
