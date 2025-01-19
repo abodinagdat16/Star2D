@@ -26,11 +26,15 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.utils.Array;
 import com.star4droid.star2d.Helpers.Project;
 import com.star4droid.template.LoadingStage;
 import com.star4droid.template.Utils.*;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
 import java.util.HashMap;
+import com.star4droid.star2d.Helpers.Pair;
 import box2dLight.RayHandler;
 
 public class StageImp extends ApplicationAdapter {
@@ -48,7 +52,7 @@ public class StageImp extends ApplicationAdapter {
 	StagePair stagePair;//useless...
 	public ProjectAssetLoader assetLoader;
 	LoadingStage loadingStage;
-	Preferences preferences;
+	public Preferences preferences;
 	PlayerItem followX,followY;
 	float[] cameraOffset = new float[]{0,0};
 	FPSCalc fPSCalc=new FPSCalc();
@@ -57,7 +61,11 @@ public class StageImp extends ApplicationAdapter {
 	Viewport viewport;
 	boolean loadComplete=false,onCreateCalled=false;
 	public SpriteSheetLoader spriteSheetLoader;
+	public InputMultiplexer multiplexer;
 	ArrayList<LightInfo> lights= new ArrayList<>();
+	
+	// TODO : order the actors based on their z index then render them instead of relying on allStage...
+	
 	
 	public StageImp(){
 		viewport = new FitViewport(720,1560);
@@ -77,21 +85,21 @@ public class StageImp extends ApplicationAdapter {
 		viewport = port;
 	}
 	
+	boolean needsUpdate = true;
 	public void init(Viewport viewport){
+	    if(propertySet==null || Gdx.files == null) return;
 	    float height = propertySet==null?0:propertySet.getInt("logicHeight"),
 			width = propertySet==null?0:propertySet.getInt("logicWidth");
 		if(height==0) height=1560;
 		if(width==0) width=720;
 		float ratio = width/height;
-		
 		//viewport = new FitViewport(10,10/ratio);
-		if(viewport==null) viewport = new FitViewport(width,height);
-		    else viewport.setWorldSize(width,height);
-		
-		debugRenderer = new Box2DDebugRenderer();
+		if(true || viewport==null || needsUpdate) viewport = new FitViewport(width,height);
+		    //else viewport.setWorldSize(width,height);
+		needsUpdate = (propertySet==null);
 		
 		Gdx.input.setCatchKey(4,true);//back key
-		UiStage = new Stage(viewport);
+		UiStage = new Stage(new FitViewport(width,height));
 		GameStage = new Stage(viewport){
 			@Override
 			public boolean keyDown(int key){
@@ -105,7 +113,7 @@ public class StageImp extends ApplicationAdapter {
 		
 		loadingStage = new LoadingStage();
 		stagePair = new StagePair(UiStage,GameStage);
-		preferences = Gdx.app.getPreferences("Game-Prefs");
+		preferences = Gdx.app.getPreferences("com.star4droid.star2d.evo.prefs");
 		if(project==null)
 		    project = new Project(Gdx.files.getExternalStoragePath());
 		initDone = true;
@@ -117,11 +125,86 @@ public class StageImp extends ApplicationAdapter {
 		rayHandler = new RayHandler(world);
 		rayHandler.setAmbientLight(0.1f, 0.1f, 0.1f, 1f);
 		setupLight();
+		setupCollision();
+		multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(UiStage);
+		multiplexer.addProcessor(GameStage);
+		Gdx.input.setInputProcessor(multiplexer);
 		
+		if(assetLoader==null||spriteSheetLoader==null){
+			assetLoader = new ProjectAssetLoader(project);
+			assetLoader.setAssetsLoadListener(()->{
+				spriteSheetLoader.start();
+				//loadComplete = true;
+				//onCreate();
+			});
+			spriteSheetLoader = new SpriteSheetLoader(assetLoader,project,(errorHappend,message)->{
+				loadComplete = true;
+			});
+			assetLoader.finishLoading();
+		} else {
+			loadComplete = true;
+			onCreateCalled = true;
+			onCreate();
+		}
+		this.viewport = viewport;
 	}
 	
 	public RayHandler getRayHandler(){
 	    return rayHandler;
+	}
+	
+	ArrayList<Actor> actors = null;
+	
+	public void updateActors(){
+	    actors = null;
+	    orderBodies();
+	}
+	
+	public ArrayList<Actor> orderBodies(){
+	    if(actors!=null) return actors;
+		ArrayList<Actor> bodies = new ArrayList<>();
+		ArrayList<Pair<Integer, Actor>> zValues = new ArrayList<>();
+		
+		for (Actor actor:GameStage.getActors()) {
+		    boolean item = false;
+		    if(actor instanceof PlayerItem){
+		        PropertySet ps = ((PlayerItem)actor).getProperties();
+		        if(ps != null){
+			        zValues.add(new Pair<>(ps.getInt("z"),actor));
+			        item = true;
+			    }
+			}
+			if(!item) zValues.add(new Pair<>(actor.getZIndex(),actor));
+		}
+		
+		for (Actor actor:UiStage.getActors()) {
+		    boolean item = false;
+		    if(actor instanceof PlayerItem){
+		        PropertySet ps = ((PlayerItem)actor).getProperties();
+		        if(ps != null){
+			        zValues.add(new Pair<>(ps.getInt("z"),actor));
+			        item = true;
+			    }
+			}
+			if(!item) zValues.add(new Pair<>(actor.getZIndex(),actor));
+		}
+		
+		
+		// Sort the zValues list based on the z values
+		Collections.sort(zValues, new Comparator<Pair<Integer, Actor>>() {
+			@Override
+			public int compare(Pair<Integer, Actor> pair1, Pair<Integer, Actor> pair2) {
+				return Integer.compare(pair1.first, pair2.first);
+			}
+		});
+		
+		// Add the names to the bodies list in the sorted order
+		for (Pair<Integer, Actor> pair : zValues) {
+			bodies.add(pair.second);
+		}
+		this.actors = bodies;
+		return bodies;
 	}
 	
 	public void addLight(String name,Light light){
@@ -186,31 +269,20 @@ public class StageImp extends ApplicationAdapter {
 	@Override
 	public final void create() {
 		super.create();
-		init(viewport);
-		setupCollision();
-		InputMultiplexer multiplexer = new InputMultiplexer();
-		multiplexer.addProcessor(UiStage);
-		multiplexer.addProcessor(GameStage);
-		Gdx.input.setInputProcessor(multiplexer);
-		
-		if(assetLoader==null||spriteSheetLoader==null){
-			assetLoader = new ProjectAssetLoader(project);
-			assetLoader.setAssetsLoadListener(()->{
-				spriteSheetLoader.start();
-				//loadComplete = true;
-				//onCreate();
-			});
-			spriteSheetLoader = new SpriteSheetLoader(assetLoader,project,(errorHappend,message)->{
-				loadComplete = true;
-			});
-			assetLoader.finishLoading();
-		} else {
-			loadComplete = true;
-			onCreateCalled = true;
-			onCreate();
+		debugRenderer = new Box2DDebugRenderer();
+		try {
+		    init(viewport);
+		} catch(Exception ex){
+		    throw new RuntimeException("error : " + ex.toString()+"\n full:\n"
+		        +Utils.getStackTraceString(ex));
 		}
-		
 	}
+	
+	@Override
+    public void resize(int width, int height) {
+        //GameStage().getViewport().update(width,height);
+        //UiStage().getViewport().update(width,height);
+    }
 	
 	public void onCreate(){
 		
@@ -264,6 +336,7 @@ public class StageImp extends ApplicationAdapter {
 	@Override
 	public final void render() {
 		super.render();
+		if(needsUpdate) return;
 		// PlayerItem item= findItem("Box1");
 		// if(item!=null){
 		    // GameStage.getCamera().position.x = item.getActorX();
@@ -295,6 +368,7 @@ public class StageImp extends ApplicationAdapter {
 			    //throw new RuntimeException("game not drawn for unknown reason...");
 			currentStage.onDraw();
 		}
+		
 	}
 	
 	public void onDraw(){
@@ -410,6 +484,11 @@ public class StageImp extends ApplicationAdapter {
 			if(viewport!=null) viewport.setWorldSize(width,height);
 		    //background.setSize(width,height);
 		    setupLight();
+		    if(needsUpdate){
+		        try {
+		            init(null);
+		        } catch(Exception ex){}
+		    }
 		}
 		return this;
 	}
@@ -449,6 +528,19 @@ public class StageImp extends ApplicationAdapter {
 					boolean b1= body1.getProperties().getString("Collision").contains(body2.getParentName());
 					boolean b2= body2.getProperties().getString("Collision").contains(body1.getParentName());
 					return !(b1||b2);
+					/*
+					Gdx.files.external("collision.txt").writeString(
+					    "\n1 : "+body1.getProperties().getString("Collision")
+					    + "\np name : "+ body1.getParentName()
+					    +"\n contains: " + b1
+					    + "\n2 : "+body2.getProperties().getString("Collision")
+					    + "\np2 name : "+ body2.getParentName()
+					    +"\n contains: " + b2
+					    +"\n------------------------------------------"
+					    ,true
+					);
+					return true;
+					*/
 				} catch(Exception ex){}
 			    return false;
 			}
@@ -526,16 +618,18 @@ public class StageImp extends ApplicationAdapter {
             
 			Class<?> playerClass = dcl.loadClass("com.star4droid.Game."+scene.toLowerCase());
 			java.lang.reflect.Constructor<?> constructor = playerClass.getConstructor();
-			return ((StageImp)constructor.newInstance()).setAssetsLoader(projectAssetLoader).setProject(project).setSpriteSheetLoader(spriteSheetLoader).setPropertySet(set);
+			StageImp imp = ((StageImp)constructor.newInstance()).setAssetsLoader(projectAssetLoader).setProject(project).setSpriteSheetLoader(spriteSheetLoader).setPropertySet(set);
+			file.setWritable(true);
+			return imp;
 		} catch(Throwable e){
 		String err = "path : "+path+"\n scene : "
 			+scene+"\n error : "+e.toString()+"\n"
 			+"cause : "+e.getCause()+"\n"+
 			Utils.getStackTraceString(e);
 		//Utils.Log(err);
-		//throw new RuntimeException(err);
+		throw new RuntimeException(err);
 		}
-		return null;
+		//return null;
 	}
 	
 	private Music getMusic(String sound){
@@ -577,6 +671,14 @@ public class StageImp extends ApplicationAdapter {
 			return;
 		}
 		StageImp newStage = getFromDex(project.getPath(),scene,assetLoader,spriteSheetLoader);
+		// this is complex, but if you want to understand...:
+		// when the new Stage call openScene/finish
+		// the current stage add a stage in it's list of stages
+		// then display it
+		// and when it call finish, the stage remove it from the list
+		// and give the input to the stage that come after it ...
+		// if there's no stages in the list, then give the input to the main stage
+		// if the main stage isn't available, it means it finished, close the game in that case ...
 		newStage.setOpenSceneFunc((sc,stageImp)->{
 				if(currentStage==stageImp)
 					previousStages.add(stageImp);
@@ -587,7 +689,11 @@ public class StageImp extends ApplicationAdapter {
 				if(previousStages.size()==0)
 					Gdx.app.exit();
 				else currentStage = previousStages.get(previousStages.size()-1);
-				if(currentStage.isMain()) currentStage = null;
+				if(currentStage.isMain()) {
+				    currentStage = null;
+				    Gdx.input.setInputProcessor(multiplexer);
+				} else if(currentStage!=null)
+				        Gdx.input.setInputProcessor(currentStage.multiplexer);
 			});
 		if(currentStage==null){
 			previousStages.add(this);
@@ -595,11 +701,12 @@ public class StageImp extends ApplicationAdapter {
 			previousStages.add(currentStage);
 		}
 		currentStage = newStage;
-		
+		if(currentStage!=null) Gdx.input.setInputProcessor(currentStage.multiplexer);
 	}
 	
 	public void setZoom(float zoom){
 		((OrthographicCamera)getCamera()).zoom = 1/zoom;
+		/*
 		for(Actor actor:GameStage.getActors()){
 				if(actor==null) continue;
 				String actorName=(actor.getName()==null)?"":actor.getName();
@@ -610,7 +717,8 @@ public class StageImp extends ApplicationAdapter {
 					    actor.setScale(1/zoom);
 					    //actor.setOrigin(actor.getWidth()*0.5f,actor.getHeight()*0.5f);
 					}
-			}
+		}
+		*/
 	}
 	
 	public float getZooming(){
@@ -619,6 +727,14 @@ public class StageImp extends ApplicationAdapter {
 	
 	public static String read(String file){
 		return Gdx.files.absolute(file).readString();
+	}
+	
+	public static void writeInternal(String file,String content){
+	    Gdx.files.internal("internal/"+file).writeString(content,false);
+	}
+	
+	public static void readInternal(String file,String content){
+	    Gdx.files.internal("internal/"+file).readString();
 	}
 	
 	public static void write(String file,String content){
@@ -650,6 +766,25 @@ public class StageImp extends ApplicationAdapter {
 		getCamera().position.y = playerItem.getActorY()+playerItem.getActor().getHeight()*0.5f;
 	}
 	
+	boolean isDrawingUi=false;
+	public void ui(com.badlogic.gdx.graphics.g2d.Batch batch){
+	    if(!isDrawingUi){
+	        UiStage.getViewport().apply();
+	        UiStage.getCamera().update();
+	        batch.setProjectionMatrix(UiStage.getCamera().combined);
+	        isDrawingUi = true;
+	    }
+	}
+	
+	public void body(com.badlogic.gdx.graphics.g2d.Batch batch){
+	    if(isDrawingUi){
+	        GameStage.getViewport().apply();
+	        GameStage.getCamera().update();
+	        batch.setProjectionMatrix(GameStage.getCamera().combined);
+	        isDrawingUi = false;
+	    }
+	}
+	
 	public boolean draw() {
 		if(preferences==null) return false;
 		if(followX!=null&&followY!=null){
@@ -659,8 +794,29 @@ public class StageImp extends ApplicationAdapter {
 		} else if(followY!=null){
 			getCamera().position.y = followY.getActorY()+followY.getActor().getWidth()*0.5f+cameraOffset[1];
 		}
-		GameStage.draw();
+		//GameStage.draw();
 		//UiStage.draw();
+		// TODO : This can cause bad performance, need to fix..
+		// suggestion : override setZIndex of the bodies...
+		Stage current=null;
+		GameStage.getCamera().update();
+		UiStage.getCamera().update();
+		
+		for(Actor actor:orderBodies()){
+		    if(actor.getStage()==null || !actor.isVisible()) continue;
+		    Stage st = actor.getStage();
+		    boolean drawing = st.getBatch().isDrawing();
+		    if(!drawing){
+		        if(current!=null && current.getBatch().isDrawing())
+		            current.getBatch().end();
+		        st.getBatch().begin();
+		        st.getBatch().setProjectionMatrix(st.getCamera().combined);
+		        current = st;
+		    }
+		    actor.draw(actor.getStage().getBatch(),1);
+		}
+		if(current!=null && current.getBatch().isDrawing())
+		            current.getBatch().end();
 		if(debugBox2d)
 		    drawDebug();
 		if(playing) for(int x=0;x<steps;x++)
@@ -705,21 +861,22 @@ public class StageImp extends ApplicationAdapter {
 	
 	public void act() {
 		if(preferences==null) return;
-		//UiStage.act();
+		UiStage.act();
 		GameStage.act();
 	}
 	
 	public void addActor(Actor actor) {
-		/*if(actor instanceof PlayerItem&&((PlayerItem)actor).getProperties()!=null&&((PlayerItem)actor).getProperties().containsKey("type")&&((PlayerItem)actor).getProperties().getString("type").equals("UI"))
+		if(actor instanceof PlayerItem&&((PlayerItem)actor).getProperties()!=null&&((PlayerItem)actor).getProperties().containsKey("type")&&((PlayerItem)actor).getProperties().getString("type").equals("UI"))
 			UiStage.addActor(actor);
 		else
-		*/
-		GameStage.addActor(actor);
+		    GameStage.addActor(actor);
 	}
 	
 	public void dispose(){
-		UiStage.dispose();
-		GameStage.dispose();
+	    try {
+		    UiStage.dispose();
+		    GameStage.dispose();
+		} catch(Exception e){}
 		//assetLoader.dispose();
 	}
 	
