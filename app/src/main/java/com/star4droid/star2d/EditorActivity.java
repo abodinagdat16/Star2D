@@ -709,19 +709,21 @@ public class EditorActivity extends AppCompatActivity implements AndroidFragment
 	}
 	@Override
 	public void exit() {
-	    if(editor.getLink()!=null&&editor.getLink().getStage()!=null)
-	        editor.getLink().getStage().pause();
-		editor.linkTo(null);
-		editor.updateProperties();
-		if(playerDialog!=null){
-			if(playerDialog.isShowing())
-				playerDialog.dismiss();
-			playerDialog = null;
-			scenesSpinner.setEnabled(true);
-			playFloat.setVisibility(View.VISIBLE);
-			play.setImageResource(R.drawable.play_icon);
-			//play.setVisibilty(View.VISIBLE);
-		}
+	    try {
+    	    if(editor.getLink()!=null&&editor.getLink().getStage()!=null)
+    	        editor.getLink().getStage().pause();
+    		editor.linkTo(null);
+    		editor.updateProperties();
+    		if(playerDialog!=null){
+    			if(playerDialog.isShowing())
+    				playerDialog.dismiss();
+    			playerDialog = null;
+    			scenesSpinner.setEnabled(true);
+    			playFloat.setVisibility(View.VISIBLE);
+    			play.setImageResource(R.drawable.play_icon);
+    			//play.setVisibilty(View.VISIBLE);
+		    }
+		} catch(Exception ex){}
 		switchFor(true,scenesSpinner,copyScene,renameScene,addBody,deleteBody,findViewById(R.id.add_light));
 	}
 	
