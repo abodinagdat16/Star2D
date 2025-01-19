@@ -4,6 +4,7 @@
     <string name="tutorials">Tutorials</string>
     <string name="tutorial">Tutorial</string>
     <string name="community">Community</string>
+    <string name="close">Close</string>
 	<string name="download">Download</string>
 	<string name="support">
 		As you know..., any project need a support to continue, this engine made by simple devoloper, simple tools, limited internet, limited time, so please to help me to continue in devoloping it, keep good review to it in the page, and share with your friends, and don\'t forget the Financial support , even 1$ just to give me spirit and prove that you are interesting and you want to support the engine.\n
@@ -76,4 +77,6 @@
 	<string name="light_settings">Light Settings</string>
 	<string name="add_point">Add Point</string>
 	<string name="delete_the_point">Delete The Point</string>
+	<string name="update_needed">Download The New Update</string>
+	<string name="update">Update</string>
 </resources>
