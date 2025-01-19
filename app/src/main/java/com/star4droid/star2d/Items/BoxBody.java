@@ -146,7 +146,7 @@ public class BoxBody extends AppCompatImageView implements EditorItem {
 			float X = this.sx - motionEvent.getRawX();
 			float Y = this.sy - motionEvent.getRawY();
 			double dist = Math.sqrt((X*X)+(Y*Y));
-			if (dist<= 80.0f) {
+			if (dist<= 40.0f) {
 				editor.selectView(this);
 			}
 			editor.enableTouch();
