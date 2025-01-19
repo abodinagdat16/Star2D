@@ -167,9 +167,6 @@ public class BoxBody extends Image implements PlayerItem {
 		}
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-		else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	@Override
 	public void update() {
@@ -232,6 +229,11 @@ public class BoxBody extends Image implements PlayerItem {
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha) {
+	    /*
+	    if(propertySet.getString("type").equals("UI"))
+	        stage.ui(batch);
+	    else stage.body(batch);
+	    */
 		super.draw(batch, parentAlpha);
 		if(animation!=null)
 			super.setDrawable(animation.getKeyFrame(animationTime,true));
@@ -248,6 +250,16 @@ public class BoxBody extends Image implements PlayerItem {
 	@Override
 	public void setAnimation(String name) {
 		stage.setAnimation(this,name);
+	}
+	
+	@Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
 	}
 	
 	@Override
