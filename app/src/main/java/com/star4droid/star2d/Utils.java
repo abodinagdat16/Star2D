@@ -725,6 +725,18 @@ public class Utils {
 		FileUtil.writeFile(String.format(str,x+""),error+" :\n"+string);
 	}
 		
+		public static String getStackTraceString2(Throwable throwable){
+		String full=throwable.toString();
+			String space="";
+			for(int x =0;x<12;x++)
+				space+="_";
+			for(StackTraceElement element:throwable.getStackTrace()){
+				full+="class name : "+element.getClassName()+"\n file : "+element.getFileName()+
+				"\n line number : "+element.getLineNumber()+"\n method : "+element.getMethodName()+"\n"+space+"\n";
+			}
+			return full;
+	}
+		
 	public static String getStackTraceString(Throwable throwable){
 			//disabled, because I think it lag the app....
 			if(true) return throwable.toString();
