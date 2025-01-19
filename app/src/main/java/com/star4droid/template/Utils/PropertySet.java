@@ -42,6 +42,8 @@ public class PropertySet<K, V> extends HashMap<String,Object> {
 	
 	public void setScript(ItemScript itemScript){
 		script = itemScript;
+		if(script!=null)
+		    script.bodyCreated();
 	}
 	
 	public ItemScript getScript(){
