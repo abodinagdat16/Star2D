@@ -28,13 +28,12 @@ public class MainActivity extends AndroidApplication {
 		    TextView text = new TextView(this);
 		    text.setText("Error....!!!");
 		    setContentView(text);
+			text.setTextIsSelectable(true);
 		}
 	}
 	
 	@Override
 	protected void onResume(){
-		//try {
-			super.onResume();
-		//} catch(Exception e){}
+		super.onResume();
 	}
 }
