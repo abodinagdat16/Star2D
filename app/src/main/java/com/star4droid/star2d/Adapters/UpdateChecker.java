@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.star4droid.star2d.R;
+import com.star4droid.star2d.evo.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
