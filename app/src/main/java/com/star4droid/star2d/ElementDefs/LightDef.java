@@ -11,7 +11,7 @@ public class LightDef {
 	public ElementEvent elementEvents;
 	PropertySet<String,Object> propertySet= new PropertySet<>();
 	public static final String TYPE="LIGHT";
-	public String name="",Light_Type="point",color="#FFFFFF",attach_To="";
+	public String name="",Light_Type="point",color="#FFFFFF",attach_To="",Script="";
 	public boolean Active=true, Visible=true,X_Ray=false,Static_Light=false,Soft=false;
 	public float x=0,y=0,z=0,Cone_Degree=90,Distance=50,rays=50,rotation=0, Softness_Length=2.5f, Offset_X=0,Offset_Y=0;
 	
