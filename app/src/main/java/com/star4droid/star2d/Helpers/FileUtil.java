@@ -148,6 +148,7 @@ public class FileUtil {
 		if (!newFile.exists()) {
 			newFile.mkdirs();
 		}
+		if(files==null) return;
 		for (File file : files) {
 			if (file.isFile()) {
 				copyFile(file.getPath(), newPath + "/" + file.getName());
