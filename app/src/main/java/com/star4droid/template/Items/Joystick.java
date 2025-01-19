@@ -69,9 +69,6 @@ public class Joystick extends Touchpad implements PlayerItem {
 		setName(propertySet.getString("name"));
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-				else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	
 	public static Joystick create(StageImp stageImp,Texture button,Texture background){
@@ -98,7 +95,17 @@ public class Joystick extends Touchpad implements PlayerItem {
 		super.setY(y);//stage.getViewport().getWorldHeight()-getHeight()-y);
 		joystickY = y;
 	}
-
+    
+    @Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
+	}
+    
 	public Joystick setElementEvent(ElementEvent event){
 		elementEvent = event;
 		return this;
