@@ -71,7 +71,7 @@ public class ProjectsActivity extends AppCompatActivity {
         setContentView(R.layout.projects);
 
         initVars();
-
+        com.star4droid.star2d.Adapters.UpdateChecker.checkForUpdate(this);
         if (checkPerms(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE/*, Manifest.permission.ACCESS_MEDIA_LOCATION*/))
             init();
 
