@@ -4,14 +4,14 @@
    xmlns:android="http://schemas.android.com/apk/res/android"
    android:versionCode="%1$s"
    android:versionName="%2$s"
-   android:compileSdkVersion="35"
-   android:compileSdkVersionCodename="14"
+   android:compileSdkVersion="33"
+   android:compileSdkVersionCodename="13"
    package="%3$s"
-   platformBuildVersionCode="35"
-   platformBuildVersionName="14" >
+   platformBuildVersionCode="33"
+   platformBuildVersionName="13" >
    <uses-sdk
       android:minSdkVersion="21"
-      android:targetSdkVersion="35" >
+      android:targetSdkVersion="33" >
    </uses-sdk>
    <uses-permission
       android:name="android.permission.READ_EXTERNAL_STORAGE" >
