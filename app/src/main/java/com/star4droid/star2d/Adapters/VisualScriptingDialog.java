@@ -28,7 +28,8 @@ public class VisualScriptingDialog {
 		String body="";
 		if(isBody){
 			if(editor.getSelectedView()==null) return;
-			body = PropertySet.getPropertySet(editor.getSelectedView()).get("name").toString();
+			PropertySet ps = PropertySet.getPropertySet(editor.getSelectedView());
+			body = ps.getString(ps.containsKey("Script")?"Script":"name");
 		}
 		
 		final String cp = isScript?project.getScriptsPath(editor.getScene())+event:project.getEventPath(editor.getScene(),body,event);
