@@ -86,6 +86,12 @@ writeToFile path string
 write(%1$s,%2$s);
 %3$s
 split
+-color:#018253•
+writeInternal path string
+<<=>>
+writeInternal(%1$s,%2$s);
+%3$s
+split
 --Camera
 split
 -color:#387095•
@@ -97,19 +103,19 @@ split
 -color:#387095•
 cameraFollow body(Body)
 <<=>>
-setCameraXY(%1$s,true);
+setCameraXY(%1$s);
 %2$s
 split
 -color:#387095•
-setCameraXAt body(Body) fixed?
+setCameraXAt body(Body)
 <<=>>
-setCameraX(%1$s,%2$s);
+setCameraX(%1$s);
 %3$s
 split
 -color:#387095•
-setCameraYAt body(Body) fixed
+setCameraYAt body(Body)
 <<=>>
-setCameraY(%1$s,%2$s);
+setCameraY(%1$s);
 %3$s
 split
 -color:#387095•
