@@ -9,7 +9,7 @@ public class ProgressDef {
 	public ElementEvent elementEvents;
 	PropertySet<String,Object> propertySet= new PropertySet<>();
 	public static final String TYPE="PROGRESS";
-	public String name="",Background_Color="#00FFDD",Progress_Color="#E100FF";
+	public String name="",Background_Color="#00FFDD",Progress_Color="#E100FF",Script="",type="UI";
 	public boolean Visible=true;
 	public float x=0,y=0,z=0,width=50,height=50,rotation=0,
 	Progress=0,Max=0;
@@ -30,7 +30,7 @@ public class ProgressDef {
 			}
 		}
 		
-		return new ProgressItem(stageImp.getUiStage())
+		return new ProgressItem(stageImp)
 					.setElementEvent(elementEvents)
 					.setPropertySet(propertySet);
 	}
