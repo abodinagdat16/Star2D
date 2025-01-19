@@ -18,13 +18,13 @@ import com.star4droid.template.Utils.PropertySet;
 import com.star4droid.star2d.ElementDefs.ElementEvent;
 
 public class ProgressItem extends Group implements PlayerItem {
-	Stage stage;
+	StageImp stage;
 	float max=100,progress=0,progressY=0;
 	Image backgroundImg,progressImg;
 	ElementEvent elementEvent;
 	PropertySet<String,Object> propertySet;
 	
-	public ProgressItem(Stage st){
+	public ProgressItem(StageImp st){
 		super();
 		stage = st;
 		//progress main
@@ -72,7 +72,7 @@ public class ProgressItem extends Group implements PlayerItem {
 		setZIndex(propertySet.getInt("z"));
 		setVisible(propertySet.getString("Visible").equals("true"));
 		setSize(width,height);
-		setPosition(x,stage.getViewport().getWorldHeight()-getHeight()-y);
+		setPosition(x,stage.getGameStage().getViewport().getWorldHeight()-getHeight()-y);
 		setRotation(-propertySet.getFloat("rotation"));
 		setBackColor(propertySet.getString("Background Color"));
 		setProgressColor(propertySet.getString("Progress Color"));
@@ -81,9 +81,6 @@ public class ProgressItem extends Group implements PlayerItem {
 		setName(propertySet.getString("name"));
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-				else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	
 	public ProgressItem setElementEvent(ElementEvent event){
@@ -95,6 +92,16 @@ public class ProgressItem extends Group implements PlayerItem {
 		propertySet = set;
 		setup();
 		return this;
+	}
+	
+	@Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
 	}
 	
 	@Override
