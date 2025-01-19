@@ -73,8 +73,8 @@ public class CircleItem extends Image implements PlayerItem {
 	private void setup(){
 		int rx = propertySet.getInt("tileX"),
 		ry = propertySet.getInt("tileY");
-		float width = propertySet.getFloat("radius"),
-		height = propertySet.getFloat("radius");
+		float width = propertySet.getFloat("radius")*2,
+		     height = propertySet.getFloat("radius")*2;
 		float x = propertySet.getFloat("x"),
 		y = propertySet.getFloat("y");
 		y = stage.getViewport().getWorldHeight()-getHeight()-y;
@@ -109,7 +109,7 @@ public class CircleItem extends Image implements PlayerItem {
 			}
 			//define its properties
 			CircleShape shape = new CircleShape();
-			shape.setRadius(propertySet.getFloat("Collider Radius")*0.5f);
+			shape.setRadius(propertySet.getFloat("Collider Radius"));
 			FixtureDef fx = new FixtureDef();
 			fx.shape = shape;
 			fx.friction=propertySet.getFloat("friction");
@@ -121,14 +121,13 @@ public class CircleItem extends Image implements PlayerItem {
 			body.setActive(propertySet.getString("Active").equals("true"));
 			body.setBullet(propertySet.getString("Bullet").equals("true"));
 			body.setGravityScale(propertySet.getFloat("Gravity Scale"));
-			body.setTransform(new Vector2((offset[0]+x+(width/2)),(offset[1]+y+(height/2))),(float)Math.toRadians(-propertySet.getFloat("rotation")));
+			// TODO : Need to fix (check the solution)
+			body.setTransform(new Vector2((offset[0]+x+(width/2)),(offset[1]+y-(height/2))),(float)Math.toRadians(-propertySet.getFloat("rotation")));
 			
 		}
+		//if it's not added to stage ....
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-		else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	
 	@Override
@@ -200,6 +199,16 @@ public class CircleItem extends Image implements PlayerItem {
 	public void draw(Batch batch, float parentAlpha) {
 		super.draw(batch, parentAlpha);
 		update();
+	}
+	
+	@Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
 	}
 	
 	@Override
