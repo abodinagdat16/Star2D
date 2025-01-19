@@ -68,4 +68,7 @@
 	<string name="light_settings">إعدادات الضوء</string>
 	<string name="add_point">إضافة نقطة</string>
 	<string name="delete_the_point">حذف النقطة</string>
+	<string name="update_needed">قم بتنزيل التحديث الجديد</string>
+	<string name="update">تحديث</string>
+	<string name="close">إغلاق</string>
 </resources>
