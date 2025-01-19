@@ -37,9 +37,10 @@ public class SettingsActivity extends AppCompatActivity {
 		final Pair[] langs=new Pair[]{
 			new Pair<>("en","US"),
 			new Pair<>("ar","AE"),
-			new Pair<>("ru","RU")
+			new Pair<>("ru","RU"),
+			new Pair<>("id","id")
 		};
-		List<String> list = List.of(new String[]{"English","اللغه العربيه","Язык"});
+		List<String> list = List.of(new String[]{"English","اللغه العربيه","Язык","Indonesia"});
 		compilerSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,List.of(
 			new String[]{"javac","ecj"}
 		)));
