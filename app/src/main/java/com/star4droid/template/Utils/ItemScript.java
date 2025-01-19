@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.star4droid.template.Items.StageImp;
 
 public class ItemScript {
-	private PlayerItem playerItem;
+	public PlayerItem playerItem;
 	public Body body;
 	private StageImp stage;
 	
