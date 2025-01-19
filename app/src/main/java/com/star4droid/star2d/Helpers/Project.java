@@ -17,17 +17,34 @@ public class Project {
 		return path+"/"+name+"/";
 	}
 	
+	public String getBodiesScripts(String scene){
+	    return path+"/java/com/star4droid/Game/Scripts/"+scene+"/";
+	}
+	
 	public String getBodyScriptPath(String body,String scene){
-		return path+"/java/com/star4droid/Game/Scripts/"+scene+"/"+body+"Script.java";
+		return getBodiesScripts(scene)+body+"Script.java";
 	}
 	
 	public String readEvent(String scene,String event){
-		return FileUtil.readFile(getEventPath(scene,"",event)+".java")/*+FileUtil.readFile(getEventPath(event)+".code")*/;
+	    String pth = getEventPath(scene,"",event);
+		String result = FileUtil.readFile(pth+".java");
+		/*
+		FileUtil.writeFile(get("log")+scene+"/"+event+".txt", 
+	    pth+".java\n"+
+	    result);
+	    if(result.equals(""))
+	        FileUtil.writeFile(pth,"//test");
+	   */
+		return result;
 	}
 	
 	public String readEvent(String scene,String event,String body){
-		String result= FileUtil.readFile(getEventPath(scene,body,event)+".java")+"\n"+FileUtil.readFile(getEventPath(scene,body,event)+".code");
+	    String scrp = getEventPath(scene,body,event);
+		String result= FileUtil.readFile(scrp+".java")+"\n"+FileUtil.readFile(scrp+".code");
 		//Log.e("eeeee","empty "+getEventPath(event,body));
+	    FileUtil.writeFile(get("log")+event+"/"+body+".txt", 
+	    scrp+".java\n"+
+	    result);
 		return result;
 	}
 	
@@ -52,9 +69,23 @@ public class Project {
 		ArrayList<String> arrayList = getSceneList(newScene);
 		int x=0;
 		for(String file:getSceneList(scene)){
-			FileUtil.copyFile(file,arrayList.get(x));
+			if(FileUtil.isFile(file))
+			    FileUtil.copyFile(file,arrayList.get(x));
+			else FileUtil.copyDir(file, arrayList.get(x));
 			x++;
 		}
+		
+		ArrayList<String> temp = new ArrayList<>();
+		FileUtil.listDir(getBodiesScripts(scene),temp);
+		for(String file:temp){
+		    if(FileUtil.isFile(file)){
+		        String read = FileUtil.readFile(file);
+		        FileUtil.writeFile(file, read.replace("."+scene,"."+newScene).replace("."+scene.toLowerCase(),"."+newScene.toLowerCase()));
+		    }
+		}
+		
+		String read = FileUtil.readFile(getCodesPath(newScene));
+		FileUtil.writeFile(getCodesPath(newScene), read.replace("public class "+scene+ " extends StageImp","public class "+newScene+" extends StageImp"));
 	}
 	
 	public ArrayList<String> getSceneList(String scene){
@@ -66,6 +97,7 @@ public class Project {
 		arrayList.add(getJoints(scene));
 		arrayList.add(getCodesPath(scene));
 		arrayList.add(getScriptsPath(scene));
+		arrayList.add(getBodiesScripts(scene));
 		return arrayList;
 	}
 	
