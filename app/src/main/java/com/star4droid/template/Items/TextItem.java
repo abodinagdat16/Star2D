@@ -77,6 +77,16 @@ public class TextItem extends Label implements PlayerItem{
 	public Body getBody() {
 	    return null;
 	}
+	
+	@Override
+	public boolean setZIndex(int z){
+	    boolean b = true;
+	    try {
+	        b = super.setZIndex(z);
+	    } catch(Exception e){}
+	    if(stage!=null) stage.updateActors();
+	    return b;
+	}
 
 	@Override
 	public ChildsHolder getChildsHolder() {
@@ -155,9 +165,6 @@ public class TextItem extends Label implements PlayerItem{
 		getStyle().fontColor= new Color(propertySet.getColor("Text Color"));
 		if(getStage()==null)
 		    stage.addActor(this);
-		if(getScript()!=null)
-			getScript().bodyCreated();
-		else if(elementEvent!=null) elementEvent.onBodyCreated(this);
 	}
 	
 	@Override
