@@ -16,7 +16,7 @@ public interface PlayerItem {
 		return getProperties().getString("name");
 	};
 	default public String getParentName(){
-		return getProperties().containsKey("old")?getProperties().getString("old"):getName();
+		return getProperties().containsKey("Script")?getProperties().getString("Script"):(getProperties().containsKey("old")?getProperties().getString("old"):getName());
 	}
 	default public PlayerItem getChild(String child){
 		ChildsHolder holder= getChildsHolder().getChild(child);
