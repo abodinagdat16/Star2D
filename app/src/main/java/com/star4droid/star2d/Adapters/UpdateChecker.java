@@ -18,9 +18,9 @@ import java.util.concurrent.Executors;
 
 public class UpdateChecker {
 
-    private static final String CURRENT_VERSION = "1.0.0";
-    private static final String CHECK_UPDATE_URL = "https://example.com/check-update"; // Replace with your URL
-    private static final String UPDATE_PAGE_URL = "https://example.com/update"; // Replace with your update page URL
+    private static final String CURRENT_VERSION = "0.1.1";
+    private static final String CHECK_UPDATE_URL = "https://raw.githubusercontent.com/abodinagdat16/Star2D/refs/heads/master/assets/latest.version"; // Replace with your URL
+    private static final String UPDATE_PAGE_URL = "https://github.com/abodinagdat16/Star2D/releases/"; // Replace with your update page URL
 
     public static void checkForUpdate(Context context) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
