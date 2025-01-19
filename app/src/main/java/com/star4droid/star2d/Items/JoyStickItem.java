@@ -152,7 +152,7 @@ public class JoyStickItem extends JoyStick implements EditorItem {
 			float X = this.sx - motionEvent.getRawX();
 			float Y = this.sy - motionEvent.getRawY();
 			double dist = Math.sqrt((X*X)+(Y*Y));
-			if (dist<= 80f) {
+			if (dist<= 40f) {
 				editor.selectView(this);
 			}
 			editor.enableTouch();
