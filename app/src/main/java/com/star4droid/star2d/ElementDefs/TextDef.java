@@ -9,7 +9,7 @@ public class TextDef {
 	public ElementEvent elementEvents;
 	PropertySet<String,Object> propertySet= new PropertySet<>();
 	public static final String TYPE="TEXT";
-	public String name="",Text="TextItem",Text_Color="#FFFFFF";
+	public String name="",Text="TextItem",Text_Color="#FFFFFF",Script="",type="UI";
 	public boolean Visible=true;
 	public float x=0,y=0,z=0,width=50,height=50,rotation=0;
 	
