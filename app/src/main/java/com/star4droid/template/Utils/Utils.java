@@ -142,7 +142,7 @@ public class Utils {
 		}
 		
 		public static String getStackTraceString(Throwable throwable){
-			String full="";
+			String full=throwable.toString()+"\n";
 			String space="";
 			for(int x =0;x<12;x++)
 				space+="_";
