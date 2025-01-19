@@ -143,7 +143,7 @@ public class CustomBody extends AppCompatImageView implements EditorItem {
 			float X = this.sx - motionEvent.getRawX();
 			float Y = this.sy - motionEvent.getRawY();
 			double dist = Math.sqrt((X*X)+(Y*Y));
-			if (dist<= 80.0f) {
+			if (dist<= 40.0f) {
 				editor.selectView(this);
 			}
 			editor.enableTouch();
@@ -175,7 +175,8 @@ public class CustomBody extends AppCompatImageView implements EditorItem {
 	    } catch(Exception ex){
 	        String file = getContext().getExternalFilesDir("logs") +"/customview.txt";
 	        ex.printStackTrace();
-	        FileUtil.writeFile(file,Utils.getStackTraceString(ex));
+	        FileUtil.writeFile(file,"points \n"+this.propertySet.getString("Points")
+	        + "\n" + Utils.getStackTraceString2(ex));
 	    }
 	}
 	
@@ -183,4 +184,4 @@ public class CustomBody extends AppCompatImageView implements EditorItem {
 	public String getTypeName(){
 		return "Custom";
 	}
-			    }
+}
