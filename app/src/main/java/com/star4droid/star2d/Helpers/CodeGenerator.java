@@ -119,7 +119,7 @@ public class CodeGenerator {
 							Object ins = cls.getConstructor().newInstance();
 							for(Map.Entry<String,Object> entry:propertySet.entrySet()){
 								//ignored properties...
-								if("(TYPE)(Shape)(lock)(Script)(parent)".contains("("+entry.getKey()+")")) continue;
+								if("(TYPE)(Shape)(lock)(parent)".contains("("+entry.getKey()+")")) continue;
 								if(entry.getKey().equals("lock")) continue;
 								java.lang.reflect.Field field = cls.getField(entry.getKey().replace(" ","_"));
 								String var_type = field.getType().getName().replace("java.lang.","");
@@ -164,7 +164,7 @@ public class CodeGenerator {
 					new Handler(Looper.getMainLooper()).post(()-> {
 							String playerCode=Utils.readAssetFile("java/Player.java",context);
 							playerCode=playerCode.replace(script_import,replaceImportOfTheScript?"":String.format("import com.star4droid.Game.Scripts.%1$s.*;",scene.toLowerCase()));
-							generateListener.onGenerate(String.format(playerCode,scene.toLowerCase(),variables,code,project.readEvent(scene,"onPause"),project.readEvent(scene,"onResume"),project.readEvent(scene,"onStep"),project.readEvent(scene,"onCollisionStart"),project.readEvent(scene,"onCollisionEnd"),scriptBuilder.toString()));
+							generateListener.onGenerate(String.format(playerCode,scene.toLowerCase(),variables,code,project.readEvent(scene,"OnPause"),project.readEvent(scene,"OnResume"),project.readEvent(scene,"OnStep"),project.readEvent(scene,"onCollisionStart"),project.readEvent(scene,"onCollisionEnd"),scriptBuilder.toString()));
 					});
 				}
 			}
