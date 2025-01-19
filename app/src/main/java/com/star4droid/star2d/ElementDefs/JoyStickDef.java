@@ -10,8 +10,8 @@ import java.lang.reflect.Field;
 public class JoyStickDef {
 	public ElementEvent elementEvents;
 	PropertySet<String,Object> propertySet= new PropertySet<>();
-	public static final String TYPE="JOYSTICK";
-	public String Pad_Image="",name="",Button_Image="";
+	public static final String TYPE="JOYSTICK", type="UI";
+	public String Pad_Image="",name="",Button_Image="", Script="";
 	public boolean Visible=true;
 	public float x=0,y=0,z=0,width=50,height=50,rotation=0;
 	
