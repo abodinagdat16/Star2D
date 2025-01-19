@@ -64,7 +64,7 @@ public class CustomColliderView extends AppCompatImageView {
 				float px = points.get(selected).x, py = points.get(selected).y;
 				float x = px * getMeasuredWidth(), y = py * getMeasuredHeight();
 				float resultX = (x + dx)/getMeasuredWidth(), resultY = (y + dy)/getMeasuredHeight();
-				points.get(selected).set(resultX,resultY);
+				points.get(selected).set(Math.max(0,resultX),Math.max(0,resultY));
 				invalidate();
 			} catch(Exception ex){}
 		});
