@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.star4droid.template.Items.ProgressItem;
 import com.star4droid.template.Utils.Utils;
 
 public class LoadingStage extends Stage {
