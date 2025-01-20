@@ -15,10 +15,10 @@ android {
 }
     defaultConfig {
         applicationId "com.star4droid.star2d.evo"
-        minSdk 26
-        targetSdk 31
-        versionCode 9
-        versionName "0.0.9Beta"
+        minSdk 21
+        targetSdk 34
+        versionCode 11
+        versionName "0.1.1Beta"
         
         vectorDrawables { 
             useSupportLibrary true
